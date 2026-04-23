@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Home Online Course - Acadia",
 };
 
-export default function HomeOnlineCoursePage() {
+export default function Page() {
   return (
     <main>
       {/* hero area start */}
@@ -26,35 +26,35 @@ export default function HomeOnlineCoursePage() {
       {/* category area */}
 
       {/* fun fact area start */}
-      <FunFactArea/>
+      <FunFactArea />
       {/* fun fact area end */}
 
       {/* course area start */}
-      <CourseArea/>
+      <CourseArea />
       {/* course area end */}
 
       {/* course live area start */}
-      <CourseLiveArea/>
+      <CourseLiveArea />
       {/* course live area end */}
 
       {/* testimonial area start */}
-      <TestimonialTwo/>
+      <TestimonialTwo />
       {/* testimonial area end */}
 
       {/* team area start */}
-      <TeamArea/>
+      <TeamArea />
       {/* team area end */}
 
       {/* brand area start */}
-      <BrandArea/>
+      <BrandArea />
       {/* brand area end */}
 
       {/* banner area start */}
-      <BannerArea/>
+      <BannerArea />
       {/* banner area end */}
 
       {/* cta area start */}
-      <CtaTwo/>
+      <CtaTwo />
       {/* cta area end */}
     </main>
   );
