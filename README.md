@@ -1,0 +1,2 @@
+# aktuelanaliz
+Borsa Eğitim Platformu
