@@ -8,8 +8,10 @@ import useCourseFilter from "@/hooks/use-course-filter";
 type IProps = {
   listActive?: boolean
 }
+
 export default function CourseBannerArea({ listActive }: IProps) {
   const { state } = useCourseFilter();
+
   return (
     <section className="tp-course-filter-area tp-course-filter-bg tp-course-filter-space p-relative">
       <div className="container">
@@ -18,10 +20,10 @@ export default function CourseBannerArea({ listActive }: IProps) {
             <div className="tp-breadcrumb__content-filter mb-50">
               <div className="tp-breadcrumb__list">
                 <span><Link href="/"><HomeSvg /></Link></span>
-                <span className="color">All Courses</span>
+                <span className="color">Tüm Eğitimler</span>
               </div>
-              <h3 className="tp-breadcrumb__title">All Courses</h3>
-              <p>We have the largest collection of <span>{state.courses.length}</span> courses</p>
+              <h3 className="tp-breadcrumb__title">Tüm Eğitimler</h3>
+              <p>Yatırım dünyasına dair <span>{state.courses.length}</span> farklı eğitim içeriği sunuyoruz</p>
             </div>
             <div className="tp-course-grid-wrap p-relative">
               <div className="row">
@@ -32,20 +34,20 @@ export default function CourseBannerArea({ listActive }: IProps) {
                         <li className="nav-item" role="presentation">
                           <button className={`nav-link ${listActive ? '' : 'active'}`} id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected={listActive ? 'false' : 'true'} tabIndex={0}>
                             <GridSvg />
-                            Grid
+                            Izgara
                           </button>
                         </li>
                         <li className="nav-item" role="presentation">
                           <button className={`nav-link ${listActive ? 'active' : ''}`} id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected={listActive ? 'true' : 'false'} tabIndex={-1}>
                             <ListSvg />
-                            List
+                            Liste
                           </button>
                         </li>
                       </ul>
                     </div>
                     <div className="tp-course-filter-top-result mb-20">
                       <p>
-                        Showing 1–{state.filteredCourses.length} of {state.courses.length} results
+                        {state.courses.length} sonuçtan 1–{state.filteredCourses.length} arası gösteriliyor
                       </p>
                     </div>
                   </div>
@@ -53,9 +55,7 @@ export default function CourseBannerArea({ listActive }: IProps) {
                 <div className="col-lg-6">
                   <div className="tp-course-filter-top-right categories d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div className="tp-course-filter-top-right-search d-none d-lg-block mb-20">
-                      {/* filter search */}
                       <FilterSearchTerm />
-                      {/* filter search */}
                     </div>
                     <div className="tp-course-filter-select mb-20">
                       <SelectFilterSortBy />

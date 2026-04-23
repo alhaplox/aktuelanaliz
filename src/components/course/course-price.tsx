@@ -6,15 +6,36 @@ type IProps = {
     price: number;
 }
 
-export default function CoursePrice({ discount, price }: IProps) {
+export default function CoursePrice({ price, oldPrice }: { price: number; oldPrice?: number }) {
     return (
-        discount > 0 ? (
-            <>
-                <del>{formatPrice(price, true)}</del>
-                <span>{" "}{formatPrice(discountPrice(price, discount), true)}</span>
-            </>
-        ) : (
-            <span>{formatPrice(price, true)}</span>
-        )
-    )
+        <div className="tp-course-price-wrapper d-flex align-items-center">
+            {/* Güncel Fiyat: Siyah ve Bold */}
+            <span
+                className="tp-course-price-new"
+                style={{
+                    color: '#000',
+                    fontWeight: '700',
+                    fontSize: '24px',
+                    marginRight: '10px'
+                }}
+            >
+                ${price.toFixed(2)}
+            </span>
+
+            {/* Eski Fiyat: Üstü Çizili ve Açık Renk */}
+            {oldPrice && (
+                <span
+                    className="tp-course-price-old"
+                    style={{
+                        color: '#a0a0a0',
+                        textDecoration: 'line-through',
+                        fontSize: '18px',
+                        fontWeight: '400'
+                    }}
+                >
+                    ${oldPrice.toFixed(2)}
+                </span>
+            )}
+        </div>
+    );
 }

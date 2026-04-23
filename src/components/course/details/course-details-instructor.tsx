@@ -8,25 +8,34 @@ export default function CourseDetailsInstructor() {
     return (
         <div className="tp-course-details-2-instructor d-flex">
             <div className="tp-course-details-2-instructor-thumb mr-40">
-                <Image src={user_img} alt="user-img" />
+                <Image src={user_img} alt="eğitmen-fotoğrafı" width={150} height={150} style={{ borderRadius: '10px' }} />
             </div>
             <div className="tp-course-details-2-instructor-content">
-                <h5>Undon Xie</h5>
-                <span className="pre">President of Sales</span>
+                <h5>Barış Bey</h5> {/* İstersen burayı dinamik yapabiliriz */}
+                <span className="pre">Kıdemli Piyasa Analisti & Yazılım Geliştirici</span>
+
                 <div className="tp-course-details-2-instructor-sub d-flex">
-                    <span><Star /> 4.4 Rating</span>
-                    <span><VideoPlayerThreeSvg /> 58 Courses</span>
-                    <span><UserSvgTwo clr="#6C7275" /> 45 Student</span>
+                    <span><Star /> 4.8 Puan</span>
+                    <span><VideoPlayerThreeSvg /> 12 Eğitim</span>
+                    <span><UserSvgTwo clr="#6C7275" /> 1,450+ Öğrenci</span>
                 </div>
+
                 <div className="tp-course-details-2-instructor-text">
-                    <p>I am also the founder of a large local design organization, Salt Lake <br />
-                        Designers, where I and other local influencers help cultivate the talents <br />
-                        of up and coming UX designers through workshops and panel discussions.</p>
-                    <p>Undon Xie is a brilliant educator, whose life was spent for computer <br />
-                        science and love of nature.</p>
+                    <p>
+                        On yılı aşkın süredir finansal piyasalarda algoritmik trade ve teknik analiz
+                        üzerine uzmanlaşmış bir stratejistim. Aktuel Analiz topluluğunun kurucusu olarak,
+                        yeni nesil yatırımcılara veri odaklı karar alma mekanizmalarını öğretiyorum.
+                    </p>
+                    <p>
+                        Karmaşık piyasa dinamiklerini, herkesin anlayabileceği basit ve uygulanabilir
+                        stratejilere dönüştürmek en büyük önceliğimdir. Finansal özgürlük yolculuğunuzda
+                        size rehberlik etmek için buradayım.
+                    </p>
                 </div>
+
                 <div className="tp-course-details-2-instructor-social">
-                    <SocialLinks/>
+                    {/* Sosyal medya linklerini Aktuel Analiz hesaplarına yönlendirmeyi unutma */}
+                    <SocialLinks />
                 </div>
             </div>
         </div>

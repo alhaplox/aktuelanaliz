@@ -8,7 +8,7 @@ export default function MyCourses() {
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="tp-profile-wrapper">
-                            <h4>My Popular Courses</h4>
+                            <h4>Popüler Kurslarımız</h4>
                         </div>
                     </div>
                 </div>

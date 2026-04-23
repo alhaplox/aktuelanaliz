@@ -1,30 +1,42 @@
 import { Metadata } from "next";
 import CourseFilterBanner from "./_components/course-filter-banner";
 import CourseFilterProvider from "@/components/provider/course-filter-provider";
-import { all_courses } from "@/data/course-data";
 import CourseFilterArea from "./_components/course-filter-area";
 import BannerArea from "@/components/banner/banner-area";
-
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
-    title: "Course With Filter - Acadia",
+    title: "Eğitim Filtreleme - Aktuel Analiz",
+    description: "Kategorilere ve uzmanlık seviyelerine göre eğitimlerimizi filtreleyin.",
 }
 
-export default function CourseWithFilterPage() {
+export default async function CourseWithFilterPage() {
+    // 1. Supabase Client (Server-side)
+    const cookieStore = await cookies();
+    const supabase = createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        { cookies: { getAll: () => cookieStore.getAll() } }
+    );
+
+    // 2. Veritabanından tüm kursları çekiyoruz
+    const { data: courses } = await supabase
+        .from('courses')
+        .select('*')
+        .order('created_at', { ascending: false });
+
     return (
-        <CourseFilterProvider initialCourses={all_courses}>
+        <CourseFilterProvider initialCourses={courses || []}>
 
-            {/* course banner area start */}
-            <CourseFilterBanner/>
-            {/* course banner area end */}
+            {/* Kurs Filtreleme Üst Alanı (Breadcrumb) */}
+            <CourseFilterBanner />
 
-            {/* course filter area */}
-            <CourseFilterArea/>
-            {/* course filter area */}
+            {/* Sol Sidebar Filtreleri ve Kurs Listesi */}
+            <CourseFilterArea />
 
-            {/* banner area start */}
-            <BannerArea/>
-            {/* banner area end */}
+            {/* Alt Banner (CTA) */}
+            <BannerArea />
 
         </CourseFilterProvider>
     )

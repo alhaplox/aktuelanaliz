@@ -3,43 +3,41 @@ import { useState } from "react";
 import { DeleteSvg, DotsTwoSvg, DraftSvg, DuplicateSvg } from "@/components/svg";
 import useClickOutside from "@/hooks/use-click-outside";
 
-
-export default function CourseDashboardItemAction({courseId}:{courseId:number}) {
+export default function CourseDashboardItemAction({ courseId }: { courseId: number }) {
     const [openActionId, setOpenActionId] = useState<number | null>(null);
     const actionButtonRef = useClickOutside(setOpenActionId);
 
     function toggleAction(id: number) {
-        setOpenActionId(null);
         if (openActionId === id) {
-           setOpenActionId(null);
+            setOpenActionId(null);
         } else {
-           setOpenActionId(id);
+            setOpenActionId(id);
         }
-     }
+    }
 
     return (
         <div ref={actionButtonRef} className={`tpd-action-inexact-btn ${openActionId === courseId ? 'active' : ''}`}>
-            <button className="click" onClick={() => toggleAction(courseId)}>
+            <button className="click" onClick={() => toggleAction(courseId)} title="İşlemler">
                 <DotsTwoSvg />
             </button>
             <div className="tpd-action-click-tooltip">
-                <button>
+                <button type="button">
                     <span>
                         <DuplicateSvg />
                     </span>
-                    Duplicate
+                    Kopyala
                 </button>
-                <button>
+                <button type="button">
                     <span>
                         <DraftSvg />
                     </span>
-                    Move to Draft
+                    Taslağa Taşı
                 </button>
-                <button>
+                <button type="button" className="text-danger">
                     <span>
                         <DeleteSvg />
                     </span>
-                    Delete
+                    Sil
                 </button>
             </div>
         </div>

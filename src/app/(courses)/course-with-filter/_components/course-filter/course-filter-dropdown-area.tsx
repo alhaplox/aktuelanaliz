@@ -9,27 +9,27 @@ export default function CourseFilterDropdownArea() {
     return (
         <div className="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1">
             <div className="col">
-                <h4 className="tp-filter-widget-title">Sort by</h4>
+                <h4 className="tp-filter-widget-title">Sıralama</h4>
                 <FilterSortBy />
             </div>
 
             <div className="col">
-                <h4 className="tp-filter-widget-title">All categories</h4>
+                <h4 className="tp-filter-widget-title">Kategoriler</h4>
                 <FilterCategory />
             </div>
 
             <div className="col">
-                <h4 className="tp-filter-widget-title">Instructors</h4>
+                <h4 className="tp-filter-widget-title">Eğitmenler</h4>
                 <FilterInstructor />
             </div>
 
             <div className="col">
-                <h4 className="tp-filter-widget-title">Price</h4>
+                <h4 className="tp-filter-widget-title">Ücret</h4>
                 <FilterPrice />
             </div>
 
             <div className="col">
-                <h4 className="tp-filter-widget-title">Language</h4>
+                <h4 className="tp-filter-widget-title">Dil</h4>
                 <FilterLanguage />
             </div>
         </div>

@@ -7,36 +7,37 @@ export default function CourseDetailsInfo() {
   const [showMore, setShowMore] = React.useState(false);
   return (
     <div id="info">
-      <h4 className="tp-course-details-2-main-title">About Course</h4>
+      <h4 className="tp-course-details-2-main-title">Eğitim Hakkında</h4>
       <div className="tp-course-details-2-text mb-60">
         <div className={`content ${showMore ? 'show' : ''}`}>
-          <p>This course is aimed at people interested in UI/UX Design. We’ll start from the very <br />
-            beginning and work all the way through, step by step. If you already have some UI/UX <br />
-            Design experience but want to get up to speed using Adobe XD then this course is perfect <br />
-            for you too!</p>
-          <p>First, we will go over the differences between UX and UI Design. We will look at what our <br />
-            brief for this real-world project is, then we will learn about low-fidelity wireframes and how <br /> to make use of existing UI design kits.</p>
+          <p>Bu eğitim, finansal piyasalara ilgi duyan ve kendi yatırım stratejilerini geliştirmek isteyen katılımcılar için hazırlandı. <br />
+            En temel kavramlardan başlayarak, adım adım ileri seviye analiz yöntemlerine kadar kapsamlı bir yol izleyeceğiz. <br />
+            Halihazırda yatırım deneyiminiz olsa bile, profesyonel trade disiplini ve risk yönetimi kazanmak istiyorsanız <br />
+            bu program tam size göre!</p>
+          <p>İlk olarak, temel ve teknik analiz arasındaki farkları inceleyeceğiz. Gerçek piyasa verileri üzerinden <br />
+            vaka analizi yapacak, ardından grafik formasyonlarını ve indikatörleri nasıl verimli <br /> kullanabileceğimizi öğreneceğiz.</p>
         </div>
-        <a onClick={() => setShowMore(!showMore)} className="tp-course-details-showmore show-more-button">
+        <a onClick={() => setShowMore(!showMore)} className="tp-course-details-showmore show-more-button pointer">
           <span className="svg-icon">
             {showMore ? <MinusSvg clr="#3C66F9" /> : <PlusThreeSvg clr="#3C66F9" />}
-          </span> 
-          Show {showMore ? 'Less' : 'More'}
-       </a>
+          </span>
+          Daha {showMore ? 'Az' : 'Fazla'} Göster
+        </a>
       </div>
-      <h4 className="tp-course-details-2-main-title">What will you Learn?</h4>
+
+      <h4 className="tp-course-details-2-main-title">Neler Öğreneceksiniz?</h4>
       <div className="tp-course-details-2-list">
         <ul>
-          <li>Become a UX designer.</li>
-          <li>Filming 101</li>
-          <li>Learn to design websites.</li>
-          <li>Tools you need for best results.</li>
-          <li>How to plan for a video idea</li>
-          <li>How to use premade UI kits.</li>
-          <li>Differences between ads, trailers, vlogs,etc</li>
+          <li>Piyasa psikolojisi ve yatırımcı disiplini.</li>
+          <li>Mum grafikleri ve teknik göstergelerin yorumlanması.</li>
+          <li>Kendi trade stratejinizi oluşturma ve test etme.</li>
+          <li>Risk ve kasa yönetimi teknikleri.</li>
+          <li>Haber akışlarını ve ekonomik takvimi okuma.</li>
+          <li>Kripto paralar, hisse senetleri ve emtia piyasaları arasındaki farklar.</li>
+          <li>Trend dönüş sinyallerini önceden tespit etme.</li>
         </ul>
-        <p>With this course, you also have access to a whole lot of resources not only for reference but
-          also free media like aerial video shots, background music, fonts, and more.</p>
+        <p>Bu eğitimle birlikte, sadece teorik bilgiye değil; aynı zamanda geçmiş piyasa verileri,
+          strateji kontrol listeleri ve özel analiz araçları gibi birçok ek kaynağa da erişim sağlayacaksınız.</p>
       </div>
     </div>
   )

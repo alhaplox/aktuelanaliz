@@ -3,36 +3,82 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CloseEye, GoogleSvg, OpenEye } from '../svg';
 import ErrMsg from "../err-msg";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 type Inputs = {
   email: string;
   password: string;
   remember: boolean;
 }
+
 export default function LoginForm() {
   const [showPass, setShowPass] = useState(false);
-  const {register,handleSubmit,formState: { errors },reset} = useForm<Inputs>()
-      const onSubmit: SubmitHandler<Inputs> = (data) => {
-       console.log(data)
-       reset();
+  const [loading, setLoading] = useState(false);
+  const supabase = createClient();
+  const router = useRouter();
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<Inputs>()
+
+  // --- 1. E-posta ve Şifre ile Giriş ---
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setLoading(true);
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
+
+    if (error) {
+      alert("Hata: " + error.message); // Örn: Invalid login credentials
+      setLoading(false);
+      return;
+    }
+
+    // Başarılı girişten sonra yönlendirilecek sayfa
+    router.push('/my-profile');
+    router.refresh(); // Session'ın güncellenmesi için önemli
   }
+
+  // --- 2. Google ile Giriş ---
+  const handleGoogleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+    if (error) alert("Google hatası: " + error.message);
+  }
+
   return (
     <form className="tp-login-input-form" onSubmit={handleSubmit(onSubmit)}>
       <div className="row">
+        {/* E-posta Alanı */}
         <div className="col-12">
           <div className="tp-login-input p-relative">
-            <label>Email or Phone</label>
-            <input type="text" placeholder="Type your email or phone number" {...register("email", { required: "Email is required" })} name="email" />
+            <label>E-posta Adresi</label>
+            <input
+              type="email"
+              placeholder="E-posta adresinizi girin"
+              {...register("email", { required: "E-posta alanı zorunludur" })}
+            />
             {errors.email?.message && <ErrMsg msg={errors.email.message} />}
           </div>
         </div>
+
+        {/* Şifre Alanı */}
         <div className="col-12">
           <div className="tp-login-input p-relative">
-            <label>Password</label>
+            <label>Şifre</label>
             <div className="password-input p-relative">
-              <input type={showPass ? "text" : "password"} placeholder="Password" {...register("password", { required: "Password is required", minLength: { value: 6, message: "Password must be at least 6 characters" } })} name="password" />
+              <input
+                type={showPass ? "text" : "password"}
+                placeholder="Şifreniz"
+                {...register("password", { required: "Şifre alanı zorunludur" })}
+              />
               <div className="tp-login-input-eye password-show-toggle">
-                <span className={`${showPass ? "open-eye open-eye-icon" : "open-close close-eye-icon"}`} onClick={() => setShowPass(!showPass)}>
+                <span className={`${showPass ? "open-eye" : "open-close"}`} onClick={() => setShowPass(!showPass)}>
                   {showPass ? <OpenEye /> : <CloseEye />}
                 </span>
               </div>
@@ -40,37 +86,42 @@ export default function LoginForm() {
             {errors.password?.message && <ErrMsg msg={errors.password.message} />}
           </div>
         </div>
+
+        {/* Hatırla & Şifremi Unuttum */}
         <div className="col-12">
           <div className="tp-login-from-remeber">
             <div className="row">
               <div className="col-6">
                 <div className="tp-contact-input-remeber login">
                   <input id="remember" type="checkbox" {...register("remember", { required: false })} />
-                  <label htmlFor="remember">Save account</label>
+                  <label htmlFor="remember">Beni Hatırla</label>
                 </div>
               </div>
               <div className="col-6">
                 <div className="tp-login-input-remeber text-end">
-                  <a href="#">Forgot Password?</a>
+                  <a href="#">Şifremi Unuttum?</a>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Giriş Butonu */}
           <div className="tp-login-from-btn">
-            <button type='submit' className="tp-btn-inner w-100 text-center">Sign In</button>
+            <button type='submit' disabled={loading} className="tp-btn-inner w-100 text-center">
+              {loading ? "Giriş Yapılıyor..." : "Giriş Yap"}
+            </button>
           </div>
+
           <div className="tp-login-from-subtitle-heading">
-            <h5 className="tp-login-from-subtitle">Or Sign In with email</h5>
+            <h5 className="tp-login-from-subtitle">Veya şununla devam et</h5>
           </div>
+
+          {/* Google Giriş Butonu */}
           <div className="tp-login-from-google-btn">
-            <a className="w-100" href="#">
+            <button type="button" className="w-100" onClick={handleGoogleLogin}>
               <GoogleSvg />
-              Continue with Google
-            </a>
-          </div>
-          <div className="tp-login-from-autor text-center">
-            <p><span>Instructor:</span>   Instructor@gmail.com   |   123456</p>
-            <p><span>Student: </span>  student@gmail.com   |   123456</p>
+              Google ile Devam Et
+            </button>
           </div>
         </div>
       </div>

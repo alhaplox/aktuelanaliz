@@ -1,30 +1,42 @@
 import { Metadata } from "next";
 import CourseFilterProvider from "@/components/provider/course-filter-provider";
-import { all_courses } from "@/data/course-data";
 import BannerArea from "@/components/banner/banner-area";
 import CourseBannerArea from "../course-with-tab/_components/course-banner-area";
 import TabCoursesArea from "../course-with-tab/_components/tab-courses-area";
-
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
-    title: "Course With Tab List - Acadia",
+    title: "Eğitim Listesi - Aktuel Analiz",
+    description: "Finans ve borsa eğitimlerimizi listeleyin."
 }
 
-export default function CourseWithTabListPage() {
+export default async function CourseWithTabListPage() {
+    // 1. Supabase Client Kurulumu
+    const cookieStore = await cookies();
+    const supabase = createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        { cookies: { getAll: () => cookieStore.getAll() } }
+    );
+
+    // 2. Veritabanından Tüm Kursları Çek
+    const { data: courses } = await supabase
+        .from('courses')
+        .select('*')
+        .order('created_at', { ascending: false });
+
     return (
-        <CourseFilterProvider initialCourses={all_courses}>
+        <CourseFilterProvider initialCourses={courses || []}>
 
-            {/* course banner area start */}
-            <CourseBannerArea listActive={true}/>
-            {/* course banner area end */}
+            {/* Kurs Banner Alanı - Başlıkları içerir */}
+            <CourseBannerArea listActive={true} />
 
-            {/* course filter area */}
-            <TabCoursesArea listActive={true}/>
-            {/* course filter area */}
+            {/* Filtreleme ve Tab Alanı - Liste görünümü aktif */}
+            <TabCoursesArea listActive={true} />
 
-            {/* banner area start */}
-            <BannerArea/>
-            {/* banner area end */}
+            {/* Alt Banner (CTA) Alanı */}
+            <BannerArea />
 
         </CourseFilterProvider>
     )

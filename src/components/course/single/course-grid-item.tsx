@@ -8,52 +8,77 @@ import { removeTagInText } from "@/utils";
 type IProps = {
    course: ICourseDT;
 };
+
 export default function CourseGridItem({ course }: IProps) {
-   const { author_name, avg_rating, total_rating, lessons, students, thumbnail, category, price, author_img, title, discount } = course || {};
+   // Veritabanı sütun isimlerine göre parçalıyoruz
+   const {
+      slug,
+      instructor_name,
+      rating,
+      lectures_count,
+      students,
+      thumbnail,
+      category,
+      price,
+      old_price,
+      author_img,
+      title
+   } = course || {};
+
    return (
       <div className="tp-course-grid-item d-flex mb-30">
          <div className="tp-course-grid-thumb">
-            <Link href={`/course-details/${course.id}`}>
-               <Image src={thumbnail} alt={removeTagInText(title)} width={230} height={320} />
+            {/* ID yerine SLUG kullanıyoruz */}
+            <Link href={`/course-details/${slug}`}>
+               <Image
+                  src={thumbnail || "/assets/img/course/course-1.jpg"}
+                  alt={removeTagInText(title)}
+                  width={230}
+                  height={320}
+                  style={{ objectFit: 'cover', height: '100%' }}
+               />
             </Link>
          </div>
          <div className="tp-course-grid-content">
             <div className="tp-course-filter-tag mb-10">
                <span className="tag-span">{category}</span>
-               {discount && discount > 0 ? (
-                  <span className="discount">-{discount}% </span>
-               ) : null}
             </div>
+
             <div className="tp-course-meta">
                <span>
-                  <span>
-                     <LessonsSvg />
-                  </span>
-                  {lessons} Lessons
+                  <span><LessonsSvg /></span>
+                  {" "}{lectures_count} Ders
                </span>
                <span>
-                  <span>
-                     <UserSvgTwo />
-                  </span>
-                  {students} Student
+                  <span><UserSvgTwo /></span>
+                  {" "}{students || 0} Öğrenci
                </span>
             </div>
+
             <h4 className="tp-course-grid-title">
-               <Link href={`/course-details/${course.id}`}>
+               <Link href={`/course-details/${slug}`}>
                   {removeTagInText(title)}
                </Link>
             </h4>
+
             <div className="tp-course-teacher tp-course-grid-teacher">
-               <span>
+               <span className="d-flex align-items-center">
                   {author_img && (
-                     <Image src={author_img} alt={author_name} width={30} height={30} />
+                     <Image
+                        src={author_img}
+                        alt={instructor_name || "Eğitmen"}
+                        width={30}
+                        height={30}
+                        style={{ borderRadius: '50%', marginRight: '8px' }}
+                     />
                   )}
-                  {author_name}
+                  {instructor_name}
                </span>
             </div>
+
             <div className="tp-course-rating d-flex align-items-end justify-content-between">
                <div className="tp-course-rating-star">
-                  <p>{avg_rating}<span> /{total_rating}</span></p>
+                  <p>{rating || "5.0"}</p>
                   <div className="tp-course-rating-icon">
                      <i className="fa-solid fa-star"></i>
                      <i className="fa-solid fa-star"></i>
@@ -63,7 +88,8 @@ export default function CourseGridItem({ course }: IProps) {
                   </div>
                </div>
                <div className="tp-course-pricing">
-                  <CoursePrice discount={discount} price={price} />
+                  {/* Fiyat hesaplama hatasını önlemek için direkt değerleri gönderiyoruz */}
+                  <CoursePrice price={Number(price)} oldPrice={Number(old_price)} />
                </div>
             </div>
          </div>

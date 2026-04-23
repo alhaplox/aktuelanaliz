@@ -2,7 +2,7 @@ import Link from "next/link";
 import { HomeSvg } from "@/components/svg";
 
 type IProps = {
-    title: string;
+  title: string;
 }
 
 export default function DetailsBreadcrumb({ title }: IProps) {
@@ -18,12 +18,14 @@ export default function DetailsBreadcrumb({ title }: IProps) {
             <div className="tp-breadcrumb__content">
               <div className="tp-breadcrumb__list">
                 <span>
-                  <Link href="/">
+                  <Link href="/" title="Ana Sayfa">
                     <HomeSvg />
                   </Link>
                 </span>
-                <span>Our Blog</span>
-                <span>{title}</span>
+                <span>
+                  <Link href="/blog">Blog</Link>
+                </span>
+                <span className="tp-breadcrumb__current">{title}</span>
               </div>
             </div>
           </div>

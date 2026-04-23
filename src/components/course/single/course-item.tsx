@@ -12,43 +12,50 @@ type IProps = {
 
 export default function CourseItem({ course, removeTag }: IProps) {
   const {
-    id,
     thumbnail,
-    author_name,
+    instructor_name, // Veritabanı sütun isminle eşitledim
     author_img,
     title,
-    discount,
-    lessons,
+    lectures_count, // Veritabanı sütun isminle eşitledim
     students,
-    avg_rating,
-    total_rating,
+    rating, // Veritabanı sütun isminle eşitledim
     category,
     price,
+    old_price,
+    slug
   } = course || {};
+
   return (
     <div className="tp-course-item p-relative fix mb-30">
       <div className="tp-course-teacher mb-15">
         <span>
           {author_img && (
-            <Image src={author_img} alt={author_name} width={30} height={30} />
+            <Image
+              src={author_img}
+              alt={instructor_name || "Eğitmen"}
+              width={30}
+              height={30}
+              style={{ borderRadius: '50%' }}
+            />
           )}
-          {author_name}
+          {instructor_name}
         </span>
-        {discount && discount > 0 ? (
-          <span className="discount">-{discount}% </span>
-        ) : null}
       </div>
+
       <div className="tp-course-thumb">
-        <Link href={`/course-details/${id}`}>
+        {/* ID yerine SLUG kullanıyoruz */}
+        <Link href={`/course-details/${slug}`}>
           <Image
             className="course-lightblue"
-            src={thumbnail}
+            src={thumbnail || "/assets/img/course/course-1.jpg"}
             alt={title}
             width={352}
             height={200}
+            style={{ objectFit: 'cover' }}
           />
         </Link>
       </div>
+
       <div className="tp-course-content">
         <div className="tp-course-tag mb-10">
           <span>{category}</span>
@@ -56,23 +63,22 @@ export default function CourseItem({ course, removeTag }: IProps) {
         <div className="tp-course-meta">
           <span>
             <span><LessonsSvg /></span>
-            {" "}{lessons} Lessons
+            {" "}{lectures_count} Ders
           </span>
           <span>
             <span><UserSvgTwo /></span>
-            {" "}{students} Student
+            {" "}{students || 0} Öğrenci
           </span>
         </div>
         <h4 className="tp-course-title">
-          <Link href={`/course-details/${id}`}
+          <Link href={`/course-details/${slug}`}
             dangerouslySetInnerHTML={{ __html: removeTag ? title.replace(/(<([^>]+)>)/gi, "") : title }}
           ></Link>
         </h4>
         <div className="tp-course-rating d-flex align-items-end justify-content-between">
           <div className="tp-course-rating-star">
             <p>
-              {avg_rating}
-              <span> /{total_rating}</span>
+              {rating || "5.0"}
             </p>
             <div className="tp-course-rating-icon">
               <i className="fa-solid fa-star"></i>
@@ -83,12 +89,14 @@ export default function CourseItem({ course, removeTag }: IProps) {
             </div>
           </div>
           <div className="tp-course-pricing home-2">
-            <CoursePrice discount={discount} price={price} />
+            {/* Mantık hatasını burada da düzelttik: discount yerine direkt fiyatları gönderiyoruz */}
+            <CoursePrice price={Number(price)} oldPrice={Number(old_price)} />
           </div>
         </div>
       </div>
       <div className="tp-course-btn home-2">
-        <Link href={`/course-details/${id}`}>Preview this Course</Link>
+        {/* En alttaki önizleme butonu da slug'a gitmeli */}
+        <Link href={`/course-details/${slug}`}>Eğitimi İncele</Link>
       </div>
     </div>
   );

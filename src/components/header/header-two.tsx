@@ -41,10 +41,10 @@ export default function HeaderTwo({ inner = false, transparent }: IProps) {
               <div className="col-xxl-3 col-xl-2 col-lg-6 col-6">
                 <div className="tp-header-2-contact d-flex align-items-center justify-content-end">
                   <div className="tp-header-inner-search">
-                    <SearchButton/>
+                    <SearchButton />
                   </div>
                   <div className="tp-header-2-cart home-2 d-none d-xxl-block">
-                    <CartButton/>
+                    <CartButton />
                   </div>
                   <div className={`tp-header-inner-btn ${inner ? '' : 'home-2'} d-none d-xxl-block`}>
                     <Link className="tp-btn-inner" href="/course-with-filter">
@@ -52,10 +52,10 @@ export default function HeaderTwo({ inner = false, transparent }: IProps) {
                     </Link>
                   </div>
                   {/* profile dropdown */}
-                  <ProfileDropdown/>
+                  <ProfileDropdown />
                   {/* profile dropdown */}
                   <div className="offcanvas-btn d-xxl-none ml-30">
-                    <OffcanvasButton offcanvas_cls="offcanvas__2" offcanvas_menu_2={true}/>
+                    <OffcanvasButton offcanvas_cls="offcanvas__2" offcanvas_menu_2={true} />
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export default function HeaderTwo({ inner = false, transparent }: IProps) {
       </header>
 
       {/* mobile offcanvas */}
-      <div id="offcanvas-sidebar"/>
+      <div id="offcanvas-sidebar" />
       {/* mobile offcanvas */}
 
       {/* cart mini sidebar */}

@@ -3,26 +3,22 @@ import CategoryBannerArea from "./_components/category-banner-area";
 import CategoryArea from "./_components/category-area";
 import BannerArea from "@/components/banner/banner-area";
 
-
 export const metadata: Metadata = {
-    title: "Course Categories - Acadia",
+    title: "Eğitim Kategorileri - Aktuel Analiz",
+    description: "Finans, borsa ve yatırım alanındaki tüm uzmanlık kategorilerimizi inceleyin.",
 }
 
 export default function CourseCategoriesPage() {
     return (
         <main>
+            {/* Kategori Sayfası Üst Bilgi Alanı (Breadcrumb: Anasayfa > Kategoriler) */}
+            <CategoryBannerArea />
 
-            {/* category banner area start */}
-            <CategoryBannerArea/>
-            {/* category banner area end */}
+            {/* Tüm Kategorilerin Kartlar Halinde Listelendiği Alan */}
+            <CategoryArea />
 
-            {/* category area start */}
-            <CategoryArea/>
-            {/* category area end */}
-
-            {/* banner area start */}
-            <BannerArea/>
-            {/* banner area end */}
+            {/* Alt Banner (Hemen Başla / İletişim CTA) */}
+            <BannerArea />
         </main>
     )
 }

@@ -1,11 +1,11 @@
 import { StarTwo } from "@/components/svg";
 
 const ratingData = [
-    { stars: "5 star", percentage: 82, width: "82%" },
-    { stars: "4 star", percentage: 30, width: "30%" },
-    { stars: "3 star", percentage: 15, width: "15%" },
-    { stars: "2 star", percentage: 6, width: "6%" },
-    { stars: "1 star", percentage: 10, width: "10%" },
+    { stars: "5 Yıldız", percentage: 82, width: "82%" },
+    { stars: "4 Yıldız", percentage: 30, width: "30%" },
+    { stars: "3 Yıldız", percentage: 15, width: "15%" },
+    { stars: "2 Yıldız", percentage: 6, width: "6%" },
+    { stars: "1 Yıldız", percentage: 10, width: "10%" },
 ];
 
 export default function CourseDetailsRatingReviews() {
@@ -22,7 +22,8 @@ export default function CourseDetailsRatingReviews() {
                             <span><StarTwo /></span>
                             <span><StarTwo clr="#BFC5CA" /></span>
                         </div>
-                        <p>Rated 4 out of 1 Rating</p>
+                        {/* Dinamik veriye geçildiğinde burası toplam değerlendirme sayısını gösterecek */}
+                        <p>Ortalama Puan (125 Değerlendirme)</p>
                     </div>
                 </div>
                 <div className="col-lg-8">
@@ -40,7 +41,7 @@ export default function CourseDetailsRatingReviews() {
                                         <div className="single-progress" style={{ width: rating.width }}></div>
                                     </div>
                                     <div className="tp-course-details-2-review-percent">
-                                        <h5>{rating.percentage}%</h5>
+                                        <h5>%{rating.percentage}</h5>
                                     </div>
                                 </div>
                             ))}

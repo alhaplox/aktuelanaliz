@@ -14,11 +14,11 @@ export default function CourseLiveArea() {
         <div className="row justify-content-center">
           <div className="col-xl-8 col-lg-10">
             <div className="tp-section text-center mb-65">
-              <h5 className="tp-section-3-subtitle">Live Courses</h5>
+              <h5 className="tp-section-3-subtitle">Canlı Eğitimler</h5>
               <h3 className="tp-section-3-title">
-                Todays top free
+                Günün öne çıkan ücretsiz
                 <span>
-                  live
+                  {" "}canlı
                   <Image
                     className="tp-underline-shape-7 wow bounceIn"
                     data-wow-duration="1.5s"
@@ -26,8 +26,8 @@ export default function CourseLiveArea() {
                     src={shape_underline}
                     alt="shape-unerline"
                   />
-                </span>
-                Courses
+                </span>{" "}
+                yayınları
               </h3>
             </div>
           </div>
@@ -38,32 +38,32 @@ export default function CourseLiveArea() {
               <div className="row align-items-center">
                 <div className="col-lg-6 col-md-4">
                   <div className="tp-live-thumb p-relative">
-                    <Image src={live_thumb} alt="live-thumb" style={{height:'auto'}} />
+                    <Image src={live_thumb} alt="canli-yayin-kapak" style={{ height: 'auto' }} />
                     <div className="tp-live-thumb-video">
                       <Image src={video_icon} alt="video-icon" />
                     </div>
                     <div className="tp-live-thumb-text">
                       <span>
-                        <ClockSvgTwo /> 100min
+                        <ClockSvgTwo /> 100 Dakika
                       </span>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-6 col-md-8">
                   <div className="tp-live-content">
-                    <span className="tp-live-tag">Art & Design</span>
+                    <span className="tp-live-tag">Finans & Analiz</span>
                     <div className="tp-live-teacher">
                       <div className="tp-live-teacher-info d-flex align-items-center">
                         <div className="tp-live-teacher-thumb">
                           <Image
                             src={teacher}
-                            alt="teacher"
+                            alt="egitmen"
                           />
                         </div>
                         <div className="tp-live-teacher-text">
-                          <span>Teacher</span>
+                          <span>Eğitmen</span>
                           <h4 className="tp-live-teacher-title">
-                            Demo Instructor
+                            Barış Aksoy
                           </h4>
                         </div>
                       </div>
@@ -81,17 +81,16 @@ export default function CourseLiveArea() {
                       </div>
                     </div>
                     <h4 className="tp-live-title">
-                      <Link href="/course-details-2/1">
-                        The complete digital Marketing <br /> Course - 12
-                        Courses in 5
+                      <Link href="/course-details/borsa-teknik-analiz-egitimi">
+                        Uygulamalı Teknik Analiz ve <br /> Piyasa Yorumlama Eğitimi
                       </Link>
                     </h4>
                     <div className="tp-live-total">
                       <div className="tp-live-total-student">
-                        <span>Live Student</span>
+                        <span>Canlı İzleyici</span>
                         <Image
                           src={teacher_2}
-                          alt="teacher"
+                          alt="ogrenciler"
                         />
                       </div>
                       <div className="tp-live-join">
@@ -99,7 +98,7 @@ export default function CourseLiveArea() {
                           <span>
                             <JoinSvg />
                           </span>
-                          Join Now
+                          Hemen Katıl
                           <i>
                             <RightArrowFour />
                           </i>

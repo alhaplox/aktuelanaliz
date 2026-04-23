@@ -1,6 +1,33 @@
+'use client';
+import { useState } from "react";
+import { createClient } from "@/utils/supabase/client";
 
+interface ProfileBioProps {
+    profile: any;
+}
 
-export default function ProfileBio() {
+export default function ProfileBio({ profile }: ProfileBioProps) {
+    const [isEditing, setIsEditing] = useState(false);
+    const [bio, setBio] = useState(profile?.bio || "");
+    const [loading, setLoading] = useState(false);
+    const supabase = createClient();
+
+    const handleSave = async () => {
+        setLoading(true);
+        const { error } = await supabase
+            .from('profiles')
+            .update({ bio: bio })
+            .eq('id', profile.id);
+
+        if (error) {
+            alert("Güncelleme hatası: " + error.message);
+        } else {
+            setIsEditing(false);
+            alert("Biyografiniz başarıyla güncellendi.");
+        }
+        setLoading(false);
+    };
+
     return (
         <section className="tp-profile-arae">
             <div className="container">
@@ -8,16 +35,58 @@ export default function ProfileBio() {
                     <div className="col-lg-12">
                         <div className="tp-profile-box my-profile p-relative">
                             <div className="tp-profile-content">
-                                <h3 className="tp-profile-title">
-                                    Biography
-                                </h3>
-                                <p> Indigo Violet is an accomplished educator and expert in the field of computer science, with over 15 years of experience in both academia and industry. She currently serves as a Professor of Computer Science at Tech University</p>
-                                <p>As an English lecturer, I am fervently dedicated to shaping the linguistic and literary acumen of my students. With a profound passion for language education, I employ dynamic and innovative teaching methods to inspire a love for literature and effective communication. My commitment extends beyond the curriculum, fostering an environment where students develop critical thinking skills and a deep <br /> appreciation for the nuances of the English language.</p>
+                                <div className="d-flex justify-content-between align-items-center mb-20">
+                                    <h3 className="tp-profile-title">Biyografi</h3>
+                                    <button
+                                        className="tp-btn-inner"
+                                        style={{ padding: '5px 15px', fontSize: '14px' }}
+                                        onClick={() => isEditing ? handleSave() : setIsEditing(true)}
+                                        disabled={loading}
+                                    >
+                                        {loading ? 'Kaydediliyor...' : (isEditing ? 'Kaydet' : 'Düzenle')}
+                                    </button>
+                                </div>
+
+                                {isEditing ? (
+                                    <div className="tp-profile-edit-form">
+                                        <textarea
+                                            className="form-control"
+                                            rows={5}
+                                            value={bio}
+                                            onChange={(e) => setBio(e.target.value)}
+                                            placeholder="Kendinizden bahsedin..."
+                                            style={{
+                                                width: '100%',
+                                                padding: '15px',
+                                                borderRadius: '10px',
+                                                border: '1px solid #ddd'
+                                            }}
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="tp-profile-bio-text">
+                                        {bio ? (
+                                            <p>{bio}</p>
+                                        ) : (
+                                            <p className="text-muted italic">
+                                                Henüz bir biyografi eklenmemiş. "Düzenle" butonuna basarak kendinizden bahsedebilirsiniz.
+                                            </p>
+                                        )}
+                                    </div>
+                                )}
+
+                                <div className="tp-profile-details mt-30">
+                                    <h4 className="tp-profile-details-title">Ek Bilgiler</h4>
+                                    <ul style={{ listStyle: 'none', padding: 0 }}>
+                                        <li><strong>Telefon:</strong> {profile?.phone_number || 'Belirtilmemiş'}</li>
+                                        <li><strong>E-posta:</strong> {profile?.email}</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    )
+    );
 }

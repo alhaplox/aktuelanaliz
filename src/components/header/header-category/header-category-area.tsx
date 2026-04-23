@@ -8,27 +8,27 @@ export default function HeaderCategoryArea() {
       <Link className="tp-header-2-category-icon" href="/course-with-sidebar">
         <p>
           <span>
-            <CategorySvg/>
+            <CategorySvg />
           </span>
-          {" "}Category
+          {" "}Kategoriler
         </p>
       </Link>
       <div className="tp-header-2-category-list">
         <ul>
           <li>
-            <Link href="/course-with-sidebar">English Learning</Link>
+            <Link href="/course-with-sidebar">Borsa İstanbul</Link>
           </li>
           <li>
-            <Link href="/course-with-sidebar">Web Development</Link>
+            <Link href="/course-with-sidebar">NASDAQ</Link>
           </li>
           <li>
-            <Link href="/course-with-sidebar">Logo Design</Link>
+            <Link href="/course-with-sidebar">Kripto Paralar</Link>
           </li>
           <li>
-            <Link href="/course-with-sidebar">Motion Graphics</Link>
+            <Link href="/course-with-sidebar">Emtia</Link>
           </li>
           <li>
-            <Link href="/course-with-sidebar">Video Edition</Link>
+            <Link href="/course-with-sidebar">Endeksler</Link>
           </li>
         </ul>
       </div>

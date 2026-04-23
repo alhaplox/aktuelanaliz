@@ -1,30 +1,42 @@
 import { Metadata } from "next";
 import CourseFilterProvider from "@/components/provider/course-filter-provider";
-import { all_courses } from "@/data/course-data";
 import BannerArea from "@/components/banner/banner-area";
 import OpenFilterBannerArea from "./_components/open-filter-banner-area";
 import CourseOpenFilterArea from "./_components/course-open-filter-area";
-
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
-    title: "Course Open Filter - Acadia",
+    title: "Gelişmiş Eğitim Arama - Aktuel Analiz",
+    description: "Detaylı filtreleme seçenekleri ile size en uygun borsa ve finans eğitimini bulun.",
 }
 
-export default function CourseOpenFilterPage() {
+export default async function CourseOpenFilterPage() {
+    // 1. Supabase Client Kurulumu (Sunucu Tarafı)
+    const cookieStore = await cookies();
+    const supabase = createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        { cookies: { getAll: () => cookieStore.getAll() } }
+    );
+
+    // 2. Canlı Kurs Verilerini Çekiyoruz
+    const { data: courses } = await supabase
+        .from('courses')
+        .select('*')
+        .order('created_at', { ascending: false });
+
     return (
-        <CourseFilterProvider initialCourses={all_courses}>
+        <CourseFilterProvider initialCourses={courses || []}>
 
-            {/* course banner area start */}
-            <OpenFilterBannerArea/>
-            {/* course banner area end */}
+            {/* Kurs Üst Alanı (Geniş Filtreleme Başlığı) */}
+            <OpenFilterBannerArea />
 
-            {/* course filter area */}
-            <CourseOpenFilterArea/>
-            {/* course filter area */}
+            {/* Sol Tarafta Daima Açık Olan Filtre Paneli ve Kurs Listesi */}
+            <CourseOpenFilterArea />
 
-            {/* banner area start */}
-            <BannerArea/>
-            {/* banner area end */}
+            {/* Alt Bilgi ve Yönlendirme Alanı */}
+            <BannerArea />
 
         </CourseFilterProvider>
     )

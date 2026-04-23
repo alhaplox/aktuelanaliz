@@ -1,22 +1,21 @@
 import { CategoryTwoSvg } from "@/components/svg";
 import Link from "next/link";
 
-
+// Kategorileri Aktuel Analiz içeriğine uygun şekilde güncelledik
 const categories = [
-   { title: "Development", courseCount: 15, colorClass: "", delay: ".3s" },
-   { title: "UI/UX Design", courseCount: 10, colorClass: "color-1", delay: ".5s" },
-   { title: "Business", courseCount: 9, colorClass: "color-2", delay: ".7s" },
-   { title: "Lifestyle", courseCount: 12, colorClass: "color-3", delay: ".9s" },
-   { title: "Photography", courseCount: 17, colorClass: "color-4", delay: ".3s" },
-   { title: "Music", courseCount: 20, colorClass: "color-5", delay: ".5s" },
-   { title: "Business", courseCount: 25, colorClass: "color-6", delay: ".7s" },
-   { title: "Lifestyle", courseCount: 30, colorClass: "color-7", delay: ".9s" },
-   { title: "Accounting", courseCount: 22, colorClass: "color-8", delay: ".3s" },
-   { title: "Marketing", courseCount: 18, colorClass: "color-9", delay: ".5s" },
-   { title: "Architecture", courseCount: 29, colorClass: "color-10", delay: ".7s" },
-   { title: "Art & Design", courseCount: 26, colorClass: "color-11", delay: ".9s" }
+   { title: "Teknik Analiz", courseCount: 15, colorClass: "", delay: ".3s" },
+   { title: "Temel Analiz", courseCount: 10, colorClass: "color-1", delay: ".4s" },
+   { title: "Borsa İstanbul", courseCount: 9, colorClass: "color-2", delay: ".5s" },
+   { title: "Kripto Varlıklar", courseCount: 12, colorClass: "color-3", delay: ".6s" },
+   { title: "Algoritmik Ticaret", courseCount: 17, colorClass: "color-4", delay: ".3s" },
+   { title: "Forex Piyasaları", courseCount: 20, colorClass: "color-5", delay: ".4s" },
+   { title: "Portföy Yönetimi", courseCount: 25, colorClass: "color-6", delay: ".5s" },
+   { title: "Emtia Yatırımı", courseCount: 30, colorClass: "color-7", delay: ".6s" },
+   { title: "Finansal Okuryazarlık", courseCount: 22, colorClass: "color-8", delay: ".3s" },
+   { title: "Risk Yönetimi", courseCount: 18, colorClass: "color-9", delay: ".4s" },
+   { title: "Opsiyon Piyasaları", courseCount: 29, colorClass: "color-10", delay: ".5s" },
+   { title: "Ekonomi 101", courseCount: 26, colorClass: "color-11", delay: ".6s" }
 ];
-
 
 export default function CategoryArea() {
    return (
@@ -26,7 +25,7 @@ export default function CategoryArea() {
                {categories.map((category, index) => (
                   <div key={index} className="col-lg-3 col-sm-6">
                      <Link
-                        href="/course-with-filter"
+                        href={`/course-with-filter?category=${category.title}`}
                         className="tp-course-categories-item p-relative mb-25 wow fadeInUp"
                         data-wow-delay={category.delay}
                      >
@@ -36,7 +35,7 @@ export default function CategoryArea() {
                            </span>
                         </div>
                         <h3 className="tp-course-categories-title">{category.title}</h3>
-                        <p>{category.courseCount} Courses</p>
+                        <p>{category.courseCount} Eğitim</p>
                      </Link>
                   </div>
                ))}

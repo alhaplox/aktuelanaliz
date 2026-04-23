@@ -3,20 +3,21 @@ import { useState } from "react";
 import { DisLikeSvg, LikeSvg, StarTwo } from "@/components/svg";
 import Image from "next/image";
 
+// Finans eğitimlerine yönelik örnek yorum verileri
 const reviewsData = [
     {
-        name: "David W.",
+        name: "Burak Y.",
         img: "/assets/img/course/details/user-2.png",
-        rating: 4,
-        timeAgo: "2 weeks ago",
-        content: "I love the way the instructor goes about the course. So easy to follow, even though a little bit challenging as expected."
+        rating: 5,
+        timeAgo: "2 hafta önce",
+        content: "Eğitmenin teknik analiz anlatımı çok başarılı. Karmaşık indikatörleri bile herkesin anlayabileceği seviyeye indirgemiş. Kesinlikle tavsiye ederim."
     },
     {
-        name: "Nithish ..",
+        name: "Selin K.",
         img: "/assets/img/course/details/user-3.png",
         rating: 4,
-        timeAgo: "2 weeks ago",
-        content: "I love the way the instructor goes about the course. So easy to follow, even though a little bit challenging as expected."
+        timeAgo: "1 ay önce",
+        content: "Piyasa psikolojisi üzerine anlatılanlar ufkumu açtı. Strateji kurma konusunda çok faydalı oldu, teşekkürler."
     }
 ];
 
@@ -43,23 +44,23 @@ export default function CourseDetailsFeaturedReviews() {
                                         <StarTwo clr={starIndex < review.rating ? "#FFC107" : "#BFC5CA"} />
                                     </span>
                                 ))}
-                                <span className="span"> {review.timeAgo}</span>
+                                <span className="span ml-10"> {review.timeAgo}</span>
                             </div>
                         </div>
                     </div>
                     <p>{review.content}</p>
                     <div className="tp-course-details-2-review-react d-flex align-items-center">
-                        <span>Helpful? </span>
+                        <span>Bu yorum yardımcı oldu mu?</span>
                         <div className="react">
-                            <a href="#"><span><LikeSvg /></span></a>
-                            <a href="#"><span><DisLikeSvg /></span></a>
+                            <a href="#" onClick={(e) => e.preventDefault()}><span><LikeSvg /></span></a>
+                            <a href="#" onClick={(e) => e.preventDefault()}><span><DisLikeSvg /></span></a>
                         </div>
                     </div>
                 </div>
             ))}
             {visibleReviews < reviewsData.length && (
                 <div className="tp-course-details-2-review-reply-btn">
-                    <a className="pointer" onClick={showMoreReviews}>Show More Reviews</a>
+                    <a className="pointer" onClick={showMoreReviews}>Daha Fazla Yorum Göster</a>
                 </div>
             )}
         </div>

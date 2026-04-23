@@ -1,44 +1,55 @@
-import all_blogs from "@/data/blog-data";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 import DetailsBreadcrumb from "../_components/details-breadcrumb";
 import BlogDetailsArea from "../_components/blog-details-area";
 import BlogDetailsRelatedBlogs from "@/components/blog/details/blog-details-related-blogs";
 import { PageParamsProps } from "@/types/custom-d-t";
 
-export async function generateMetadata(props: PageParamsProps) {
+// SEO Meta Verileri
+export async function generateMetadata(props: PageParamsProps): Promise<Metadata> {
   const resolvedParams = await props.params;
   const { id } = resolvedParams;
-  const blog = all_blogs.find((item) => item.id == id);
+
+  // BURADA DÜZELTME: await eklendi
+  const supabase = await createClient();
+  const { data: blog } = await supabase
+    .from("blogs")
+    .select("title, description")
+    .eq("id", id)
+    .single();
+
   return {
-    title: blog?.title
+    title: blog ? `${blog.title} - Aktüel Analiz` : "Analiz Bulunamadı",
+    description: blog?.description || "Aktuel Analiz güncel piyasa analizleri.",
   };
 }
 
 export default async function BlogDetailsPage(props: PageParamsProps) {
   const resolvedParams = await props.params;
   const { id } = resolvedParams;
-  const blog = all_blogs.find((item) => item.id == id);
+
+  // BURADA DÜZELTME: await eklendi
+  const supabase = await createClient();
+
+  const { data: blog, error } = await supabase
+    .from("blogs")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error || !blog) {
+    return notFound(); // notFound() kullanmak Next.js standartları için daha iyidir
+  }
 
   return (
     <main>
-      {blog ? (
-        <>
-          {/* breadcrumb area start */}
-          <DetailsBreadcrumb title={blog.title} />
-          {/* breadcrumb area end */}
+      <DetailsBreadcrumb title={blog.title} />
 
-          {/* blog details area start */}
-          <BlogDetailsArea blog={blog} />
-          {/* blog details area end */}
+      <BlogDetailsArea blog={blog} />
 
-          {/* related blogs area start */}
-          <BlogDetailsRelatedBlogs/>
-          {/* related blogs area end */}
-        </>
-      ) : (
-        <div className="text-center mt-100 mb-80">
-          No blog found with id: {id}
-        </div>
-      )}
+      {/* categoryId yerine category_name gönderiyoruz (Supabase tablonla uyum için) */}
+      <BlogDetailsRelatedBlogs categoryName={blog.category_name} />
     </main>
   );
 }

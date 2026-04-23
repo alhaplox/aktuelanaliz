@@ -12,14 +12,23 @@ export default function NavbarMenusTwo() {
         {menu_data_2.map((menu) => (
           <li
             key={menu.id}
-            className={`has-dropdown ${
+            className={`${
+              // Sadece bu koşullardan biri varsa 'has-dropdown' ekle
               menu.home_dropdown ||
-              menu.academic_dropdown ||
-              menu.course_dropdown ||
-              menu.pages_dropdown
+                menu.academic_dropdown ||
+                menu.course_dropdown ||
+                menu.dashboard_dropdown ||
+                menu.pages_dropdown ||
+                menu.dropdown_menus
+                ? "has-dropdown"
+                : ""
+              } ${menu.home_dropdown ||
+                menu.academic_dropdown ||
+                menu.course_dropdown ||
+                menu.pages_dropdown
                 ? "tp-static"
                 : ""
-            }`}
+              }`}
           >
             <Link href={menu.link}>{menu.title}</Link>
 

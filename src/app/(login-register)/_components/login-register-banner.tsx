@@ -18,7 +18,7 @@ export default function LoginRegisterBanner() {
       </div>
       <div className="tp-login-register-heading">
         <h3 className="tp-login-register-title">
-          Discover world <br /> best online courses here.
+          Finansal analiz <br /> eğitimleri ile kendini geliştir!
         </h3>
       </div>
       <div className="tp-login-register-shape">

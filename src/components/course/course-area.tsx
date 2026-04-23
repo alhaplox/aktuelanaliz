@@ -6,7 +6,8 @@ import CourseProvider from "../provider/course-provider";
 import CourseTabBtn from "./course-tab-btn";
 import CourseItems from "./course-items";
 
-const tab_navs = ["All Courses", "Trending", "Popularity", "Featured"];
+// Tab navigasyonlarını Türkçeleştirdik
+const tab_navs = ["Tüm Eğitimler", "Trendler", "Popüler", "Öne Çıkanlar"];
 
 export default function CourseArea() {
   return (
@@ -16,11 +17,11 @@ export default function CourseArea() {
           <div className="row align-items-end">
             <div className="col-xxl-5 col-xl-6 col-lg-7">
               <div className="tp-section mb-40">
-                <h5 className="tp-section-3-subtitle">Our Courses</h5>
+                <h5 className="tp-section-3-subtitle">Eğitimlerimiz</h5>
                 <h3 className="tp-section-3-title">
-                  Most Popular
+                  En Çok Tercih Edilen
                   <span>
-                    Courses
+                    {" "}Eğitimler
                     <Image
                       className="tp-underline-shape-6 wow bounceIn"
                       data-wow-duration="1.5s"
@@ -44,15 +45,18 @@ export default function CourseArea() {
               </div>
             </div>
           </div>
+
           <div className="row">
             <div className="col-lg-12">
               <div className="tab-content wow fadeInUp" data-wow-delay=".3s">
                 <div className="row">
+                  {/* Kurs kartları burada listeleniyor */}
                   <CourseItems />
                 </div>
               </div>
             </div>
           </div>
+
           <div className="row justify-content-center">
             <div className="col-xxl-6 col-lg-8">
               <div
@@ -65,15 +69,15 @@ export default function CourseArea() {
                     <Image src={category_shape} alt="shape" />
                   </div>
                   <div className="tp-category-banner-text">
-                    <span>Let Us Help</span>
+                    <span>Size Yardımcı Olalım</span>
                     <h4 className="tp-category-banner-title">
-                      Finding Your Right Courses
+                      Sizin İçin En Uygun Eğitimi Bulalım
                     </h4>
                   </div>
                 </div>
                 <div className="tp-category-banner-btn">
                   <Link className="tp-btn-2" href="/contact">
-                    Get Started
+                    Hemen Başla
                   </Link>
                 </div>
               </div>

@@ -18,8 +18,8 @@ export default function LoginPage() {
                <div className="tp-login-register-wrapper d-flex justify-content-center align-items-center">
                   <div className="tp-login-from-box">
                      <div className="tp-login-from-heading text-center">
-                        <h4 className="tp-login-from-title">Sign in</h4>
-                        <p>Dont have an account? <Link href="/register">Create Now</Link></p>
+                        <h4 className="tp-login-from-title">Giriş Yap</h4>
+                        <p>Hesabını yok mu? <Link href="/register">Kayıt Ol</Link></p>
                      </div>
                      {/* login form start */}
                      <LoginForm />

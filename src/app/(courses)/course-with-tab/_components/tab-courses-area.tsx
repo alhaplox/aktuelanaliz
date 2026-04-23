@@ -13,14 +13,18 @@ type IProps = {
    listActive?: boolean
 }
 
-export default function TabCoursesArea({listActive}: IProps) {
+export default function TabCoursesArea({ listActive }: IProps) {
+   // "All Courses" yerine "Tüm Eğitimler" yapıyoruz
    const [activeTab, setActiveTab] = useState('All Courses');
-   const { state,dispatch } = useCourseFilter();
+   const { state, dispatch } = useCourseFilter();
    const { currentItems, handlePageClick, pageCount } = usePagination(state.filteredCourses, 6);
+
    function handleCategory(category: string) {
       setActiveTab(category);
+      // Not: Eğer veritabanında kategori ismi "All Courses" değilse burayı güncelleyin
       dispatch({ type: FilterActionTypes.SET_CATEGORY, payload: category })
    }
+
    return (
       <section>
          {state.filteredCourses.length > 0 ? (
@@ -30,10 +34,14 @@ export default function TabCoursesArea({listActive}: IProps) {
 
                      <div className="tp-course-grid-box tp-tab">
                         <ul className="nav nav-tabs">
-                           {[{ category: 'All Courses'}, ...courseCategories].slice(0,7).map((cate, i) => (
+                           {[{ category: 'All Courses' }, ...courseCategories].slice(0, 7).map((cate, i) => (
                               <li key={i} className="nav-item" role="presentation">
-                                 <button onClick={() => handleCategory(cate.category)} className={`nav-link ${activeTab === cate.category ? 'active' : ''}`}>
-                                    {cate.category}
+                                 <button
+                                    onClick={() => handleCategory(cate.category)}
+                                    className={`nav-link ${activeTab === cate.category ? 'active' : ''}`}
+                                 >
+                                    {/* Kullanıcıya Türkçe gösterelim */}
+                                    {cate.category === 'All Courses' ? 'Tüm Eğitimler' : cate.category}
                                  </button>
                               </li>
                            ))}
@@ -41,23 +49,22 @@ export default function TabCoursesArea({listActive}: IProps) {
                      </div>
 
                      <div className="tab-content" id="myTabContent">
-                        <div className={`tab-pane fade ${listActive?'':'show active'}`} id="home" role="tabpanel" aria-labelledby="home-tab">
-
+                        {/* Grid Görünümü */}
+                        <div className={`tab-pane fade ${listActive ? '' : 'show active'}`} id="home" role="tabpanel" aria-labelledby="home-tab">
                            <div className="row">
                               {currentItems.map((course) => (
-                                 <div key={course.id} className="col-lg-4 col-md-6">
+                                 <div key={course.id} className="col-lg-4 col-md-6 d-flex">
                                     <CourseItem course={course} />
                                  </div>
                               ))}
                            </div>
                         </div>
 
-                        <div className={`tab-pane fade ${listActive?'show active':''}`} id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
+                        {/* Liste Görünümü */}
+                        <div className={`tab-pane fade ${listActive ? 'show active' : ''}`} id="profile" role="tabpanel" aria-labelledby="profile-tab">
                            {currentItems.map((course) => (
                               <CourseListItemTwo key={course.id} course={course} />
                            ))}
-
                         </div>
                      </div>
 
@@ -73,8 +80,11 @@ export default function TabCoursesArea({listActive}: IProps) {
                   </div>
                </div>
             </div>
-         ) : <ResetFilter />}
-
+         ) : (
+            <div className="container mt-50">
+               <ResetFilter />
+            </div>
+         )}
       </section>
    )
 }

@@ -13,7 +13,6 @@ type IProps = {
 };
 
 export default function CourseDetailsArea({ course }: IProps) {
-
    return (
       <section className="tp-course-details-2-area pt-50 pb-80">
          <div className="container">
@@ -21,44 +20,47 @@ export default function CourseDetailsArea({ course }: IProps) {
                <div className="col-lg-8">
                   <div className="tp-course-details-2-main-inner pr-70">
                      <div className="tp-course-details-2-nav d-flex align-items-center">
+                        {/* Tab linklerinin olduğu kısım */}
                         <CourseDetailsNav />
                      </div>
 
                      <div className="tp-course-details-2-content">
+                        {/* Kurs Bilgisi */}
                         <div id="info">
-                           <CourseDetailsInfo />
+                           <CourseDetailsInfo course={course} />
                         </div>
 
+                        {/* Müfredat */}
                         <div id="curriculum" className="pt-70">
-                           <h4 className="tp-course-details-2-main-title">Course Curriculum</h4>
-                           <CourseDetailsCurriculum />
+                           <h4 className="tp-course-details-2-main-title">Eğitim Müfredatı</h4>
+                           <CourseDetailsCurriculum course={course} />
                         </div>
 
+                        {/* Eğitmen Bilgisi */}
                         <div id="instructors" className="pt-100">
-                           <h4 className="tp-course-details-2-main-title">Your Instructors</h4>
-                           <CourseDetailsInstructor />
+                           <h4 className="tp-course-details-2-main-title">Eğitmenler</h4>
+                           <CourseDetailsInstructor course={course} />
                         </div>
 
+                        {/* Değerlendirmeler */}
                         <div id="reviews">
-                           <h4 className="tp-course-details-2-main-title">Ratings & Reviews</h4>
-                           <CourseDetailsRatingReviews />
+                           <h4 className="tp-course-details-2-main-title">Puanlama ve Yorumlar</h4>
+                           <CourseDetailsRatingReviews course={course} />
                         </div>
 
-                        <h4 className="tp-course-details-2-main-title">Featured review</h4>
-                        <CourseDetailsFeaturedReviews />
+                        <h4 className="tp-course-details-2-main-title">Öne Çıkan Yorum</h4>
+                        <CourseDetailsFeaturedReviews course={course} />
 
-                        <h4 className="tp-course-details-2-main-title">Write a Review</h4>
+                        <h4 className="tp-course-details-2-main-title">Yorum Yap</h4>
                         <div className="tp-course-details-2-comment-box pr-25">
-                           <span>What is it like to Course?</span>
-                           <CourseDetailsReviewForm />
+                           <span>Bu eğitim hakkında ne düşünüyorsunuz?</span>
+                           <CourseDetailsReviewForm courseId={course.id} />
                         </div>
                      </div>
                   </div>
                </div>
                <div className="col-lg-4">
-                  {/* right sidebar box */}
                   <CourseDetailsRightSide course={course} />
-                  {/* right sidebar box */}
                </div>
             </div>
          </div>

@@ -1,12 +1,21 @@
+'use client';
 import Image from "next/image";
 import dashboard_shape from '@/assets/img/dashboard/bg/dashboard-bg-shape-1.jpg';
-import dashboard_profile from '@/assets/img/dashboard/profile/dashboard-profile.jpg';
+// Statik profil resmini siliyoruz veya yedek olarak tutuyoruz
 
-export default function ProfileBannerArea() {
+interface ProfileProps {
+   profile: any;
+   email?: string;
+}
+
+export default function ProfileBannerArea({ profile, email }: ProfileProps) {
+   // Kullanıcın avatarı varsa onu, yoksa varsayılan bir görseli kullan
+   const avatarSrc = profile?.avatar_url || "/assets/img/dashboard/profile/dashboard-profile.jpg";
+
    return (
       <section className="tp-dashboard-banner-wrap">
          <div className="tp-dashboard-banner-shape">
-            <Image src={dashboard_shape} alt="shape" />
+            <Image src={dashboard_shape} alt="arka plan şekil" />
          </div>
          <div className="container">
             <div className="row">
@@ -15,22 +24,24 @@ export default function ProfileBannerArea() {
                      <div className="tp-instructor-wrap d-flex justify-content-between">
                         <div className="tp-instructor-info d-flex">
                            <div className="tp-instructor-avatar">
-                              <Image src={dashboard_profile} alt="dashboard-profile" style={{ height: "auto" }} />
+                              {/* Dışarıdan gelen URL'ler için unoptimized kullanabiliriz veya width/height vermeliyiz */}
+                              <img
+                                 src={avatarSrc}
+                                 alt="profil resmi"
+                                 style={{ width: "150px", height: "150px", borderRadius: "50%", objectFit: "cover" }}
+                              />
                            </div>
                            <div className="tp-instructor-content">
-                              <h4 className="tp-instructor-title">Indigo Violet</h4>
+                              <h4 className="tp-instructor-title">
+                                 {profile?.first_name} {profile?.last_name}
+                              </h4>
                               <div className="tp-instructor-rate d-flex align-items-center">
-                                 <span className="profile">20 Courses</span>
-                                 <span className="profile">37 Students</span>
+                                 <span className="profile">0 Kurs</span> <span className="profile">{email}</span>
                               </div>
+
                            </div>
                         </div>
-                        <div className="tp-profile-social">
-                           <a href="#"><i className="fa-brands fa-facebook-f"></i></a>
-                           <a href="#"><i className="fa-brands fa-twitter"></i></a>
-                           <a href="#"><i className="fa-brands fa-linkedin-in"></i></a>
-                           <a href="#"><i className="fa-brands fa-youtube"></i></a>
-                        </div>
+
                      </div>
                   </div>
                </div>
