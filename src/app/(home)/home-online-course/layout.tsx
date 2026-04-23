@@ -2,10 +2,12 @@ import HeaderTwo from "@/components/header/header-two";
 import BackToTop from "@/components/back-to-top";
 import MainProvider from "@/components/provider/main-provider";
 import FooterTwo from "@/components/footer/footer-two";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <MainProvider>
+      <Analytics />
       {/* header area start */}
       <HeaderTwo />
       {/* header area end */}
