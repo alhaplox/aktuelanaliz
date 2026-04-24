@@ -15,6 +15,13 @@ const contactInfoData = [
         linkText: '+1(555) 213-1111',
         href: 'tel:+15552131111'
     },
+    {
+        icon: <LocationFour />,
+        title: 'Visit Us',
+        description: 'Visit our office HQ.',
+        linkText: '77 Robinson Road #33-01',
+        href: '#'
+    }
 ];
 
 export default function ContactInfoArea() {
