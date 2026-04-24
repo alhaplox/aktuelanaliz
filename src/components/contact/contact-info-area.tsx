@@ -5,23 +5,16 @@ const contactInfoData = [
         icon: <EmailThree />,
         title: 'Feedbacks',
         description: 'Speak to our Friendly team.',
-        linkText: 'Support@gmail.com',
-        href: 'mailto:Support@gmail.com'
+        linkText: 'support@aktuelanaliz.com',
+        href: 'mailto:support@aktuelanaliz.com'
     },
     {
         icon: <TelSvgTwo />,
         title: 'Call Us',
         description: 'Mon-Fri from 8am to 5pm',
-        linkText: '+1(555) 000-0000',
-        href: 'tel:+15550000000'
+        linkText: '+1(555) 213-1111',
+        href: 'tel:+15552131111'
     },
-    {
-        icon: <LocationFour />,
-        title: 'Visit Us',
-        description: 'Visit our office HQ.',
-        linkText: '77 Robinson Road #33-01',
-        href: '#'
-    }
 ];
 
 export default function ContactInfoArea() {

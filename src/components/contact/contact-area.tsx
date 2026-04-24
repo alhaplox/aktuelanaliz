@@ -1,43 +1,84 @@
-import ContactForm from "../form/contact-form";
+'use client';
+import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js'; // npm install @supabase/supabase-js
 
+// Supabase istemcisini başlat (Bu değerlerin .env dosyanızda olduğundan emin olun)
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
-export default function ContactArea() {
+export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error', msg: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'), // Yeni eklenen alan
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    const { error } = await supabase.from('contacts').insert([data]);
+
+    if (error) {
+      setStatus({ type: 'error', msg: 'Mesaj gönderilirken bir hata oluştu.' });
+    } else {
+      setStatus({ type: 'success', msg: 'Mesajınız başarıyla iletildi! 👍🏻' });
+      (e.target as HTMLFormElement).reset();
+    }
+    setLoading(false);
+  };
+
   return (
-    <section className="tp-contact-area tp-contact-p fix p-relative pt-150 pb-125">
-      <div className="tp-contact-bg" style={{ backgroundImage: "url(/assets/img/live/contact-bg.png)" }}></div>
-      <div className="tp-contact-shape">
-        <span>
-          <svg width="1920" height="559" viewBox="0 0 1920 559" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1958.7 6.55286C1332.03 310.106 2369.35 119.238 2232.58 220.873C2018.48 379.976 692.5 607.75 254.5 538.145C-27.1058 493.393 1387 130.595 -280 395.595" stroke="url(#paint0_linear_2756_1168)" strokeWidth="14" />
-            <defs>
-              <linearGradient id="paint0_linear_2756_1168" x1="92.1912" y1="171.542" x2="1827.4" y2="294.717" gradientUnits="userSpaceOnUse">
-              </linearGradient>
-            </defs>
-          </svg>
-        </span>
-      </div>
-      <div className="tp-contact-shape-2">
-        {/* <img src="/assets/img/live/contact-shape-2.svg" alt="shape" /> */}
-      </div>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-10">
-            <div className="tp-contact-wrap p-relative">
-              <div className="tp-contact-heading text-center">
-                <h3 className="tp-contact-title">Get in Touch</h3>
-                <p>We are here to answer any question you may have.</p>
-              </div>
-              <div className="tp-contact-from-box">
-                <h3 className="tp-contact-from-title">Send a Message 👍🏻</h3>
-
-                {/* form start */}
-                <ContactForm />
-                {/* form end */}
-              </div>
-            </div>
+    <form onSubmit={handleSubmit} className="tp-contact-form">
+      <div className="row custom-mar-20">
+        <div className="col-md-6">
+          <div className="tp-contact-input">
+            <input name="name" type="text" placeholder="Adınız Soyadınız" required />
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="tp-contact-input">
+            <input name="email" type="email" placeholder="E-posta Adresiniz" required />
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="tp-contact-input">
+            {/* Telefon Numarası Alanı */}
+            <input name="phone" type="tel" placeholder="Telefon Numaranız (Örn: 05xx)" required />
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="tp-contact-input">
+            <input name="subject" type="text" placeholder="Konu" required />
+          </div>
+        </div>
+        <div className="col-12">
+          <div className="tp-contact-input">
+            <textarea name="message" placeholder="Mesajınız..." required></textarea>
+          </div>
+        </div>
+        <div className="col-12 text-center">
+          <div className="tp-contact-btn">
+            <button type="submit" className="tp-btn-inner" disabled={loading}>
+              {loading ? 'Gönderiliyor...' : 'Mesaj Gönder'}
+            </button>
           </div>
         </div>
       </div>
-    </section>
-  )
+      {status && (
+        <div className={`mt-20 text-center ${status.type === 'success' ? 'text-success' : 'text-danger'}`}>
+          {status.msg}
+        </div>
+      )}
+    </form>
+  );
 }
