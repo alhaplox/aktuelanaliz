@@ -12,4 +12,5 @@ export type IBlogDT = {
   postboxQuote2?: boolean;
   content?: string;
   description?: string;
+  thumbnail_url?: string;
 };
