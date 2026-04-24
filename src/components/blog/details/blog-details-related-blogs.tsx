@@ -4,45 +4,59 @@ import { createClient } from "@/utils/supabase/client";
 import { IBlogDT } from "@/types/blog-d-t";
 import BlogStoriesItem from "../single/blog-stories-item";
 
+// Prop tiplerini page.tsx'ten gelecek verilere göre güncelledik
 type IProps = {
-  categoryName?: string;
-  currentBlogId?: number;
+  categoryId?: number | string;
+  currentBlogId?: number | string;
 };
 
-export default function BlogDetailsRelatedBlogs({ categoryName, currentBlogId }: IProps) {
+export default function BlogDetailsRelatedBlogs({ categoryId, currentBlogId }: IProps) {
   const [relatedBlogs, setRelatedBlogs] = useState<IBlogDT[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Client-side Supabase istemcisi
   const supabase = createClient();
 
   useEffect(() => {
     async function fetchRelatedBlogs() {
+      // Eğer bir blog ID'si yoksa sorgu çalıştırma
+      if (!currentBlogId) {
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
 
+      // Temel sorgu: Mevcut blogu hariç tut ve 3 tane getir
       let query = supabase
         .from("blogs")
         .select("*")
-        .neq("id", currentBlogId) // Mevcut okunan blogu listede gösterme
+        .neq("id", currentBlogId)
         .limit(3);
 
-      // Eğer kategori ismi gelmişse, aynı kategorideki diğer yazıları getir
-      if (categoryName) {
-        query = query.eq("category_name", categoryName);
+      // Eğer kategori ID'si gelmişse, sadece o kategoriye ait olanları getir
+      if (categoryId) {
+        query = query.eq("category_id", categoryId);
       }
 
       const { data, error } = await query;
 
-      if (!error && data) {
+      if (error) {
+        console.error("İlgili analizler çekilirken hata oluştu:", error.message);
+      } else if (data) {
         setRelatedBlogs(data);
       }
+
       setLoading(false);
     }
 
-    if (currentBlogId) {
-      fetchRelatedBlogs();
-    }
-  }, [categoryName, currentBlogId]);
+    fetchRelatedBlogs();
+  }, [categoryId, currentBlogId]); // Bu değerler değiştiğinde sorguyu yenile
 
-  if (loading) return null; // Veya bir skeleton loader eklenebilir
+  // Yükleniyor durumunda boş dönebilir veya istersen bir spinner ekleyebilirsin
+  if (loading) return null;
+
+  // Eğer hiç ilgili blog bulunamadıysa bölümü tamamen gizle
   if (relatedBlogs.length === 0) return null;
 
   return (
@@ -56,6 +70,7 @@ export default function BlogDetailsRelatedBlogs({ categoryName, currentBlogId }:
           </div>
           {relatedBlogs.map((blog) => (
             <div key={blog.id} className="col-lg-4 col-md-6">
+              {/* BlogStoriesItem'ın blog prop'unu IBlogDT tipinde beklediğinden emin ol */}
               <BlogStoriesItem blog={blog} />
             </div>
           ))}
