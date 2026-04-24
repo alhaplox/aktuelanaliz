@@ -1,5 +1,9 @@
 import { StarTwo } from "@/components/svg";
-
+import { ICourseDT } from "@/types/course-d-t"; // Bunu ekles
+// 1. Tip tanımını buraya ekliyoruz
+interface IProps {
+    course: ICourseDT;
+}
 const ratingData = [
     { stars: "5 Yıldız", percentage: 82, width: "82%" },
     { stars: "4 Yıldız", percentage: 30, width: "30%" },
@@ -8,7 +12,7 @@ const ratingData = [
     { stars: "1 Yıldız", percentage: 10, width: "10%" },
 ];
 
-export default function CourseDetailsRatingReviews() {
+export default function CourseDetailsRatingReviews({ course }: IProps) {
     return (
         <div className="tp-course-details-2-review-rating">
             <div className="row gx-2">

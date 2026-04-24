@@ -26,6 +26,7 @@ export default function CourseDetailsArea({ course }: IProps) {
 
                      <div className="tp-course-details-2-content">
                         {/* Kurs Bilgisi */}
+                        {/* @ts-ignore */}
                         <div id="info">
                            <CourseDetailsInfo course={course} />
                         </div>

@@ -77,7 +77,7 @@ export default function BlogDetailsArea({ blog }: IProps) {
               </div>
 
               {/* Navigasyon ve Yazar Kartı */}
-              <BlogDetailsNavigation currentId={blog.id} />
+              <BlogDetailsNavigation currentId={blog.id.toString()} />
               {/* Yorumlar Bölümü */}
               <div className="tp-postbox-comment mb-100">
                 <h3 className="tp-postbox-comment-title">

@@ -2,9 +2,13 @@ import Image from "next/image";
 import user_img from '@/assets/img/course/details/user.png';
 import { Star, UserSvgTwo, VideoPlayerThreeSvg } from "@/components/svg";
 import SocialLinks from "@/components/social/social-links";
+import { ICourseDT } from "@/types/course-d-t"; // Bunu ekles
+// 1. Tip tanımını buraya ekliyoruz
+interface IProps {
+    course: ICourseDT;
+}
 
-
-export default function CourseDetailsInstructor() {
+export default function CourseDetailsInstructor({ course }: IProps) {
     return (
         <div className="tp-course-details-2-instructor d-flex">
             <div className="tp-course-details-2-instructor-thumb mr-40">

@@ -49,7 +49,10 @@ export default async function BlogDetailsPage(props: PageParamsProps) {
       <BlogDetailsArea blog={blog} />
 
       {/* categoryId yerine category_name gönderiyoruz (Supabase tablonla uyum için) */}
-      <BlogDetailsRelatedBlogs categoryName={blog.category_name} />
+      <BlogDetailsRelatedBlogs
+        categoryId={blog.category_id}
+        currentBlogId={blog.id}
+      />
     </main>
   );
 }

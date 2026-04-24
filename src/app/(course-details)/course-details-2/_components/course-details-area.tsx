@@ -35,32 +35,31 @@ export default function CourseDetailsArea({ course }: IProps) {
                      </div>
 
                      <div className="tp-course-details-2-content">
-                        <CourseDetailsInfo />
+                        <CourseDetailsInfo course={course} />
 
                         <div id="curriculum" className="pt-70">
                            <h4 className="tp-course-details-2-main-title">Course Curriculum</h4>
-                           <CourseDetailsCurriculum />
+                           <CourseDetailsCurriculum course={course} />
                         </div>
 
                         <div id="instructors" className="pt-100">
                            <h4 className="tp-course-details-2-main-title">Your Instructors</h4>
-                           <CourseDetailsInstructor />
+                           <CourseDetailsInstructor course={course} />
                         </div>
 
                         <div id="reviews">
                            <h4 className="tp-course-details-2-main-title">Ratings & Reviews</h4>
-                           <CourseDetailsRatingReviews />
+                           <CourseDetailsRatingReviews course={course} />
                         </div>
 
                         <h4 className="tp-course-details-2-main-title">Featured review</h4>
-                        <CourseDetailsFeaturedReviews />
+                        <CourseDetailsFeaturedReviews course={course} />
 
 
                         <h4 className="tp-course-details-2-main-title">Write a Review</h4>
                         <div className="tp-course-details-2-comment-box pr-25">
                            <span>What is it like to Course?</span>
-                           <CourseDetailsReviewForm />
-                        </div>
+                           <CourseDetailsReviewForm courseId={course.id} />                        </div>
                      </div>
 
                   </div>

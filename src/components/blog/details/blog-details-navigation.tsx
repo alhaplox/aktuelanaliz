@@ -8,7 +8,9 @@ export default function BlogDetailsNavigation({ currentId }: { currentId: string
   const [prevBlog, setPrevBlog] = useState<{ id: string; title: string } | null>(null);
   const [nextBlog, setNextBlog] = useState<{ id: string; title: string } | null>(null);
   const supabase = createClient();
-
+  interface IProps {
+    currentId: string | number; // Sadece string olan yeri string | number yap
+  }
   useEffect(() => {
     async function getNavigation() {
       // 1. Tüm listeyi çekiyoruz (Sıralamayı JS tarafında yapacağız)

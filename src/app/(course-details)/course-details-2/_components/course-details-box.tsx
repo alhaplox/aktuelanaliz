@@ -19,14 +19,14 @@ export default function CourseDetailsBox({ course }: IProps) {
          <div className="tp-course-details-3-widget-content">
             <div className="tp-course-details-2-widget-price d-flex justify-content-between align-items-center">
                <div className="price">
-                  <CoursePrice price={price} discount={discount}/>
+                  <CoursePrice price={price} oldPrice={discount} />
                   {discount && <p>-{discount}% off</p>}
                </div>
                <div className="share p-relative">
                   <div className="tp-postbox-share">
                      <button className="p-relative">
                         <span>
-                           <ShareSvg/>
+                           <ShareSvg />
                         </span>
                      </button>
 
@@ -45,7 +45,7 @@ export default function CourseDetailsBox({ course }: IProps) {
                <p>Limited offer, cancel anytime.</p>
             </div>
             <div className="tp-course-details-2-instructor-social text-center">
-               <SocialLinks/>
+               <SocialLinks />
             </div>
          </div>
       </div>

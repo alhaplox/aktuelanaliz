@@ -4,6 +4,7 @@ export type IBlogDT = {
   tags: string[];
   title: string;
   author: string;
+  author_name: string;
   author_img?: string;
   author_location?: string;
   desc?: string;
@@ -13,4 +14,8 @@ export type IBlogDT = {
   content?: string;
   description?: string;
   thumbnail_url?: string;
+  thumbnail?: string;
+  comments_count?: number;
+  category_name?: string; // BU SATIRI EKLE
+  category?: string; // BU SATIRI EKLE
 };

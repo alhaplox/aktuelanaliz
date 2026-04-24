@@ -2,7 +2,11 @@
 import { useState } from "react";
 import { DisLikeSvg, LikeSvg, StarTwo } from "@/components/svg";
 import Image from "next/image";
-
+import { ICourseDT } from "@/types/course-d-t"; // Bunu ekles
+// 1. Tip tanımını buraya ekliyoruz
+interface IProps {
+    course: ICourseDT;
+}
 // Finans eğitimlerine yönelik örnek yorum verileri
 const reviewsData = [
     {
@@ -21,7 +25,7 @@ const reviewsData = [
     }
 ];
 
-export default function CourseDetailsFeaturedReviews() {
+export default function CourseDetailsFeaturedReviews({ course }: IProps) {
     const [visibleReviews, setVisibleReviews] = useState(1);
 
     const showMoreReviews = () => {

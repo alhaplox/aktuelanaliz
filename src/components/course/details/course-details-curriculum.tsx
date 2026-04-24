@@ -5,7 +5,11 @@ import {
   OpenEyeTwo,
   VideoPlayerTwoSvg,
 } from "@/components/svg";
-
+import { ICourseDT } from "@/types/course-d-t"; // Bunu ekles
+// 1. Tip tanımını buraya ekliyoruz
+interface IProps {
+  course: ICourseDT;
+}
 // Aktuel Analiz Eğitim Müfredatı Verisi
 const CurriculumData = [
   {
@@ -85,7 +89,7 @@ const CurriculumData = [
   },
 ];
 
-export default function CourseDetailsCurriculum() {
+export default function CourseDetailsCurriculum({ course }: IProps) {
   return (
     <div className="tp-course-details-2-faq">
       <div className="accordion" id="accordionPanelsStayOpenExample">

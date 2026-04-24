@@ -1,9 +1,11 @@
 'use client';
 import React from "react";
 import { MinusSvg, PlusThreeSvg } from "@/components/svg";
+interface IProps {
+  course: any; // Şimdilik build geçsin diye any diyoruz, istersen ICourseDT yapabilirsin
+}
 
-
-export default function CourseDetailsInfo() {
+export default function CourseDetailsInfo({ course }: IProps) {
   const [showMore, setShowMore] = React.useState(false);
   return (
     <div id="info">

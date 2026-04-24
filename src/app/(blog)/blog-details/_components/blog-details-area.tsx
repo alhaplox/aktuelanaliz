@@ -101,7 +101,7 @@ export default function BlogDetailsArea({ blog }: IProps) {
 								</div>
 							</div>
 
-							<BlogDetailsNavigation />
+							<BlogDetailsNavigation currentId={blog.id.toString()} />
 							<BlogDetailsAuthor author={authorName} />
 
 							<div className="tp-postbox-comment mb-100">
