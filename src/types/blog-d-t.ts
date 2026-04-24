@@ -10,4 +10,5 @@ export type IBlogDT = {
   date: string;
   postboxQuote1?: boolean;
   postboxQuote2?: boolean;
+  content?: string;
 };
