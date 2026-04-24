@@ -8,7 +8,7 @@ export default function CampusChooseAreaFour() {
           <div className="col-lg-12">
             <div className="tp-campus-choose-wrapper text-center">
               <div className="tp-campus-choose-btn">
-                <p>History Acadia</p>
+                <p>History Aktüel Analiz</p>
                 <a href="#down">
                   <span>
                     <DownArrowThree />

@@ -7,7 +7,7 @@ import ProcessTwo from "@/components/process/process-two";
 import ApplyRequirement from "@/components/requirement/apply-requirement-area";
 
 export const metadata: Metadata = {
-  title: "University Apply - Acadia",
+  title: "University Apply - Aktüel Analiz",
 };
 
 export default function UniversityApplyPage() {
@@ -34,7 +34,7 @@ export default function UniversityApplyPage() {
                 <Image
                   src={apply_thumb}
                   alt="apply-thumb"
-                  style={{height:"auto"}}
+                  style={{ height: "auto" }}
                 />
               </div>
             </div>
@@ -44,11 +44,11 @@ export default function UniversityApplyPage() {
       {/* apply area end */}
 
       {/* process area start */}
-      <ProcessTwo/>
+      <ProcessTwo />
       {/* process area end */}
 
       {/* apply requirement area start */}
-      <ApplyRequirement/>
+      <ApplyRequirement />
       {/* apply requirement area end */}
     </main>
   );

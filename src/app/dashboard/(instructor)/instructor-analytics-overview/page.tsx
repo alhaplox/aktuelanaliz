@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorAnalyticsArea from "@/components/dashboard/instructor/analytics/instructor-analytics-area";
 
 export const metadata: Metadata = {
-    title: "Instructor Analytics Overview - Acadia",
+    title: "Instructor Analytics Overview - Aktüel Analiz",
 }
 
 export default function InstructorAnalyticsOverviewPage() {

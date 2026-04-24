@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorDashboardFacts from "@/components/dashboard/instructor/instructor-dashboard-fact-area";
 
 export const metadata: Metadata = {
-    title: "Student Dashboard - Acadia",
+    title: "Student Dashboard - Aktüel Analiz",
 }
 
 export default function StudentDashboardPage() {

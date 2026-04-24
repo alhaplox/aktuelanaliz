@@ -3,7 +3,7 @@ import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import LeadershipArea from "./_components/leadership-area";
 
 export const metadata: Metadata = {
-  title: "University Leadership - Acadia",
+  title: "University Leadership - Aktüel Analiz",
 };
 
 export default function UniversityLeaderShipPage() {
@@ -17,7 +17,7 @@ export default function UniversityLeaderShipPage() {
       {/* breadcrumb area end */}
 
       {/* leadership area start */}
-      <LeadershipArea/>
+      <LeadershipArea />
       {/* leadership area end */}
     </main>
   );

@@ -6,7 +6,7 @@ import AnnouncementModal from "@/components/modal/announcement-modal";
 import AnnounceDetailsModal from "@/components/modal/announce-details-modal";
 
 export const metadata: Metadata = {
-    title: "Instructor Announcements - Acadia",
+    title: "Instructor Announcements - Aktüel Analiz",
 }
 
 export default function InstructorAnnouncementsPage() {

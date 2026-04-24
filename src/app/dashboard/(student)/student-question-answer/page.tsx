@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import StudentQuestionAnswerArea from "@/components/dashboard/student/student-q-a-area";
 
 export const metadata: Metadata = {
-    title: "Student Question Answer - Acadia",
+    title: "Student Question Answer - Aktüel Analiz",
 }
 
 export default function StudentQuestionAnswerPage() {
@@ -19,7 +19,7 @@ export default function StudentQuestionAnswerPage() {
             <DashboardContentWrapper studentSidebar={true}>
 
                 {/* dashboard fact area start */}
-                <StudentQuestionAnswerArea/>
+                <StudentQuestionAnswerArea />
                 {/* dashboard fact area end */}
 
             </DashboardContentWrapper>

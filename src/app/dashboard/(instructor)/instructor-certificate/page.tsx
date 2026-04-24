@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorCertificateArea from "@/components/dashboard/instructor/instructor-certificate-area";
 
 export const metadata: Metadata = {
-   title: "Instructor Certificate - Acadia",
+   title: "Instructor Certificate - Aktüel Analiz",
 }
 
 export default function InstructorCertificatePage() {
@@ -17,7 +17,7 @@ export default function InstructorCertificatePage() {
 
          {/* dashboard content area start */}
          <DashboardContentWrapper>
-            <InstructorCertificateArea/>
+            <InstructorCertificateArea />
          </DashboardContentWrapper>
          {/* dashboard content area end */}
 

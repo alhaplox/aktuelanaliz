@@ -11,7 +11,7 @@ import TeamArea from "@/components/team/team-area";
 import TestimonialTwo from "@/components/testimonial/testimonial-two";
 
 export const metadata: Metadata = {
-  title: "Home Online Course - Acadia",
+  title: "Home Online Course - Aktüel Analiz",
 };
 
 export default function HomeOnlineCoursePage() {

@@ -5,7 +5,7 @@ import BannerArea from "@/components/banner/banner-area";
 
 
 export const metadata: Metadata = {
-    title: "Membership Plans - Acadia",
+    title: "Membership Plans - Aktüel Analiz",
 };
 
 export default function MembershipPlansPage() {
@@ -27,7 +27,7 @@ export default function MembershipPlansPage() {
             {/* membership area end */}
 
             {/* banner area start */}
-            <BannerArea/>
+            <BannerArea />
             {/* banner area end */}
         </main>
     );

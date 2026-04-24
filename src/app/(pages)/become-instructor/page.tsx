@@ -5,7 +5,7 @@ import CounterSix from "@/components/counter/counter-six";
 import InstructorApplyArea from "./_components/instructor-apply-area";
 
 export const metadata: Metadata = {
-    title: "Become Instructor - Acadia",
+    title: "Become Instructor - Aktüel Analiz",
 };
 
 export default function BecomeInstructorPage() {
@@ -32,7 +32,7 @@ export default function BecomeInstructorPage() {
 
 
             {/* instructor apply area start */}
-            <InstructorApplyArea/>
+            <InstructorApplyArea />
             {/* instructor apply area end */}
 
 

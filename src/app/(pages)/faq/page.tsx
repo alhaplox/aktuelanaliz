@@ -4,7 +4,7 @@ import FaqArea from "@/components/faq/faq-area";
 
 
 export const metadata: Metadata = {
-    title: "FAQ - Acadia",
+    title: "FAQ - Aktüel Analiz",
 };
 
 export default function FaqPage() {
@@ -22,7 +22,7 @@ export default function FaqPage() {
 
 
             {/* faq area start */}
-            <FaqArea/>
+            <FaqArea />
             {/* faq area end */}
         </main>
     );

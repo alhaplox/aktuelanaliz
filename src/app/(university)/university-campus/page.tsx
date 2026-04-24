@@ -8,7 +8,7 @@ import CampusVideoArea from "@/components/campus/campus-video-area";
 import CampusLifeArea from "@/components/campus/campus-life-area";
 
 export const metadata: Metadata = {
-  title: "University Campus - Acadia",
+  title: "University Campus - Aktüel Analiz",
 };
 
 export default function UniversityCampusPage() {
@@ -23,23 +23,23 @@ export default function UniversityCampusPage() {
       {/* campus choose area end */}
 
       {/* counter area start */}
-      <CounterFive/>
+      <CounterFive />
       {/* counter area end */}
 
       {/* campus student area start */}
-      <CampusStudentArea/>
+      <CampusStudentArea />
       {/* campus student area end */}
 
       {/* campus activity area start */}
-      <CampusActivityArea/>
+      <CampusActivityArea />
       {/* campus activity area end */}
 
       {/* campus video area start */}
-      <CampusVideoArea/>
+      <CampusVideoArea />
       {/* campus video area end */}
 
       {/* campus life area start */}
-      <CampusLifeArea/>
+      <CampusLifeArea />
       {/* campus life area end */}
     </main>
   );

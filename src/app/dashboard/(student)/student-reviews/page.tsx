@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorReviewArea from "@/components/dashboard/instructor/instructor-review-area";
 
 export const metadata: Metadata = {
-    title: "Student Reviews - Acadia",
+    title: "Student Reviews - Aktüel Analiz",
 }
 
 export default function StudentReviewsPage() {
@@ -19,7 +19,7 @@ export default function StudentReviewsPage() {
             <DashboardContentWrapper studentSidebar={true}>
 
                 {/* dashboard fact area start */}
-                <InstructorReviewArea/>
+                <InstructorReviewArea />
                 {/* dashboard fact area end */}
 
             </DashboardContentWrapper>

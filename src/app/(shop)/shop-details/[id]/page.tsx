@@ -8,7 +8,7 @@ export async function generateMetadata(props: PageParamsProps) {
    const { id } = resolvedParams;
    const bookItem = bookData.find((item) => item.id == id);
    return {
-      title: bookItem?.title ? `${bookItem.title} - Acadia` : "Shop Details - Acadia",
+      title: bookItem?.title ? `${bookItem.title} - Aktüel Analiz` : "Shop Details - Aktüel Analiz",
    };
 }
 
@@ -16,7 +16,7 @@ export default async function ShopDetailsPage(props: PageParamsProps) {
    const resolvedParams = await props.params;
    const { id } = resolvedParams;
    const bookItem = bookData.find((item) => item.id == id);
-   
+
    return (
       <main>
          {bookItem ? (

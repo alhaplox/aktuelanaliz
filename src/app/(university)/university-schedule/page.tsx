@@ -4,7 +4,7 @@ import ScheduleForm from "@/components/form/schedule-form";
 import PlanArea from "@/components/plan/plan-area";
 
 export const metadata: Metadata = {
-  title: "University Schedule - Acadia",
+  title: "University Schedule - Aktüel Analiz",
 };
 
 export default function UniversitySchedulePage() {

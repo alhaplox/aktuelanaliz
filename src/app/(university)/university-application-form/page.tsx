@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ApplicationForm from "@/components/form/application-form";
 
 export const metadata: Metadata = {
-  title: "University Application Form - Acadia",
+  title: "University Application Form - Aktüel Analiz",
 };
 
 export default function UniversityApplicationFormPage() {

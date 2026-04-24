@@ -6,14 +6,14 @@ const financialAidData = [
     imgSrc: "/assets/img/course/details/financial-thumb-1.jpg",
     title: "Scholarships",
     description:
-      "Acadia’s commitment to student success, important scholarship, and creative activity sets it apart from other colleges.",
+      "Aktüel Analiz’s commitment to student success, important scholarship, and creative activity sets it apart from other colleges.",
   },
   {
     id: 2,
     imgSrc: "/assets/img/course/details/financial-thumb-2.jpg",
     title: "Grants",
     description:
-      "Your FAFSA will determine what grants you qualify for—both from The Acadia University & from federal and state government.",
+      "Your FAFSA will determine what grants you qualify for—both from The Aktüel Analiz University & from federal and state government.",
   },
   {
     id: 3,

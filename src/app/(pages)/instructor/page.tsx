@@ -4,7 +4,7 @@ import { leadership_data } from "@/data/team-data";
 import TeamItem from "@/components/team/single/team-item";
 
 export const metadata: Metadata = {
-  title: "Instructor - Acadia",
+  title: "Instructor - Aktüel Analiz",
 };
 
 export default function InstructorPage() {

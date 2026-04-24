@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorWishlistArea from "@/components/dashboard/instructor/instructor-wishlist-area";
 
 export const metadata: Metadata = {
-    title: "Student Wishlist - Acadia",
+    title: "Student Wishlist - Aktüel Analiz",
 }
 
 export default function StudentWishlistPage() {
@@ -19,7 +19,7 @@ export default function StudentWishlistPage() {
             <DashboardContentWrapper studentSidebar={true}>
 
                 {/* dashboard fact area start */}
-                <InstructorWishlistArea/>
+                <InstructorWishlistArea />
                 {/* dashboard fact area end */}
 
             </DashboardContentWrapper>

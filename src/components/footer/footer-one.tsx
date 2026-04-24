@@ -22,10 +22,10 @@ export default function FooterOne({ style_2 = false }: IProps) {
               <div className={`tp-footer-widget ${style_2 ? 'tp-footer-5-col-1' : 'tp-footer-col-1'} mb-30`}>
                 <div className="tp-footer-widget-logo mb-20 tp-header-logo">
                   <Link href="/">
-                    <Image 
-                       src={style_2 ? logo_black : logo} 
-                       alt="logo" priority 
-                       style={{ height: "auto" }} />
+                    <Image
+                      src={style_2 ? logo_black : logo}
+                      alt="logo" priority
+                      style={{ height: "auto" }} />
                   </Link>
                 </div>
                 <div className="tp-footer-widget-content">
@@ -39,11 +39,11 @@ export default function FooterOne({ style_2 = false }: IProps) {
                   <a href="tel:012345678">+670 413 90 762</a>
                 </div>
                 <div className="tp-footer-contact-mail">
-                  <a href="mailto:acadia@gmail.com">
+                  <a href="mailto:Aktüel Analiz@gmail.com">
                     <span>
                       <Email />
                     </span>
-                    acadia@gmail.com
+                    Aktüel Analiz@gmail.com
                   </a>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function FooterOne({ style_2 = false }: IProps) {
                   {/* footer social */}
                 </div>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ export default function FooterOne({ style_2 = false }: IProps) {
             <div className="col-lg-12">
               <div className="tp-footer-copyright text-center">
                 <span>
-                  © {new Date().getFullYear()} <a href="#">Acadia</a>. All
+                  © {new Date().getFullYear()} <a href="#">Aktüel Analiz</a>. All
                   rights reserved.
                 </span>
               </div>

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const course = await getCourse(slug);
 
     return {
-        title: course?.title ? `${removeTagInText(course.title)} - Acadia` : "Kurs Detayları - Acadia",
+        title: course?.title ? `${removeTagInText(course.title)} - Aktüel Analiz` : "Kurs Detayları - Aktüel Analiz",
     };
 }
 

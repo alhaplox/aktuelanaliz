@@ -7,7 +7,7 @@ import FooterSeven from "@/components/footer/footer-seven";
 
 
 export const metadata: Metadata = {
-    title: "Not Found - Acadia",
+    title: "Not Found - Aktüel Analiz",
 };
 
 export default function NotFound() {

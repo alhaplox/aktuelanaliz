@@ -3,7 +3,7 @@ import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import TuitionArea from "./_components/tuition-area";
 
 export const metadata: Metadata = {
-  title: "University Tuition Fees - Acadia",
+  title: "University Tuition Fees - Aktüel Analiz",
 };
 
 export default function UniversityTuitionFeesPage() {
@@ -18,7 +18,7 @@ export default function UniversityTuitionFeesPage() {
       {/* breadcrumb area end */}
 
       {/* tuition area start */}
-      <TuitionArea/>
+      <TuitionArea />
       {/* tuition area end */}
 
     </main>

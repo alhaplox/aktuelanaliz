@@ -16,7 +16,7 @@ export default function FooterSix() {
                      <div className="tp-footer-widget tp-footer-shop-col-1 mb-30">
                         <div className="tp-footer-widget-logo mb-20 tp-header-logo">
                            <Link href="/">
-                              <Image src={logo} alt="logo" style={{height:"auto"}} />
+                              <Image src={logo} alt="logo" style={{ height: "auto" }} />
                            </Link>
                         </div>
                         <div className="tp-footer-widget-content">
@@ -27,11 +27,11 @@ export default function FooterSix() {
                            <a href="tel:012345678">+670 413 90 762</a>
                         </div>
                         <div className="tp-footer-contact-mail shop">
-                           <a href="mailto:acadia@gmail.com">
+                           <a href="mailto:Aktüel Analiz@gmail.com">
                               <span>
                                  <Email />
                               </span>
-                              acadia@gmail.com</a>
+                              Aktüel Analiz@gmail.com</a>
                         </div>
                      </div>
                   </div>
@@ -40,11 +40,11 @@ export default function FooterSix() {
                         <h4 className="tp-footer-widget-title mb-15">About</h4>
                         <div className="tp-footer-widget-link">
                            <ul>
-                           {footerLinks.link_one.map((link) => (
-                              <li key={link.id}>
-                                 <Link href={link.link}>{link.title}</Link>
-                              </li>
-                           ))}
+                              {footerLinks.link_one.map((link) => (
+                                 <li key={link.id}>
+                                    <Link href={link.link}>{link.title}</Link>
+                                 </li>
+                              ))}
                            </ul>
                         </div>
                      </div>
@@ -92,7 +92,7 @@ export default function FooterSix() {
                <div className="row align-items-center">
                   <div className="col-md-6">
                      <div className="tp-footer-copyright ">
-                        <span>© {new Date().getFullYear()} <a href="#">Acadia</a>. All rights reserved.</span>
+                        <span>© {new Date().getFullYear()} <a href="#">Aktüel Analiz</a>. All rights reserved.</span>
                      </div>
                   </div>
                   <div className="col-md-6">

@@ -4,7 +4,7 @@ import RegisterForm from "@/components/form/register-form";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Register - Acadia",
+    title: "Register - Aktüel Analiz",
 };
 
 export default function RegisterPage() {

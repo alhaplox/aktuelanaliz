@@ -3,14 +3,14 @@ import ProfileArea from "./_components/profile-area";
 
 
 export const metadata: Metadata = {
-    title: "My Account - Acadia",
+    title: "My Account - Aktüel Analiz",
 }
 
 export default function MyAccountPage() {
     return (
         <main>
             {/* my account area start */}
-            <ProfileArea/>
+            <ProfileArea />
             {/* my account area end */}
         </main>
     )

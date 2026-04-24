@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import StudentOrderArea from "@/components/dashboard/student/student-order-area";
 
 export const metadata: Metadata = {
-    title: "Student Order - Acadia",
+    title: "Student Order - Aktüel Analiz",
 }
 
 export default function StudentOrderPage() {
@@ -19,7 +19,7 @@ export default function StudentOrderPage() {
             <DashboardContentWrapper studentSidebar={true}>
 
                 {/* dashboard fact area start */}
-                <StudentOrderArea/>
+                <StudentOrderArea />
                 {/* dashboard fact area end */}
 
             </DashboardContentWrapper>

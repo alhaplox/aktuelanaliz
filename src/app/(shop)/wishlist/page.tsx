@@ -3,14 +3,14 @@ import WishlistArea from "./_components/wishlist-area";
 
 
 export const metadata: Metadata = {
-    title: "Wishlist - Acadia",
+    title: "Wishlist - Aktüel Analiz",
 }
 
 export default function WishlistPage() {
     return (
         <main>
             {/* wishlist area start */}
-            <WishlistArea/>
+            <WishlistArea />
             {/* wishlist area end */}
         </main>
     )

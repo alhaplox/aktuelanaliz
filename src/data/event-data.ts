@@ -82,7 +82,7 @@ export const high_school_events: IEventDT[] = [
       month: "October",
       year: 2024,
     },
-    title: "Acadia Education Fair",
+    title: "Aktüel Analiz Education Fair",
     time: "11:00 AM - 5:00 PM",
     location: "United States",
     image: "/assets/img/event/event-4-thumb-2.jpg",

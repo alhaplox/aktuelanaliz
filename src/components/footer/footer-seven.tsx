@@ -7,22 +7,22 @@ import logo_white from '@/assets/img/logo/logo-white.png';
 import { footerLinks } from "@/data/footer-links";
 
 type Props = {
-  dashboard_footer?:boolean;
-  bgClr?:string;
+  dashboard_footer?: boolean;
+  bgClr?: string;
 }
 
-export default function FooterSeven({bgClr,dashboard_footer}: Props) {
+export default function FooterSeven({ bgClr, dashboard_footer }: Props) {
   return (
     <footer>
-      <div className={`tp-footer-main ${dashboard_footer?'tpd-dashboard-footer':'tp-footer-inner'} pt-80 pb-55`} 
-         style={bgClr?{backgroundColor:bgClr}:dashboard_footer?{backgroundColor:"#0a1c3a"}:{}}>
+      <div className={`tp-footer-main ${dashboard_footer ? 'tpd-dashboard-footer' : 'tp-footer-inner'} pt-80 pb-55`}
+        style={bgClr ? { backgroundColor: bgClr } : dashboard_footer ? { backgroundColor: "#0a1c3a" } : {}}>
         <div className="container">
           <div className="row">
             <div className="col-xl-4 col-lg-3 col-md-6 col-sm-6">
               <div className="tp-footer-widget tp-footer-col-1 mb-30">
                 <div className="tp-footer-widget-logo mb-20 tp-header-logo">
                   <Link href="/">
-                    <Image src={dashboard_footer?logo_white:logo} alt="logo" style={{ height: "auto" }} />
+                    <Image src={dashboard_footer ? logo_white : logo} alt="logo" style={{ height: "auto" }} />
                   </Link>
                 </div>
                 <div className="tp-footer-widget-content">
@@ -37,7 +37,7 @@ export default function FooterSeven({bgClr,dashboard_footer}: Props) {
                     <span>
                       <Email />
                     </span>
-                    acadia@gmail.com</a>
+                    Aktüel Analiz@gmail.com</a>
                 </div>
               </div>
             </div>
@@ -75,12 +75,12 @@ export default function FooterSeven({bgClr,dashboard_footer}: Props) {
                 <div className="tp-footer-newsletter-wrap">
                   <p>Enter your email and we will send you <br /> more information</p>
                   <form action="#">
-                    <div className={`tp-footer-newsletter-wrapper ${dashboard_footer?'':'tp-footer-inner-input'} mb-30`}>
+                    <div className={`tp-footer-newsletter-wrapper ${dashboard_footer ? '' : 'tp-footer-inner-input'} mb-30`}>
                       <div className="tp-footer-newsletter-input">
                         <input type="email" placeholder="Your email" />
                       </div>
-                      <div className={`${dashboard_footer?'tp-footer-newsletter-submit':'tp-footer-5-newsletter-submit'}`}>
-                        <button className={`${dashboard_footer?'tp-btn':'tp-btn-inner'}`}>Subscribe</button>
+                      <div className={`${dashboard_footer ? 'tp-footer-newsletter-submit' : 'tp-footer-5-newsletter-submit'}`}>
+                        <button className={`${dashboard_footer ? 'tp-btn' : 'tp-btn-inner'}`}>Subscribe</button>
                       </div>
                     </div>
                   </form>
@@ -94,13 +94,13 @@ export default function FooterSeven({bgClr,dashboard_footer}: Props) {
         </div>
       </div>
 
-      <div className={`${dashboard_footer?'tp-footer-bottom tpd-dashboard-footer-bottom':'tp-footer-5-bottom tp-footer-inner-bottom'}`} 
+      <div className={`${dashboard_footer ? 'tp-footer-bottom tpd-dashboard-footer-bottom' : 'tp-footer-5-bottom tp-footer-inner-bottom'}`}
         style={bgClr ? { backgroundColor: bgClr } : {}}>
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="tp-footer-copyright text-center">
-                <span>© {new Date().getFullYear()} <a href="#">Acadia</a>. All rights reserved.</span>
+                <span>© {new Date().getFullYear()} <a href="#">Aktüel Analiz</a>. All rights reserved.</span>
               </div>
             </div>
           </div>

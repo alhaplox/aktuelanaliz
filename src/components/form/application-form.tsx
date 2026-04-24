@@ -20,7 +20,7 @@ type Inputs = {
 
 export default function ApplicationForm() {
     const [date, setDate] = useState(new Date());
-    const {register,handleSubmit,formState: { errors },reset} = useForm<Inputs>();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<Inputs>();
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         console.log(data)
@@ -150,17 +150,17 @@ export default function ApplicationForm() {
                         <div className="tp-contact-input schedule p-relative">
                             <label>Select area of study</label>
                             <div className="tp-application-select">
-                                  <NiceSelect
-                                        cls="wide"
-                                        options={[
-                                            { value: "new", label: "New" },
-                                            { value: "old", label: "Old" },
-                                            { value: "new", label: "Newst" },
-                                        ]}
-                                        defaultCurrent={0}
-                                        onChange={(item) => handleStatus(item)}
-                                        name="Status"
-                                    />
+                                <NiceSelect
+                                    cls="wide"
+                                    options={[
+                                        { value: "new", label: "New" },
+                                        { value: "old", label: "Old" },
+                                        { value: "new", label: "Newst" },
+                                    ]}
+                                    defaultCurrent={0}
+                                    onChange={(item) => handleStatus(item)}
+                                    name="Status"
+                                />
                             </div>
                         </div>
                     </div>
@@ -215,7 +215,7 @@ export default function ApplicationForm() {
                     <div className="col-xl-12">
                         <div className="tp-contact-input-remeber schedule">
                             <input id="remeber" type="checkbox" />
-                            <label htmlFor="remeber">By submitting this form, you agree to the Acadia University privacy notice.</label>
+                            <label htmlFor="remeber">By submitting this form, you agree to the Aktüel Analiz University privacy notice.</label>
                         </div>
                     </div>
                     <div className="tp-schedule-btn">

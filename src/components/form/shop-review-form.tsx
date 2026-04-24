@@ -32,7 +32,7 @@ export default function ShopReviewForm() {
                 </div>
                 <div className="tp-product-details-review-input-box">
                     <div className="tp-product-details-review-input">
-                        <input name="email" id="email" type="email" placeholder="acadia@mail.com" />
+                        <input name="email" id="email" type="email" placeholder="Aktüel Analiz@mail.com" />
                     </div>
                     <div className="tp-product-details-review-input-title">
                         <label htmlFor="email">Your Email</label>

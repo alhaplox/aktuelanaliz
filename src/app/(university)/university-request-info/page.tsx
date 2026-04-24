@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import RequestInfoForm from "@/components/form/request-info-form";
 
 export const metadata: Metadata = {
-  title: "University Request Info - Acadia",
+  title: "University Request Info - Aktüel Analiz",
 };
 
 export default function UniversityRequestInfoPage() {

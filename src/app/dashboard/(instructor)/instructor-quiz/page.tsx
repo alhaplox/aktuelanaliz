@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorQuizArea from "@/components/dashboard/instructor/instructor-quiz-area";
 
 export const metadata: Metadata = {
-   title: "Instructor Quiz - Acadia",
+   title: "Instructor Quiz - Aktüel Analiz",
 }
 
 export default function InstructorQuizPage() {
@@ -17,7 +17,7 @@ export default function InstructorQuizPage() {
 
          {/* dashboard content area start */}
          <DashboardContentWrapper>
-            <InstructorQuizArea/>
+            <InstructorQuizArea />
          </DashboardContentWrapper>
          {/* dashboard content area end */}
 

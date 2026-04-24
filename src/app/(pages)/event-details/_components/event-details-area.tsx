@@ -8,10 +8,10 @@ import details_overlay_img from "@/assets/img/event/event/event-details-overlay.
 import { IEventDT } from "@/types/event-d-t";
 
 type IProps = {
-  event:IEventDT
+  event: IEventDT
 }
 
-export default function EventDetailsArea({event}:IProps) {
+export default function EventDetailsArea({ event }: IProps) {
   return (
     <section className="tp-event-details-area pt-80 pb-70">
       <div className="container">
@@ -20,11 +20,11 @@ export default function EventDetailsArea({event}:IProps) {
             <div className="tp-event-details-wrapper">
               <div className="tp-event-details-about">
                 <h3 className="tp-event-details-title">{event.title}</h3>
-                <p>The Creating Futures Through Technology Conference – Acadia Tech Center is sponsored jointly by the Mississippi Community College Board and the Mississippi Universities Board with a goal of promoting collaboration as well as transforming teaching and learning on college campuses.
+                <p>The Creating Futures Through Technology Conference – Aktüel Analiz Tech Center is sponsored jointly by the Mississippi Community College Board and the Mississippi Universities Board with a goal of promoting collaboration as well as transforming teaching and learning on college campuses.
                 </p>
                 <p>Celebrating our 20th anniversary this year on the gulf coast, the annual conference is designed to be the key venue where the higher education faculty, administrators and IT professionals come to share with one another their strategies, methods, This is an excellent marketing opportunity to reach C-Suite level administrators and influential educators. Some limited vendor exhibitor spaces and sponsorships may still be available with speaking.</p>
                 <button className="tp-event-details-about-more">
-                  <span><PlusThreeSvg/></span> Show more
+                  <span><PlusThreeSvg /></span> Show more
                 </button>
                 <div className="tp-event-details-about-overlay">
                   <Image src={details_overlay_img} alt="details-overlay" style={{ height: "auto" }} />
@@ -41,7 +41,7 @@ export default function EventDetailsArea({event}:IProps) {
               </div>
               <div className="tp-event-details-teaser">
                 <h3 className="tp-event-details-title">Here is the teaser</h3>
-                <EventDetailsVideo/>
+                <EventDetailsVideo />
               </div>
             </div>
           </div>
@@ -56,26 +56,26 @@ export default function EventDetailsArea({event}:IProps) {
             </div>
           </div>
           {event_speakers_data.map((speaker) => (
-          <div key={speaker.id} className="col-xl-3 col-lg-4 col-md-6">
-            <div className="tp-event-details-item text-center mb-30">
-              <div className="tp-event-details-item-thumb">
-                <Image src={speaker.image} alt={speaker.name} width={170} height={170} />
-              </div>
-              <div className="tp-event-details-item-content">
-                <h4 className="tp-event-details-item-title">
-                  <Link href="/my-profile">{speaker.name}</Link>
-                 </h4>
-                <p>{speaker.title}</p>
-                <div className="tp-event-details-item-social">
-                  {speaker.socials.map((social) => (
-                    <a key={social.id} href={social.link} target="_blank">
-                      <i className={social.iconCls}></i>
-                    </a>
-                  ))}
+            <div key={speaker.id} className="col-xl-3 col-lg-4 col-md-6">
+              <div className="tp-event-details-item text-center mb-30">
+                <div className="tp-event-details-item-thumb">
+                  <Image src={speaker.image} alt={speaker.name} width={170} height={170} />
+                </div>
+                <div className="tp-event-details-item-content">
+                  <h4 className="tp-event-details-item-title">
+                    <Link href="/my-profile">{speaker.name}</Link>
+                  </h4>
+                  <p>{speaker.title}</p>
+                  <div className="tp-event-details-item-social">
+                    {speaker.socials.map((social) => (
+                      <a key={social.id} href={social.link} target="_blank">
+                        <i className={social.iconCls}></i>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           ))}
         </div>
       </div>

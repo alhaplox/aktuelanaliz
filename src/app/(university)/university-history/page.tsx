@@ -4,7 +4,7 @@ import CampusChooseAreaFour from "@/components/campus/campus-choose-area-4";
 import HistoryArea from "./_components/history-area";
 
 export const metadata: Metadata = {
-  title: "University History - Acadia",
+  title: "University History - Aktüel Analiz",
 };
 
 export default function UniversityHistoryPage() {
@@ -15,11 +15,11 @@ export default function UniversityHistoryPage() {
       {/* breadcrumb area end */}
 
       {/* campus choose area start */}
-      <CampusChooseAreaFour/>
+      <CampusChooseAreaFour />
       {/* campus choose area end */}
 
       {/* history area start */}
-      <HistoryArea/>
+      <HistoryArea />
       {/* history area end */}
 
     </main>

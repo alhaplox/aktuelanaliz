@@ -4,7 +4,7 @@ import LoginForm from "@/components/form/login-form";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-   title: "Login - Acadia",
+   title: "Login - Aktüel Analiz",
 };
 
 export default function LoginPage() {

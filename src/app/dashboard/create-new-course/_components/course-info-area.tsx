@@ -23,7 +23,7 @@ export default function CourseInfoArea() {
                      <label>Course Slug</label>
                      <input type="text" placeholder="new course" />
                   </div>
-                  <p>Permalink: <a href="#">https://demo.themepure.net/acadia/new-course</a></p>
+                  <p>Permalink: <a href="#">https://demo.themepure.net/Aktüel Analiz/new-course</a></p>
                   <div className="tpd-input about-height">
                      <label>About Course</label>
                      <textarea placeholder="About Course"></textarea>
@@ -77,7 +77,7 @@ export default function CourseInfoArea() {
                      <div className="tpd-new-course-select2">
                         <div className="tpd-input">
                            <label>Choose a Category</label>
-                           <CourseInfoSelectCategory/>
+                           <CourseInfoSelectCategory />
                         </div>
                      </div>
                      <div className="tpd-input mt-35">

@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import StudentMyQuizArea from "@/components/dashboard/student/student-my-quiz-area";
 
 export const metadata: Metadata = {
-    title: "Student Quiz - Acadia",
+    title: "Student Quiz - Aktüel Analiz",
 }
 
 export default function StudentMyQuizPage() {
@@ -19,7 +19,7 @@ export default function StudentMyQuizPage() {
             <DashboardContentWrapper studentSidebar={true}>
 
                 {/* dashboard fact area start */}
-                <StudentMyQuizArea/>
+                <StudentMyQuizArea />
                 {/* dashboard fact area end */}
 
             </DashboardContentWrapper>

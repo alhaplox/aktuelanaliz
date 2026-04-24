@@ -9,7 +9,7 @@ export async function generateMetadata(props: PageParamsProps) {
     const { id } = resolvedParams;
     const course = all_courses.find((item) => item.id == id);
     return {
-        title: course?.title ? `${removeTagInText(course.title)} - Acadia` : "Course Details - Acadia",
+        title: course?.title ? `${removeTagInText(course.title)} - Aktüel Analiz` : "Course Details - Aktüel Analiz",
     };
 }
 
@@ -26,7 +26,7 @@ export default async function CourseDetailsTwoPage(props: PageParamsProps) {
                 {/* course details area */}
 
                 {/* related course start */}
-                <RelatedCourses/>
+                <RelatedCourses />
                 {/* related course end */}
 
             </main>

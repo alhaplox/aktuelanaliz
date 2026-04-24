@@ -51,7 +51,7 @@ export default function ScheduleForm() {
             <div className="tp-contact-input-remeber schedule">
               <input id="remeber" type="checkbox" />
               <label htmlFor="remeber">
-                By submitting this form, you agree to the Acadia University
+                By submitting this form, you agree to the Aktüel Analiz University
                 privacy notice.
               </label>
             </div>
@@ -60,7 +60,7 @@ export default function ScheduleForm() {
             <button className="tp-btn">
               Submit{" "}
               <span>
-                <RightArrowSeven/>
+                <RightArrowSeven />
               </span>
             </button>
             <p className="ajax-response"></p>

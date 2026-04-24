@@ -102,7 +102,7 @@ export default function AboutCampus() {
               <div className="tp-about-campus-heading">
                 <h4 className="tp-about-campus-title">Campuses</h4>
                 <p>
-                  Acadia University has five campuses, which are located in the
+                  Aktüel Analiz University has five campuses, which are located in the
                   most exclusive areas of Moscow, Saint Petersburg and Tashkent.
                 </p>
               </div>
@@ -139,9 +139,8 @@ export default function AboutCampus() {
               {tabContentData.map((tab) => (
                 <div
                   key={tab.id}
-                  className={`tab-pane fade ${
-                    tab.isActive ? "show active" : ""
-                  }`}
+                  className={`tab-pane fade ${tab.isActive ? "show active" : ""
+                    }`}
                   id={tab.id}
                   role="tabpanel"
                   aria-labelledby={tab.label}

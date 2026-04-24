@@ -6,7 +6,7 @@ import ProcessThree from "@/components/process/process-three";
 import FinancialAidArea from "./_components/financial-aid-area";
 
 export const metadata: Metadata = {
-  title: "University Financial - Acadia",
+  title: "University Financial - Aktüel Analiz",
 };
 
 export default function UniversityFinancialPage() {
@@ -21,19 +21,19 @@ export default function UniversityFinancialPage() {
       {/* breadcrumb area end */}
 
       {/* campus area start */}
-      <CampusChooseArea/>
+      <CampusChooseArea />
       {/* campus area end */}
 
       {/* counter area start */}
-      <CounterThree/>
+      <CounterThree />
       {/* counter area end */}
 
       {/* process area start */}
-      <ProcessThree/>
+      <ProcessThree />
       {/* process area end */}
 
       {/* financial aid area start */}
-      <FinancialAidArea/>
+      <FinancialAidArea />
       {/* financial aid area end */}
     </main>
   );

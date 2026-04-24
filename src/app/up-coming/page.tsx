@@ -5,7 +5,7 @@ import Timer from "@/components/timer";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Up-Coming - Acadia",
+    title: "Up-Coming - Aktüel Analiz",
 };
 
 export default function UpComingPage() {

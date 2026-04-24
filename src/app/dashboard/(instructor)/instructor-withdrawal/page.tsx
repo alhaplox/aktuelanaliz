@@ -7,7 +7,7 @@ import announce_icon from '@/assets/img/dashboard/icon/announcement-icon.svg';
 import no_data_bg from '@/assets/img/dashboard/bg/withdrawal-bg.png';
 
 export const metadata: Metadata = {
-   title: "Instructor Withdrawal - Acadia",
+   title: "Instructor Withdrawal - Aktüel Analiz",
 }
 
 export default function InstructorWithdrawalPage() {
@@ -55,7 +55,7 @@ export default function InstructorWithdrawalPage() {
                <div className="row">
                   <div className="col-12">
                      <div className="tpd-withdraw-bg text-center">
-                        <Image src={no_data_bg} alt="no-data-bg" style={{height:'auto'}} />
+                        <Image src={no_data_bg} alt="no-data-bg" style={{ height: 'auto' }} />
                         <p>No Data Available in this Section</p>
                      </div>
                   </div>

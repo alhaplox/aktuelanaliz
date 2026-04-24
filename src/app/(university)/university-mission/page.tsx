@@ -5,7 +5,7 @@ import MissionFeatureArea from "@/components/mission/mission-feature-area";
 import MissionAreaTwo from "@/components/mission/mission-area-2";
 
 export const metadata: Metadata = {
-  title: "University Mission - Acadia",
+  title: "University Mission - Aktüel Analiz",
 };
 
 export default function UniversityMissionPage() {
@@ -16,15 +16,15 @@ export default function UniversityMissionPage() {
       {/* breadcrumb area end */}
 
       {/* campus area start */}
-      <CampusChooseAreaThree/>
+      <CampusChooseAreaThree />
       {/* campus area end */}
 
       {/* mission feature area start */}
-      <MissionFeatureArea/>
+      <MissionFeatureArea />
       {/* mission feature area end */}
 
       {/* mission area start */}
-      <MissionAreaTwo/>
+      <MissionAreaTwo />
       {/* mission area end */}
     </main>
   );

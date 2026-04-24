@@ -16,7 +16,7 @@ export default function HeroAreaFive() {
                 className="tp-hero-subtitle wow fadeInUp"
                 data-wow-delay=".3s"
               >
-                Welcome to Acadia School!
+                Welcome to Aktüel Analiz School!
               </span>
               <h2
                 className="tp-hero-4-title p-relative wow fadeInUp"

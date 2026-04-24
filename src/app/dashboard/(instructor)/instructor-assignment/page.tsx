@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorAssignmentArea from "@/components/dashboard/instructor/instructor-assignment-area";
 
 export const metadata: Metadata = {
-   title: "Instructor Assignment - Acadia",
+   title: "Instructor Assignment - Aktüel Analiz",
 }
 
 export default function InstructorAssignmentPage() {
@@ -17,7 +17,7 @@ export default function InstructorAssignmentPage() {
 
          {/* dashboard content area start */}
          <DashboardContentWrapper>
-            <InstructorAssignmentArea/>
+            <InstructorAssignmentArea />
          </DashboardContentWrapper>
          {/* dashboard content area end */}
 

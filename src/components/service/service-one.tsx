@@ -14,7 +14,7 @@ const service_data = [
   {
     id: 1,
     icon: ser_icon_1,
-    title: "Why study at <br/> Acadia?",
+    title: "Why study at <br/> Aktüel Analiz?",
     text: "We have students coming from different backgrounds,cultures, & nationalities as well.",
   },
   {

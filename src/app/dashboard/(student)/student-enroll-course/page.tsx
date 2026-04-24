@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorEnrollCourseArea from "@/components/dashboard/instructor/instructor-enroll-course-area";
 
 export const metadata: Metadata = {
-    title: "Student Enroll Course - Acadia",
+    title: "Student Enroll Course - Aktüel Analiz",
 }
 
 export default function StudentEnrollCoursePage() {
@@ -19,7 +19,7 @@ export default function StudentEnrollCoursePage() {
             <DashboardContentWrapper studentSidebar={true}>
 
                 {/* dashboard fact area start */}
-                <InstructorEnrollCourseArea/>
+                <InstructorEnrollCourseArea />
                 {/* dashboard fact area end */}
 
             </DashboardContentWrapper>

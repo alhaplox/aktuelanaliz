@@ -3,7 +3,7 @@ import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import UniversityRequirementArea from "@/components/requirement/university-requirement-area";
 
 export const metadata: Metadata = {
-  title: "University Requirements - Acadia",
+  title: "University Requirements - Aktüel Analiz",
 };
 
 export default function UniversityRequirementsPage() {
@@ -17,7 +17,7 @@ export default function UniversityRequirementsPage() {
       {/* breadcrumb area end */}
 
       {/* requirements area start */}
-      <UniversityRequirementArea/>
+      <UniversityRequirementArea />
       {/* requirements area end */}
     </main>
   );

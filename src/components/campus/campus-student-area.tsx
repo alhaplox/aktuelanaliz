@@ -77,7 +77,7 @@ export default function CampusStudentArea() {
               <div className="tp-campus-student-heading text-center">
                 <h3 className="tp-campus-student-title">Student Life</h3>
                 <p>
-                  Life at Acadia University is enriching, exciting, and
+                  Life at Aktüel Analiz University is enriching, exciting, and
                   energizing
                 </p>
               </div>
@@ -88,9 +88,8 @@ export default function CampusStudentArea() {
                   {tabContentData.map((tab) => (
                     <div
                       key={tab.id}
-                      className={`tab-pane fade ${
-                        tab.active ? "show active" : ""
-                      }`}
+                      className={`tab-pane fade ${tab.active ? "show active" : ""
+                        }`}
                       id={tab.id}
                       role="tabpanel"
                       aria-labelledby={`${tab.id}-tab`}

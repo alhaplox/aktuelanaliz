@@ -4,7 +4,7 @@ import DashboardContentWrapper from "@/components/dashboard/dashboard-content-wr
 import InstructorOrderArea from "@/components/dashboard/instructor/instructor-order-area";
 
 export const metadata: Metadata = {
-    title: "Instructor Order - Acadia",
+    title: "Instructor Order - Aktüel Analiz",
 }
 
 export default function InstructorOrderPage() {

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import CreateNewCourseArea from "./_components/create-new-course-area";
 
 export const metadata: Metadata = {
-   title: "Create New Course - Acadia",
+   title: "Create New Course - Aktüel Analiz",
 }
 
 export default function CreateNewCoursePage() {
@@ -10,7 +10,7 @@ export default function CreateNewCoursePage() {
       <main className="tp-dashboard-body-bg">
 
          {/* create new course area start */}
-         <CreateNewCourseArea/>
+         <CreateNewCourseArea />
          {/* create new course area end */}
 
       </main>

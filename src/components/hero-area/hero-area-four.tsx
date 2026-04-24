@@ -59,7 +59,7 @@ const slider_data = [
       title: {
          text_1: 'Build Education Website',
          text_2: 'Using',
-         text_3: 'Acadia'
+         text_3: 'Aktüel Analiz'
       }
    },
    {
@@ -104,14 +104,14 @@ export default function HeroAreaFour() {
             className="slider tp-slider-5-active">
             {slider_data.map((item) => (
                <div key={item.id}>
-                  <div className="tp-slider-5-bg" style={{backgroundImage:`url(${item.bg_img})`}}>
+                  <div className="tp-slider-5-bg" style={{ backgroundImage: `url(${item.bg_img})` }}>
                      <div className="container">
                         <div className="row">
                            <div className="col-lg-7">
                               <div className="tp-slider-5-content">
-                                 <span>Welcome to Acadia</span>
+                                 <span>Welcome to Aktüel Analiz</span>
                                  <h2 className="tp-slider-5-title">
-                                    <i dangerouslySetInnerHTML={{__html: item.title.text_1}}/> {" "}
+                                    <i dangerouslySetInnerHTML={{ __html: item.title.text_1 }} /> {" "}
                                     <span>
                                        {item.title.text_2}
                                        <Image src={shape_line} alt="slider-line" />

@@ -5,7 +5,7 @@ import UndergraduateArea from "@/components/undergraduate/undergraduate-area";
 import PlanArea from "@/components/plan/plan-area";
 
 export const metadata: Metadata = {
-  title: "University Program - Acadia",
+  title: "University Program - Aktüel Analiz",
 };
 
 export default function UniversityProgramPage() {
@@ -19,15 +19,15 @@ export default function UniversityProgramPage() {
       {/* breadcrumb area end */}
 
       {/* about area start */}
-      <AboutTwo spacing="pt-90 pb-90"/>
+      <AboutTwo spacing="pt-90 pb-90" />
       {/* about area end */}
 
       {/* undergraduate area start */}
-      <UndergraduateArea/>
+      <UndergraduateArea />
       {/* undergraduate area end */}
 
       {/* plan area start */}
-      <PlanArea/>
+      <PlanArea />
       {/* plan area end */}
 
     </main>
