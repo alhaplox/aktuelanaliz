@@ -11,4 +11,5 @@ export type IBlogDT = {
   postboxQuote1?: boolean;
   postboxQuote2?: boolean;
   content?: string;
+  description?: string;
 };
