@@ -31,7 +31,7 @@ export default function ContactInfoArea() {
                 <div className="row justify-content-center">
                     <div className="col-lg-10">
                         <div className="tp-contact-info-wrapper text-center">
-                            <h3 className="tp-contact-main-title">Let us know how we can help</h3>
+                            <h3 className="tp-contact-main-title">Bizime iletişime geçin!</h3>
                         </div>
                         <div className="row">
                             {contactInfoData.map((item, index) => (

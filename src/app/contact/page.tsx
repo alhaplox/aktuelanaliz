@@ -20,7 +20,7 @@ export default function ContactPage() {
             <div className="tp-map-area">
                 <div className="tp-contact-map-content">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.281896172605!2d28.98509167657!3d41.04100231737701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab76426463993%3A0xc07a21396f43e5c7!2zTmnFn2FudGHFn8SxLCBaY2l5ZSBIYW7EsW0gU2suLCAzNDM2NyDFnnXFn2xpL8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1714000000000!5m2!1str!2str"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.826092551699!2d103.84591427587203!3d1.277837898710022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19124fcf96a9%3A0x9fb450a1b8d87b0a!2s77%20Robinson%20Rd%2C%20%2333%2001%2C%20Singapore%20068896!5e0!3m2!1str!2s!4v1777028644207!5m2!1str!2s"
                         width="100%"
                         height="450"
                         style={{ border: 0 }}
