@@ -37,7 +37,7 @@ type IProps = {
   userImage?: string;
 };
 
-export default function ProfileDropdown({ top_cls = "tp-header-inner-login", user_icon, userName = "Safak", userImage }: IProps) {
+export default function ProfileDropdown({ top_cls = "tp-header-inner-login", user_icon, userName = "Barış", userImage }: IProps) {
   const [openDropdown, setOpenDropdown] = useState(false);
 
   return (
