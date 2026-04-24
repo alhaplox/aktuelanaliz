@@ -29,7 +29,7 @@ export default async function BlogDetailsFullWidthPage(props: PageParamsProps) {
   const resolvedParams = await props.params;
   const { id } = resolvedParams;
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // Veritabanından blog verisini çekiyoruz
   const { data: blog, error } = await supabase
