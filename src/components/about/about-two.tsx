@@ -28,16 +28,20 @@ export default function AboutTwo({ spacing = 'pt-115 pb-90' }: IProps) {
             <div className="row">
                <div className="col-12">
                   <div className="tp-about-4-wrapper mb-75 wow fadeInUp" data-wow-delay=".3s">
-                     <h2 className="tp-about-4-head">Our goal is to develop and meet the needs of each child so that he or she becomes a well-rounded tomorrow individual.</h2>
+                     <h2 className="tp-about-4-head">
+                        Amacımız, her yatırımcının finansal okuryazarlığını geliştirerek
+                        geleceğin bilinçli ve stratejik karar alan bireyleri olmalarını sağlamaktır.
+                     </h2>
                      <div className="tp-about-4-btn wow fadeInUp" data-wow-delay=".5s">
-                        <Link className="tp-btn-3" href="/university-about">Why Choose Acadia</Link>
+                        <Link className="tp-btn-3" href="/about">Neden Aktüel Analiz?</Link>
                         <div className="tp-about-4-video">
+                           {/* YouTube video ID'sini platform tanıtım videonla değiştirebilirsin */}
                            <button className="popup-video" onClick={() => playVideo("LlCwHnp3kL4")}>
                               <span>
                                  <VideoPlayerSvg />
                               </span>
                            </button>
-                           <span>Play Video</span>
+                           <span>Tanıtım Videosu</span>
                         </div>
                      </div>
                   </div>
@@ -47,7 +51,7 @@ export default function AboutTwo({ spacing = 'pt-115 pb-90' }: IProps) {
                {thumbs.map((thumb) => (
                   <div key={thumb.id} className={`col-lg-${thumb.col_lg} col-sm-6`}>
                      <div className={`tp-about-4-thumb-${thumb.id} mb-30 wow fadeInUp`} data-wow-delay={`${thumb.delay}s`}>
-                        <Image src={thumb.img} alt="thumb-img" style={{ height: 'auto' }} />
+                        <Image src={thumb.img} alt="market-pulse-thumb" style={{ height: 'auto', borderRadius: '15px' }} />
                      </div>
                   </div>
                ))}

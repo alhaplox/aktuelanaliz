@@ -4,6 +4,7 @@ import overview_img_2 from "@/assets/img/course/details/admisson-overview-2.jpg"
 import { RightArrowSeven } from "../svg";
 import Link from "next/link";
 
+// 1. Bölüm: Platformun Erişilebilirliği ve Değeri
 export default function AdmissionArea() {
   return (
     <section className="tp-admission-overview-area grey-bg pb-130">
@@ -14,7 +15,7 @@ export default function AdmissionArea() {
               className="tp-admission-overview-heading wow fadeInUp"
               data-wow-delay=".3s"
             >
-              <h3 className="tp-admission-overview-title">Afford Acadia</h3>
+              <h3 className="tp-admission-overview-title">Neden Aktüel Analiz?</h3>
             </div>
           </div>
           <div className="col-lg-6">
@@ -23,23 +24,20 @@ export default function AdmissionArea() {
               data-wow-delay=".5s"
             >
               <p>
-                At Acadia University, we prepare you to launch your career by
-                providing a supportive, creative, and professional environment
-                from which to learn practical skills, build a network of
-                industry contacts.
+                Aktüel Analiz olarak, sizi finansal kariyerinizde veya bireysel yatırımlarınızda
+                destekleyici, yaratıcı ve profesyonel bir analiz ortamıyla buluşturuyoruz.
+                Pratik teknik analiz becerileri kazanırken, profesyonel bir ağın parçası olursunuz.
               </p>
               <p>
-                Acadia is affordable for all admitted students. Financial aid
-                covers all demonstrated need for all students, regardless of
-                citizenship or citizenship status. Families making under{" "}
-                <span>$85,000</span> a year pay nothing for their students
-                education, and families making between{" "}
-                <span>$85,000-$150,000 pay 0-10% of their incomes.</span>
+                Analizlerimiz her seviyeden yatırımcı için erişilebilirdir. Yıllık abonelik
+                planlarımızda, portföy büyüklüğünüze bakılmaksızın tüm üyelerimize
+                eşit kalitede veri ve rapor sunuyoruz. Küçük ölçekli yatırımcılar için
+                <span> özel indirimli başlangıç paketlerimiz</span> mevcuttur.
               </p>
               <div className="tp-admission-overview-btn mt-50">
-                <Link className="tp-btn" href="/university-financial">
-                  Learn more <br />
-                  About financial aid{" "}
+                <Link className="tp-btn" href="/membership">
+                  Abonelik Planlarını <br />
+                  Detaylı İncele{" "}
                   <span>
                     <RightArrowSeven />
                   </span>
@@ -53,27 +51,28 @@ export default function AdmissionArea() {
   );
 }
 
+// 2. Bölüm: Kazanç/Maliyet Hesaplayıcı (CTA)
 export function AdmissionCtaArea() {
   return (
     <section className="tp-admission-cta-area grey-bg pb-160">
       <div className="container">
         <div className="tp-admission-cta-box">
-          <div className="row">
+          <div className="row align-items-center">
             <div className="col-lg-6">
               <div
                 className="tp-admission-cta-heading wow fadeInUp"
                 data-wow-delay=".3s"
               >
                 <h3 className="tp-admission-cta-title">
-                  Calculate Your <br /> Estimated Scholarship.
+                  Yatırım Getirinizi <br /> Tahmin Edin.
                 </h3>
                 <p>
-                  How affordable is Harvard? See for yourself with our <br />
-                  Net Price Calculator.
+                  Aktüel Analiz analizleriyle ne kadar tasarruf edebilir veya <br />
+                  kazancınızı nasıl optimize edebilirsiniz? Hesaplayıcımızla görün.
                 </p>
                 <div className="tp-admission-cta-btn">
-                  <Link className="tp-btn" href="/university-tuition-fees">
-                    Net Price Calculator{" "}
+                  <Link className="tp-btn" href="/calculator">
+                    ROI Hesaplayıcı{" "}
                     <span>
                       <RightArrowSeven />
                     </span>
@@ -88,8 +87,8 @@ export function AdmissionCtaArea() {
               >
                 <Image
                   src={overview_img_1}
-                  alt="overview-img"
-                  style={{ height: "auto" }}
+                  alt="analysis-overview"
+                  style={{ height: "auto", borderRadius: '20px' }}
                 />
               </div>
             </div>
@@ -100,11 +99,12 @@ export function AdmissionCtaArea() {
   );
 }
 
+// 3. Bölüm: Yeni Dönem Kayıt/Başvuru
 export function AdmissionApplyArea() {
   return (
     <section className="tp-admission-apply-area grey-bg pt-40 pb-140">
       <div className="container">
-        <div className="row">
+        <div className="row align-items-center">
           <div className="col-lg-6">
             <div
               className="tp-admission-apply-thumb p-relative wow fadeInUp"
@@ -112,8 +112,8 @@ export function AdmissionApplyArea() {
             >
               <Image
                 src={overview_img_2}
-                alt="overview-img"
-                style={{ height: "auto" }}
+                alt="apply-now"
+                style={{ height: "auto", borderRadius: '20px' }}
               />
             </div>
           </div>
@@ -122,15 +122,15 @@ export function AdmissionApplyArea() {
               className="tp-admission-apply-heading wow fadeInUp"
               data-wow-delay=".5s"
             >
-              <h3 className="tp-admission-apply-title">Apply for 2024</h3>
+              <h3 className="tp-admission-apply-title">2026 Sezonuna Katılın</h3>
               <p>
-                We’ll guide you through the Common Application <br />
-                or Coalition Application, Powered by Scoir, and answer <br />
-                any questions you have along the way.
+                VIP grubumuza katılım sürecinde size rehberlik ediyor, <br />
+                borsa ve kripto sinyallerimize erişim adımlarındaki <br />
+                tüm sorularınızı anında yanıtlıyoruz.
               </p>
               <div className="tp-admission-apply-btn">
-                <Link className="tp-btn" href="/university-apply">
-                  How To Apply
+                <Link className="tp-btn" href="/contact">
+                  Nasıl Üye Olurum?
                   <span>
                     <RightArrowSeven />
                   </span>

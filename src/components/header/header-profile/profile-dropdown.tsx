@@ -4,58 +4,78 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   DashboardSvg,
-  EnrollmentSvg,
   LogoutSvg,
   OrderSvg,
-  QuestionSvg,
-  QuizSvg,
-  ReviewSvg,
   SettingSvg,
   UserSvg,
   UserSvgThree,
   WishlistSvg,
 } from "@/components/svg";
-import user_img from '@/assets/img/event/user.jpg';
+
+// Unsplash yedek görseli
+const default_user = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=100&auto=format&fit=crop";
 
 type ListItem =
   | { link: string; icon: React.ReactNode; label: string; isDivider?: false }
   | { isDivider: true };
 
+// Aktüel Analiz'a uygun menü yapısı
 const listData: ListItem[] = [
-  { link: "/dashboard/instructor-dashboard", icon: <DashboardSvg />, label: "My Dashboard" },
-  { link: "/dashboard/instructor-profile", icon: <UserSvg />, label: "My Profile" },
-  { link: "/dashboard/instructor-enroll-course", icon: <EnrollmentSvg />, label: "Enrolled Courses" },
-  { link: "/dashboard/instructor-wishlist", icon: <WishlistSvg />, label: "Wishlist" },
-  { link: "/dashboard/instructor-reviews", icon: <ReviewSvg />, label: "Reviews" },
-  { link: "/dashboard/instructor-quiz-attempts", icon: <QuizSvg />, label: "My Quiz Attempts" },
-  { link: "/dashboard/instructor-order", icon: <OrderSvg />, label: "Order History" },
-  { link: "/dashboard/instructor-announcements", icon: <QuestionSvg />, label: "Question & Answer" },
+  { link: "/dashboard", icon: <DashboardSvg />, label: "Panelim" },
+  { link: "/dashboard/profile", icon: <UserSvg />, label: "Profil Bilgilerim" },
+  { link: "/dashboard/my-analyses", icon: <WishlistSvg />, label: "Takip Listem" },
+  { link: "/dashboard/orders", icon: <OrderSvg />, label: "Abonelik Geçmişi" },
   { isDivider: true },
-  { link: "/dashboard/instructor-setting-profile", icon: <SettingSvg />, label: "Settings" },
-  { link: "/login", icon: <LogoutSvg />, label: "Logout" },
+  { link: "/dashboard/settings", icon: <SettingSvg />, label: "Ayarlar" },
+  { link: "/api/auth/logout", icon: <LogoutSvg />, label: "Çıkış Yap" }, // Supabase veya Auth rotan
 ];
 
 type IProps = {
   top_cls?: string;
-  user_icon?:boolean;
-}
+  user_icon?: boolean;
+  userName?: string; // Prop olarak kullanıcı adını alalım
+  userImage?: string;
+};
 
-export default function ProfileDropdown({top_cls="tp-header-inner-login",user_icon}: IProps) {
+export default function ProfileDropdown({ top_cls = "tp-header-inner-login", user_icon, userName = "Safak", userImage }: IProps) {
   const [openDropdown, setOpenDropdown] = useState(false);
+
   return (
-    <div className={`${top_cls} tp-header-user-hover ${openDropdown ? "active" : ""}`}>
+    <div
+      className={`${top_cls} tp-header-user-hover ${openDropdown ? "active" : ""}`}
+      onMouseLeave={() => setOpenDropdown(false)} // Mouse ayrılınca kapansın
+    >
       <button onClick={() => setOpenDropdown(!openDropdown)}>
-        {user_icon ? <span><UserSvgThree/></span> : <Image src={user_img} alt="user" />}
+        {user_icon ? (
+          <span><UserSvgThree /></span>
+        ) : (
+          <Image
+            src={userImage || default_user}
+            alt="Profil"
+            width={40}
+            height={40}
+            className="rounded-circle"
+            style={{ objectFit: 'cover' }}
+          />
+        )}
       </button>
+
       <div className="tp-header-user-box">
         <div className="tp-header-user-content">
           <div className="tp-header-user-profile d-flex align-items-center">
             <div className="tp-header-user-profile-thumb">
-              <Image src={user_img} alt="user" />
+              <Image
+                src={userImage || default_user}
+                alt="Kullanıcı"
+                width={45}
+                height={45}
+                className="rounded-circle"
+                style={{ objectFit: 'cover' }}
+              />
             </div>
             <div className="tp-header-user-profile-content">
-              <h4>Floyd Miles</h4>
-              <span>Founder</span>
+              <h4>{userName}</h4>
+              <span>Aktüel Analiz Üyesi</span>
             </div>
           </div>
 
@@ -75,7 +95,6 @@ export default function ProfileDropdown({top_cls="tp-header-inner-login",user_ic
               ))}
             </ul>
           </div>
-
         </div>
       </div>
     </div>

@@ -7,9 +7,12 @@ import hero_thumb from "@/assets/img/hero/hero-2-thumb-1.png";
 import hero_shape_1 from '@/assets/img/hero/hero-2-shape-2.png';
 import hero_shape_2 from '@/assets/img/hero/hero-2-shape-3.png';
 import hero_shape_3 from '@/assets/img/hero/hero-2-shape-4.png';
-import {online_courses_data} from "@/data/course-data";
+import { getHeroCourse } from "@/lib/supabaseRequests";
 
-export default function HeroAreaTwo() {
+export default async function HeroAreaTwo() {
+  // Supabase'den dinamik veriyi çekiyoruz
+  const course = await getHeroCourse();
+
   return (
     <div className="tp-hero-area lightblue-bg tp-hero-2-bg">
       <div className="container custom-container">
@@ -21,15 +24,15 @@ export default function HeroAreaTwo() {
                   className="tp-hero-2-subtitle wow fadeInUp"
                   data-wow-delay=".3s"
                 >
-                  Keep Learning
+                  Piyasanın Nabzını Tutun
                 </span>
                 <h2
                   className="tp-hero-2-title wow fadeInUp"
                   data-wow-delay=".5s"
                 >
-                  Best digital {" "}
+                  Profesyonel {" "}
                   <span>
-                    Online{" "}
+                    Finansal{" "}
                     <Image
                       className="wow bounceIn"
                       data-wow-duration="1.5s"
@@ -38,18 +41,18 @@ export default function HeroAreaTwo() {
                       alt="svg-underline"
                     />
                   </span>
-                  Courses
+                  Analizler
                 </h2>
-                <p className=" wow fadeInUp" data-wow-delay=".7s">
-                  Acquire global knowledge and build your <br /> professional
-                  skills
+                <p className="wow fadeInUp" data-wow-delay=".7s">
+                  Küresel piyasalarda uzmanlaşın ve yatırım <br />
+                  stratejilerinizi profesyonel verilerle güçlendirin.
                 </p>
                 <div
                   className="tp-hero-2-btn wow fadeInUp"
                   data-wow-delay=".9s"
                 >
-                  <Link className="tp-btn-border" href="/course-with-filter">
-                    Find Courses
+                  <Link className="tp-btn-border" href="/membership">
+                    Paketleri İncele
                     <span>
                       <RightArrowFour />
                     </span>
@@ -57,20 +60,36 @@ export default function HeroAreaTwo() {
                 </div>
               </div>
             </div>
+
             <div className="offset-xxl-4 col-xxl-3 offset-xl-2 col-xl-4 col-lg-5 col-md-6">
               <div
                 className="tp-hero-2-course p-relative wow fadeInUp"
                 data-wow-delay=".5s"
               >
-                <CourseItem course={online_courses_data[0]} />
+                {/* Supabase verisi varsa kartı bas, yoksa boş placeholder göster */}
+                {course ? (
+                  <CourseItem course={course} />
+                ) : (
+                  <div className="tp-course-item-placeholder">
+                    <p>Öne çıkan analiz yükleniyor...</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
+
           <div className="tp-hero-2-thumb">
-            <Image src={hero_thumb} alt="hero-thumbnail" style={{height:'auto'}} />
+            <Image
+              src={hero_thumb}
+              alt="market-pulse-hero"
+              style={{ height: 'auto' }}
+              priority
+            />
           </div>
         </div>
       </div>
+
+      {/* Arka Plan Dekoratif Şekiller */}
       <div className="tp-hero-2-shape">
         <div className="tp-hero-2-shape-1">
           <span>

@@ -41,14 +41,6 @@ export default function HomeOnlineCoursePage() {
       <TestimonialTwo />
       {/* testimonial area end */}
 
-      {/* team area start */}
-      <TeamArea />
-      {/* team area end */}
-
-      {/* brand area start */}
-      <BrandArea />
-      {/* brand area end */}
-
       {/* banner area start */}
       <BannerArea />
       {/* banner area end */}

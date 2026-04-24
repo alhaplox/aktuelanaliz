@@ -1,35 +1,31 @@
-import Image from "next/image";
-import icon_1 from "@/assets/img/icon/funfact/funfact-2-icon-1.svg";
-import icon_2 from "@/assets/img/icon/funfact/funfact-2-icon-2.svg";
-import icon_3 from "@/assets/img/icon/funfact/funfact-2-icon-3.svg";
-import icon_4 from "@/assets/img/icon/funfact/funfact-2-icon-4.svg";
+import React from "react";
 
 const funFacts = [
   {
     id: 1,
-    title: "Flexible classes",
-    description: "You pick schedule.",
-    icon: icon_1,
+    title: "Anlık Veri Akışı",
+    description: "Gecikmesiz piyasa takibi.",
+    iconClass: "fa-solid fa-bolt-lightning",
   },
   {
     id: 2,
-    title: "Offline mode",
-    description: "Download classes.",
-    icon: icon_2,
+    title: "Derinlemesine Analiz",
+    description: "Teknik ve temel raporlar.",
+    iconClass: "fa-solid fa-chart-line",
     cls: "tp-funfact-item-2",
   },
   {
     id: 3,
-    title: "10k online courses",
-    description: "Explore fresh topics.",
-    icon: icon_3,
+    title: "VIP Sinyaller",
+    description: "Özel işlem fırsatları.",
+    iconClass: "fa-solid fa-signal",
     cls: "tp-funfact-item-3",
   },
   {
     id: 4,
-    title: "Educator help",
-    description: "Always get answers.",
-    icon: icon_4,
+    title: "Uzman Desteği",
+    description: "7/24 analist yanıtları.",
+    iconClass: "fa-solid fa-headset",
   },
 ];
 
@@ -37,8 +33,12 @@ export default function FunFactArea() {
   return (
     <section
       className="funfact-area tp-funfact-bg"
-      data-background="assets/img/bg/funfact-2-bg-1.jpg"
-      style={{ backgroundImage: "url(/assets/img/bg/funfact-2-bg-1.jpg)" }}
+      style={{
+        backgroundImage: "url(/assets/img/bg/funfact-2-bg-1.jpg)",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: '#0056b3' // Eğer resim yüklenmezse zemin mavi kalsın
+      }}
     >
       <div className="container">
         <div className="row">
@@ -46,13 +46,22 @@ export default function FunFactArea() {
             <div key={fact.id} className="col-lg-3 col-sm-6">
               <div className={`tp-funfact-item d-flex align-items-center ${fact.cls || ""}`}>
                 <div className="tp-funfact-icon">
-                  <span>
-                    <Image src={fact.icon} alt="icon" />
+                  <span style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(255,255,255,0.3)', // İkon etrafına hafif belirginlik
+                    borderRadius: '50%',
+                    width: '50px',
+                    height: '50px'
+                  }}>
+                    {/* İkon rengi burada beyaza (text-white) çekildi */}
+                    <i className={`${fact.iconClass} text-white`} style={{ fontSize: '22px' }}></i>
                   </span>
                 </div>
                 <div className="tp-funfact-content">
-                  <h4 className="tp-funfact-title">{fact.title}</h4>
-                  <span>{fact.description}</span>
+                  <h4 className="tp-funfact-title text-white">{fact.title}</h4>
+                  <span className="text-white" style={{ opacity: 0.8 }}>{fact.description}</span>
                 </div>
               </div>
             </div>

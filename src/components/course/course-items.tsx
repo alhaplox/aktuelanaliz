@@ -1,25 +1,25 @@
-"use client";
-
-import useCourse from "@/hooks/use-course";
 import CourseItem from "./single/course-item";
+import { getAllCourses } from "@/lib/supabaseRequests";
 
-export default function CourseItems() {
-  const { filterCourse } = useCourse();
+export default async function CourseItems() {
+  // Veriyi doğrudan Supabase'den çekiyoruz
+  const courses = await getAllCourses();
 
-  // Eğer filtreleme sonucunda kurs bulunamazsa kullanıcıya bilgi verelim
-  if (filterCourse.length === 0) {
+  if (!courses || courses.length === 0) {
     return (
       <div className="col-12 text-center mt-50 mb-50">
-        <p>Seçili kategoride henüz bir eğitim bulunmuyor.</p>
+        <div className="tp-error-content">
+          <p>Şu anda görüntülenecek aktif bir analiz veya eğitim bulunmuyor.</p>
+        </div>
       </div>
     );
   }
 
   return (
     <>
-      {filterCourse.map((item) => (
-        <div key={item.id} className="col-lg-4 col-md-6 d-flex">
-          {/* d-flex ekleyerek kartların aynı satırda eşit boyda durmasını sağladık */}
+      {courses.map((item) => (
+        <div key={item.id} className="col-lg-4 col-md-6 d-flex align-items-stretch">
+          {/* align-items-stretch: Kart içerikleri farklı uzunlukta olsa bile kutu boylarını eşitler */}
           <CourseItem course={item} />
         </div>
       ))}

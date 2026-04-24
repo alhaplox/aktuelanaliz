@@ -26,6 +26,7 @@ const avt_slider_opt = {
     },
   ],
 };
+
 // testimonial slider options
 const testi_slider_opt = {
   slidesToShow: 1,
@@ -34,7 +35,7 @@ const testi_slider_opt = {
   fade: false,
 };
 
-// nav avatars
+// nav avatars - Buradaki görselleri ileride gerçek kullanıcı fotolarıyla değiştirebilirsin
 const nav_avatars = [
   "/assets/img/testimonial/test-2-avatar-3.png",
   "/assets/img/testimonial/test-2-avatar-1.png",
@@ -49,34 +50,35 @@ export default function TestimonialTwo() {
   const [slider2, setSlider2] = useState<Slider | null>(null);
   const sliderRef = useRef<Slider | null>(null);
 
-    const sliderPrev = () => {
-      sliderRef.current?.slickPrev();
-    };
+  const sliderPrev = () => {
+    sliderRef.current?.slickPrev();
+  };
 
-    const sliderNext = () => {
-      sliderRef.current?.slickNext();
-    };
+  const sliderNext = () => {
+    sliderRef.current?.slickNext();
+  };
+
   return (
-    <section className="testimonial-area lightblue-bg pb-85">
+    <section className="testimonial-area lightblue-bg pb-85 pt-80">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-xxl-6 col-lg-8">
             <div className="tp-testimonial-section">
               <div className="tp-section text-center mb-40">
-                <h5 className="tp-section-3-subtitle">Live Courses</h5>
+                <h5 className="tp-section-3-subtitle">Başarı Hikayeleri</h5>
                 <h3 className="tp-section-3-title">
-                  Student{" "}
+                  Yatırımcılarımız{" "}
                   <span>
-                    Say
+                    Neler
                     <Image
                       className="tp-underline-shape-8 wow bounceIn"
                       data-wow-duration="1.5s"
                       data-wow-delay=".4s"
                       src={shape_underline}
-                      alt="shape-underline"
+                      alt="alt-cizgi"
                     />
                   </span>
-                  About Acadia
+                  {" "}Diyor?
                 </h3>
               </div>
             </div>
@@ -96,7 +98,13 @@ export default function TestimonialTwo() {
               >
                 {nav_avatars.map((avatar, i) => (
                   <div key={i} className="tp-testimonial-2-avatar-item">
-                    <Image src={avatar} alt="avatar" width={74} height={74} />
+                    <Image
+                      src={avatar}
+                      alt="avatar"
+                      width={74}
+                      height={74}
+                      style={{ borderRadius: '50%', objectFit: 'cover' }}
+                    />
                   </div>
                 ))}
               </Slider>
@@ -106,6 +114,7 @@ export default function TestimonialTwo() {
             </div>
           </div>
         </div>
+
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <Slider
@@ -126,29 +135,25 @@ export default function TestimonialTwo() {
                     <h4 className="tp-testimonial-2-avatar-title">
                       {item.name}
                     </h4>
-                    <span>{item.position}</span>
-                    <div className="tp-testimonial-2-avatar-rating">
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
+                    <span className="text-primary fw-bold">{item.position}</span>
+                    <div className="tp-testimonial-2-avatar-rating mt-10">
+                      <i className="fa-solid fa-star text-warning"></i>
+                      <i className="fa-solid fa-star text-warning"></i>
+                      <i className="fa-solid fa-star text-warning"></i>
+                      <i className="fa-solid fa-star text-warning"></i>
+                      <i className="fa-solid fa-star text-warning"></i>
                     </div>
                   </div>
                   <div className="tp-testimonial-2-content p-relative">
-                    <p>{item.testimonial}</p>
+                    <p className="mt-20" style={{ fontSize: '18px', fontStyle: 'italic' }}>
+                      "{item.testimonial}"
+                    </p>
                     <div className="tp-testimonial-2-shape">
                       <div className="shape-1">
-                        <Image
-                          src={quate_1}
-                          alt="quate"
-                        />
+                        <Image src={quate_1} alt="tirnak-sol" />
                       </div>
                       <div className="shape-2">
-                        <Image
-                          src={quate_2}
-                          alt="quate"
-                        />
+                        <Image src={quate_2} alt="tirnak-sag" />
                       </div>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import Image from "next/image";
 import { LessonsSvg, UserSvgTwo } from "../../svg";
@@ -13,90 +14,109 @@ type IProps = {
 export default function CourseItem({ course, removeTag }: IProps) {
   const {
     thumbnail,
-    instructor_name, // Veritabanı sütun isminle eşitledim
+    instructor_name,
     author_img,
     title,
-    lectures_count, // Veritabanı sütun isminle eşitledim
+    lectures_count,
     students,
-    rating, // Veritabanı sütun isminle eşitledim
+    rating,
     category,
     price,
     old_price,
     slug
   } = course || {};
 
+  const coursePath = `/course-details/${slug || 'analiz'}`;
+  const defaultAuthorImg = 'https://images.unsplash.com/photo-1602442787305-decbd65be507?q=80&w=687&auto=format&fit=crop';
+
   return (
-    <div className="tp-course-item p-relative fix mb-30">
+    <div className="tp-course-item p-relative fix mb-30 shadow-sm transition-3 h-100 d-flex flex-column">
+      {/* Eğitmen / Analist Bilgisi */}
       <div className="tp-course-teacher mb-15">
-        <span>
-          {author_img && (
-            <Image
-              src={author_img}
-              alt={instructor_name || "Eğitmen"}
-              width={30}
-              height={30}
-              style={{ borderRadius: '50%' }}
-            />
-          )}
-          {instructor_name}
+        <span className="d-flex align-items-center gap-2">
+          <Image
+            src={author_img || defaultAuthorImg}
+            alt={instructor_name || "Analist"}
+            width={30}
+            height={30}
+            style={{ borderRadius: '50%', objectFit: 'cover' }}
+          />
+          <small className="fw-bold text-dark">{instructor_name || "Aktüel Analiz Analisti"}</small>
         </span>
       </div>
 
-      <div className="tp-course-thumb">
-        {/* ID yerine SLUG kullanıyoruz */}
-        <Link href={`/course-details/${slug}`}>
+      {/* Görsel Alanı */}
+      <div className="tp-course-thumb p-relative">
+        <Link href={coursePath}>
           <Image
-            className="course-lightblue"
+            className="course-lightblue w-100"
             src={thumbnail || "/assets/img/course/course-1.jpg"}
-            alt={title}
+            alt={title || "Aktüel Analiz Analiz"}
             width={352}
             height={200}
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', transition: 'transform 0.5s ease', height: '200px' }}
           />
         </Link>
+        {category && (
+          <div className="tp-course-tag p-absolute" style={{ top: '15px', left: '15px', zIndex: 2 }}>
+            <span className="badge bg-primary text-white p-2">{category}</span>
+          </div>
+        )}
       </div>
 
-      <div className="tp-course-content">
-        <div className="tp-course-tag mb-10">
-          <span>{category}</span>
-        </div>
-        <div className="tp-course-meta">
-          <span>
-            <span><LessonsSvg /></span>
-            {" "}{lectures_count} Ders
+      <div className="tp-course-content flex-grow-1">
+        {/* Meta Bilgiler */}
+        <div className="tp-course-meta d-flex align-items-center mb-15">
+          <span className="me-3">
+            <span className="me-1"><LessonsSvg /></span>
+            {lectures_count || 0} Modül
           </span>
           <span>
-            <span><UserSvgTwo /></span>
-            {" "}{students || 0} Öğrenci
+            <span className="me-1"><UserSvgTwo /></span>
+            {students || 0} Katılımcı
           </span>
         </div>
-        <h4 className="tp-course-title">
-          <Link href={`/course-details/${slug}`}
-            dangerouslySetInnerHTML={{ __html: removeTag ? title.replace(/(<([^>]+)>)/gi, "") : title }}
+
+        {/* Başlık */}
+        <h4 className="tp-course-title mb-15">
+          <Link
+            href={coursePath}
+            dangerouslySetInnerHTML={{
+              __html: removeTag && title ? title.replace(/(<([^>]+)>)/gi, "") : (title || "Analiz Başlığı")
+            }}
           ></Link>
         </h4>
-        <div className="tp-course-rating d-flex align-items-end justify-content-between">
+
+        {/* Rating ve Fiyatlandırma */}
+        <div className="tp-course-rating d-flex align-items-center justify-content-between border-top pt-15">
           <div className="tp-course-rating-star">
-            <p>
-              {rating || "5.0"}
-            </p>
-            <div className="tp-course-rating-icon">
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
+            {/* d-flex ve flex-row yıldızların yan yana gelmesini garanti eder */}
+            <div className="d-flex flex-row align-items-center gap-1">
+              <span className="fw-bold text-warning me-1">{rating || "5.0"}</span>
+              <div className="d-flex flex-row align-items-center" style={{ minWidth: '80px' }}>
+                <i className="fa-solid fa-star text-warning" style={{ fontSize: '12px' }}></i>
+                <i className="fa-solid fa-star text-warning" style={{ fontSize: '12px' }}></i>
+                <i className="fa-solid fa-star text-warning" style={{ fontSize: '12px' }}></i>
+                <i className="fa-solid fa-star text-warning" style={{ fontSize: '12px' }}></i>
+                <i className="fa-solid fa-star text-warning" style={{ fontSize: '12px' }}></i>
+              </div>
             </div>
           </div>
-          <div className="tp-course-pricing home-2">
-            {/* Mantık hatasını burada da düzelttik: discount yerine direkt fiyatları gönderiyoruz */}
-            <CoursePrice price={Number(price)} oldPrice={Number(old_price)} />
+
+          <div className="tp-course-pricing">
+            <CoursePrice
+              price={Number(price || 0)}
+              oldPrice={old_price ? Number(old_price) : undefined}
+            />
           </div>
         </div>
-      </div>
-      <div className="tp-course-btn home-2">
-        {/* En alttaki önizleme butonu da slug'a gitmeli */}
-        <Link href={`/course-details/${slug}`}>Eğitimi İncele</Link>
+
+        {/* Aksiyon Butonu */}
+        <div className="tp-course-btn home-2 mt-20">
+          <Link href={coursePath} className="w-100 text-center tp-btn-3">
+            Detayları İncele
+          </Link>
+        </div>
       </div>
     </div>
   );

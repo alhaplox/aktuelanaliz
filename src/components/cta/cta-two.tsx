@@ -10,49 +10,51 @@ export default function CtaTwo() {
           <div className="col-xxl-8 col-lg-10">
             <div className="tp-cta-2-wrapper text-center">
               <h2 className="tp-cta-2-title">
-                Get Started With {' '}
+                Piyasanın Nabzını {' '}
                 <span>
-                  Acadia
+                  Aktüel Analiz
                   <Image
                     className="tp-underline-shape-12 wow bounceIn"
                     data-wow-duration="1.5s"
                     data-wow-delay=".4s"
                     src={shape_underline}
-                    alt="shape-underline"
+                    alt="alt-cizgi"
                   />
                 </span>
-                Now{" "}
+                ile Tutun{" "}
               </h2>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              <p>Haftalık bültenimize abone olun, en kritik analiz ve sinyalleri kaçırmayın.</p>
+
               <div className="tp-cta-2-form">
                 <form action="#">
                   <span>
                     <EmailTwo />
                   </span>
-                  <input type="text" placeholder="Enter your email address" />
+                  <input type="email" placeholder="E-posta adresinizi girin" required />
                   <div className="tp-cta-2-btn">
-                    <button className="tp-btn-round">Subscribe!</button>
+                    <button className="tp-btn-round" type="submit">Abone Ol!</button>
                   </div>
                 </form>
               </div>
+
               <div className="tp-cta-2-info-list">
                 <span>
                   <span>
                     <CheckSvg />
                   </span>
-                  Easy to Access
+                  Anında Erişim
                 </span>
                 <span>
                   <span>
                     <CheckSvg />
                   </span>
-                  No Credit card
+                  Kredi Kartı Gerektirmez
                 </span>
                 <span>
                   <span>
                     <CheckSvg />
                   </span>
-                  85,000 student onboard with us
+                  5000+ Aktif Yatırımcı
                 </span>
               </div>
             </div>

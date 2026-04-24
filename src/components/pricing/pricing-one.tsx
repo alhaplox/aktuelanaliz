@@ -1,53 +1,55 @@
+'use client'
+import React from "react";
 import { CheckTwoSvg, UnCheckSvg } from "../svg";
+import Link from "next/link";
 
 const pricingPlans = [
 	{
 		id: 1,
-		title: "Silver Membership",
-		validity: "Valid for 2 months",
-		price: 24, // per month
-		frequency: "/ Month",
+		title: "Gümüş Paket",
+		validity: "Başlangıç Seviyesi",
+		price: 499,
+		frequency: "/ Ay",
 		benefits: [
-			"Unlimited Classes",
-			"Fitness Assessment",
-			"Locker room with showers"
+			"Günlük Teknik Analizler",
+			"Haftalık Bülten Erişimi",
+			"Temel Eğitim Modülleri"
 		],
 		inactiveBenefits: [
-			"Guest Privileges",
-			"Free parking"
+			"VIP Sinyal Grubu",
+			"Canlı Soru-Cevap Yayını"
 		],
 	},
 	{
 		id: 2,
-		title: "Gold Membership",
-		validity: "Valid for 12 months",
-		price: 54, // per month
-		frequency: "/ Month",
+		title: "Altın Paket",
+		validity: "En Çok Tercih Edilen",
+		price: 999,
+		frequency: "/ Ay",
 		benefits: [
-			"Unlimited Classes",
-			"Fitness Assessment",
-			"Locker room with showers",
-			"Guest Privileges"
+			"Günlük Teknik Analizler",
+			"Haftalık Bülten Erişimi",
+			"Orta Seviye Eğitimler",
+			"VIP Sinyal Grubu (Telegram)"
 		],
 		inactiveBenefits: [
-			"Free parking"
+			"Birebir Portföy Analizi"
 		],
 	},
 	{
 		id: 3,
-		title: "Platinum Membership",
-		validity: "Perfect for committed trainers",
-		price: 64, // per month
-		frequency: "/ Month",
+		title: "Platin Paket",
+		validity: "Profesyonel Yatırımcı",
+		price: 1499,
+		frequency: "/ Ay",
 		benefits: [
-			"Unlimited Classes",
-			"Fitness Assessment",
-			"Locker room with showers"
+			"Tüm Analiz ve Raporlar",
+			"İleri Seviye Stratejiler",
+			"VIP Sinyal Grubu (Telegram)",
+			"Birebir Portföy Danışmanlığı",
+			"Haftalık Özel Canlı Yayınlar"
 		],
-		inactiveBenefits: [
-			"Guest Privileges",
-			"Free parking"
-		],
+		inactiveBenefits: [],
 	}
 ];
 
@@ -58,25 +60,27 @@ export default function PricingOne() {
 				<div className="row justify-content-center">
 					<div className="col-lg-6">
 						<div className="tp-section-5 text-center mb-65">
-							<h5 className="tp-section-5-subtitle mb-10">Pricing plan</h5>
-							<h3 className="tp-section-5-title">Membership Plans</h3>
-							<p>We keep it simple. No catch. Just outrageously good prices</p>
+							<h5 className="tp-section-5-subtitle mb-10">Abonelik Planları</h5>
+							<h3 className="tp-section-5-title">Size Uygun Paketi Seçin</h3>
+							<p>Karmaşıklıktan uzak, şeffaf fiyatlandırma ile profesyonel analizlere hemen ulaşın.</p>
 						</div>
 					</div>
 				</div>
 				<div className="row">
 					{pricingPlans.map(plan => (
 						<div className="col-lg-4 col-md-6" key={plan.id}>
-							<div className={`tp-pricing-5-item ${plan.title === "Gold Membership" ? "active" : ""} mb-40 wow fadeInUp`} data-wow-delay={`.${plan.id}s`}>
+							<div
+								className={`tp-pricing-5-item ${plan.title === "Altın Paket" ? "active" : ""} mb-40 wow fadeInUp`}
+								data-wow-delay={`.${plan.id}s`}
+							>
 								<div className="tp-pricing-5-head">
 									<div className="tp-pricing-5-head-text">
 										<h4 className="tp-pricing-5-head-title">{plan.title}</h4>
 										<span>{plan.validity}</span>
 									</div>
 									<h2 className="tp-pricing-5-price">
-										<span>$</span>{" "}{plan.price}<b>
-											{plan.frequency}</b>
-										</h2>
+										<span>₺</span>{" "}{plan.price}<b>{plan.frequency}</b>
+									</h2>
 								</div>
 								<div className="tp-pricing-5-list">
 									<ul>
@@ -99,7 +103,9 @@ export default function PricingOne() {
 									</ul>
 								</div>
 								<div className="tp-pricing-5-btn">
-									<a className="tp-btn-4" href="#">Join Course Plan</a>
+									<Link className="tp-btn-4" href="/checkout">
+										Hemen Başla
+									</Link>
 								</div>
 							</div>
 						</div>

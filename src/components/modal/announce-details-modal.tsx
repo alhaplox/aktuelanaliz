@@ -5,9 +5,19 @@ import { CloseFourSvg } from "../svg";
 import useGlobalContext from "@/hooks/use-global-context";
 import announce_icon from '@/assets/img/dashboard/icon/announcement-icon.svg';
 
-
 export default function AnnounceDetailsModal() {
-   const { handleAnnounceDetailsModal,showAnnounceDetailsModal } = useGlobalContext();
+   const {
+      handleAnnounceDetailsModal,
+      showAnnounceDetailsModal,
+      announceEditMode: data, // Görüntülenecek veriyi buradan alıyoruz
+      handleAnnounceAddEditModal // Düzenleme moduna geçmek için
+   } = useGlobalContext();
+
+   const handleEditFromDetails = () => {
+      handleAnnounceDetailsModal(); // Detay modalını kapat
+      handleAnnounceAddEditModal(); // Düzenleme modalını aç
+   };
+
    return (
       <>
          <Modal className="tpd-modal" show={showAnnounceDetailsModal} onHide={handleAnnounceDetailsModal} centered={true}>
@@ -15,9 +25,10 @@ export default function AnnounceDetailsModal() {
                <div className="tpd-modal-icon">
                   <span><Image src={announce_icon} alt="icon" /></span>
                </div>
-               <h4 className="tpd-modal-title" id="exampleModalLabel">Design System in Figma</h4>
-               <p>Discover our collection of premium templates</p>
-               <button onClick={handleAnnounceDetailsModal} type="button" className="tpd-modal-btn-close" data-bs-dismiss="modal" aria-label="Close">
+               {/* Veri varsa başlığı yazdırıyoruz yoksa default değer */}
+               <h4 className="tpd-modal-title">{data?.title || 'Duyuru Detayı'}</h4>
+               <p>{data?.category || 'Genel Analiz'}</p>
+               <button onClick={handleAnnounceDetailsModal} type="button" className="tpd-modal-btn-close">
                   <span>
                      <CloseFourSvg />
                   </span>
@@ -25,24 +36,38 @@ export default function AnnounceDetailsModal() {
             </div>
             <div className="modal-body">
                <div className="tpd-modal-content">
-                  <div className="tpd-modal-course">
-                     <span>Course</span>
-                     <h4 className="tpd-modal-course-title"><a href="#">App Development</a></h4>
+                  {/* Duyuru İçeriği / Özeti */}
+                  <div className="tpd-modal-course mb-20">
+                     <span>Analiz Özeti</span>
+                     <p className="mt-10" style={{ color: '#666', fontSize: '14px' }}>
+                        {data?.summary || 'İçerik bulunamadı.'}
+                     </p>
                   </div>
-                  <div className="tpd-modal-info">
-                     <span>Published</span>
-                     <h4 className="tpd-modal-date">September 13, 2023</h4>
-                     <h4 className="tpd-modal-time">10.32am</h4>
+                  <div className="tpd-modal-info d-flex justify-content-between">
+                     <div>
+                        <span>Yayınlanma Tarihi</span>
+                        <h4 className="tpd-modal-date">{data?.date || '24 Nisan 2026'}</h4>
+                     </div>
+                     <div>
+                        <span>Durum</span>
+                        <h4 className="tpd-modal-time" style={{ color: 'var(--tp-theme-1)' }}>Aktif</h4>
+                     </div>
                   </div>
                </div>
             </div>
-            <div className="modal-footer">
+            <div className="modal-footer d-flex justify-content-between">
                <div className="tpd-modal-btn">
-                  <button type="button" className="tpd-btn-cancel" data-bs-dismiss="modal">Cancel</button>
+                  <button onClick={handleAnnounceDetailsModal} type="button" className="tpd-btn-cancel">Kapat</button>
                </div>
                <div className="tpd-modal-btn-wrap">
-                  <button type="button" className="tpd-btn-delete" data-bs-dismiss="modal">Delete</button>
-                  <button type="button" className="tpd-btn-edit ml-10" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Edit</button>
+                  <button type="button" className="tpd-btn-delete">Sil</button>
+                  <button
+                     onClick={handleEditFromDetails}
+                     type="button"
+                     className="tpd-btn-edit ml-10"
+                  >
+                     Düzenle
+                  </button>
                </div>
             </div>
          </Modal>

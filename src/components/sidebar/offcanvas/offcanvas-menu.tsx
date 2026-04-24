@@ -1,57 +1,88 @@
+'use client'
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import menu_data from "@/data/menu-data";
-import { useState } from "react";
-import NavPagesDropdown from "@/components/header/navbar/dropdown/nav-pages-dropdown";
-import NavHomeDropdown from "@/components/header/navbar/dropdown/nav-home-dropdown";
+import { createClient } from "@/utils/supabase/client";
 
+// Dinamik Link Tipleri
+type DynamicItem = { id: string | number; title: string; link: string };
 
 export default function OffcanvasMenu() {
   const [navTitle, setNavTitle] = useState("");
-  //openMobileMenu
-  const openMobileMenu = (menu: string) => {
-    if (navTitle === menu) {
-      setNavTitle("");
-    } else {
-      setNavTitle(menu);
+  const [dynamicCourses, setDynamicCourses] = useState<DynamicItem[]>([]);
+  const [dynamicBlogs, setDynamicBlogs] = useState<DynamicItem[]>([]);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function getNavData() {
+      // Kursları Slug ile çekiyoruz
+      const { data: courses } = await supabase
+        .from("courses")
+        .select("id, title, slug")
+        .limit(8);
+
+      // Blogları UUID ile çekiyoruz
+      const { data: blogs } = await supabase
+        .from("blogs")
+        .select("id, title")
+        .order("created_at", { ascending: false })
+        .limit(8);
+
+      if (courses) {
+        setDynamicCourses(courses.map(c => ({ id: c.id, title: c.title, link: `/course-details/${c.slug}` })));
+      }
+      if (blogs) {
+        setDynamicBlogs(blogs.map(b => ({ id: b.id, title: b.title, link: `/blog-details/${b.id}` })));
+      }
     }
+    getNavData();
+  }, []);
+
+  const openMobileMenu = (menu: string) => {
+    setNavTitle(navTitle === menu ? "" : menu);
   };
+
+  // Aktüel Analiz Dinamik Menü Haritası
+  const nav_menu = [
+    { id: 1, title: "Anasayfa", link: "/" },
+    { id: 2, title: "Analizler", link: "/blog", dynamicData: dynamicBlogs, isMega: true },
+    { id: 3, title: "Eğitimler", link: "/courses", dynamicData: dynamicCourses, isMega: true },
+    {
+      id: 4, title: "Piyasalar", link: "/markets", dropdown_menus: [
+        { id: 41, title: "Altın / Ons", link: "/markets/gold" },
+        { id: 42, title: "BIST 100", link: "/markets/bist" },
+        { id: 43, title: "Brent Petrol", link: "/markets/oil" }
+      ]
+    },
+  ];
+
   return (
     <div className="tp-main-menu-mobile d-xl-none">
       <nav className="tp-main-menu-content">
-
-
         <ul className="dropdown-opened">
-          {menu_data.map((menu) => (
-            <li key={menu.id} className={`has-dropdown ${menu.home_dropdown || menu.pages_dropdown ? "tp-static" : ""} ${navTitle === menu.title ? "dropdown-opened expanded" : ""}`}>
-              <Link href={menu.link} className={`${menu.home_dropdown || menu.pages_dropdown ? "tp-static" : ""}`}>
-                {menu.title} <button onClick={() => openMobileMenu(menu.title)} className={`dropdown-toggle-btn ${navTitle === menu.title ? "dropdown-opened" : ""}`}></button>
-              </Link>
+          {nav_menu.map((menu) => (
+            <li key={menu.id} className={`has-dropdown ${navTitle === menu.title ? "dropdown-opened expanded" : ""}`}>
+              <div className="d-flex align-items-center justify-content-between">
+                <Link href={menu.link}>{menu.title}</Link>
+                {(menu.dynamicData || menu.dropdown_menus) && (
+                  <button
+                    onClick={() => openMobileMenu(menu.title)}
+                    className={`dropdown-toggle-btn ${navTitle === menu.title ? "dropdown-opened" : ""}`}
+                  ></button>
+                )}
+              </div>
 
-              {menu.home_dropdown && (
-                <div className="tp-megamenu-main" style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                  <NavHomeDropdown home_dropdown={menu.home_dropdown} />
-                </div>
-              )}
-
-              {menu.sm_mega_menus && (
+              {/* Dinamik Megamenu Görünümü (Kurslar ve Bloglar İçin) */}
+              {menu.dynamicData && (
                 <div className="tp-megamenu-main" style={{ display: navTitle === menu.title ? "block" : "none" }}>
                   <div className="megamenu-demo-small p-relative">
                     <div className="tp-megamenu-small-content">
-                      <div className="row tp-gx-50">
-                        <div className="col-xl-6">
+                      <div className="row">
+                        <div className="col-12">
                           <div className="tp-megamenu-list">
-                            {menu.sm_mega_menus.slice(0, 4).map((dm) => (
-                              <Link key={dm.id} href={dm.link}>
-                                {dm.title}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="col-xl-6">
-                          <div className="tp-megamenu-list">
-                            {menu.sm_mega_menus.slice(4).map((dm) => (
-                              <Link key={dm.id} href={dm.link}>
-                                {dm.title}
+                            {menu.dynamicData.map((item) => (
+                              <Link key={item.id} href={item.link}>
+                                {item.title}
                               </Link>
                             ))}
                           </div>
@@ -62,12 +93,7 @@ export default function OffcanvasMenu() {
                 </div>
               )}
 
-              {menu.pages_dropdown && (
-                <div className="tp-megamenu-main" style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                  <NavPagesDropdown pages_dropdown={menu.pages_dropdown} />
-                </div>
-              )}
-
+              {/* Klasik Dropdown (Piyasalar vb. İçin) */}
               {menu.dropdown_menus && (
                 <ul className="tp-submenu" style={{ display: navTitle === menu.title ? "block" : "none" }}>
                   {menu.dropdown_menus.map((dm) => (
@@ -82,5 +108,5 @@ export default function OffcanvasMenu() {
         </ul>
       </nav>
     </div>
-  )
+  );
 }

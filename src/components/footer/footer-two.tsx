@@ -18,15 +18,15 @@ export default function FooterTwo() {
                         <div className="tp-footer-widget tp-footer-2-col-1 mb-30">
                            <div className="tp-footer-widget-logo mb-20 tp-header-logo">
                               <Link href="/">
-                                 <Image src={logo} alt="logo" style={{height:"auto"}} />
+                                 <Image src={logo} alt="Aktüel Analiz" style={{ height: "auto" }} />
                               </Link>
                            </div>
                            <div className="tp-footer-widget-content">
-                              <p>Acadia education theme, built specifically for the education centers which is teaching and involve learners.</p>
+                              <p>Aktüel Analiz; finansal piyasalarda bilinçli adımlar atmanız için profesyonel analiz, güncel veri ve kapsamlı eğitimler sunan dijital bir platformdur.</p>
                            </div>
                            <div className="tp-footer-contact">
                               <div className="tp-footer-btn">
-                                 <Link className="tp-btn-round" href="/contact">Contact Us
+                                 <Link className="tp-btn-round" href="/contact">Bize Ulaşın
                                     <span>
                                        <RightArrowFour />
                                     </span>
@@ -37,7 +37,7 @@ export default function FooterTwo() {
                      </div>
                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div className="tp-footer-widget tp-footer-2-col-2 mb-30">
-                           <h4 className="tp-footer-widget-title mb-15">About</h4>
+                           <h4 className="tp-footer-widget-title mb-15">Kurumsal</h4>
                            <div className="tp-footer-widget-link">
                               <ul>
                                  {footerLinks.link_one.map((link) => (
@@ -51,7 +51,7 @@ export default function FooterTwo() {
                      </div>
                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div className="tp-footer-widget tp-footer-2-col-3 mb-30">
-                           <h4 className="tp-footer-widget-title mb-15">Quick links</h4>
+                           <h4 className="tp-footer-widget-title mb-15">Hızlı Erişim</h4>
                            <div className="tp-footer-widget-link">
                               <ul>
                                  {footerLinks.link_two.map((link) => (
@@ -65,17 +65,17 @@ export default function FooterTwo() {
                      </div>
                      <div className="col-xl-3 col-lg-4 col-md-6">
                         <div className="p-footer-widget tp-footer-2-col-4 mb-30">
-                           <h4 className="tp-footer-widget-title mb-20">Our Newsletter</h4>
+                           <h4 className="tp-footer-widget-title mb-20">Analiz Bülteni</h4>
                            <div className="tp-footer-contact">
-                              <span>Got Questions? Call us</span>
-                              <a href="tel:012345678">+670 413 90 762</a>
+                              <span>Sorunuz mu var?</span>
+                              <a href="tel:08500000000">0850 000 00 00</a>
                            </div>
                            <div className="tp-footer-contact-mail mb-20">
-                              <a href="mailto:acadia@gmail.com">
+                              <a href="mailto:info@aktuelanaliz.com">
                                  <span>
                                     <Email />
                                  </span>
-                                 acadia@gmail.com</a>
+                                 info@aktuelanaliz.com</a>
                            </div>
                            <div className="tp-footer-app">
                               <a href="#">
@@ -100,7 +100,7 @@ export default function FooterTwo() {
                      </div>
                      <div className="col-lg-6 col-md-5">
                         <div className="tp-footer-copyright text-start text-md-center">
-                           <span>© {new Date().getFullYear()} <a href="#">Acadia</a>. All rights reserved.</span>
+                           <span>© {new Date().getFullYear()} <a href="#">Aktüel Analiz</a>. Tüm hakları saklıdır.</span>
                         </div>
                      </div>
                      <div className="col-lg-3 col-md-3">
@@ -108,15 +108,13 @@ export default function FooterTwo() {
                            <ul>
                               <li>
                                  <a id="header-bottom__lang-toggle" href="#">
-                                    <span>EN</span>
+                                    <span>TR</span>
                                     <span>
                                        <DownArrowTwo />
                                     </span>
                                  </a>
                                  <ul className="header-bottom__lang-submenu-2">
-                                    <li><a href="#">Arabic</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                    <li><a href="#">Mandarin</a></li>
+                                    <li><a href="#">English</a></li>
                                  </ul>
                               </li>
                            </ul>

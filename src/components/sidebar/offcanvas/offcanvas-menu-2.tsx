@@ -1,100 +1,119 @@
+'use client'
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useState } from "react";
-import { menu_data_2 } from "@/data/menu-data";
-import NavAcademicDropdown from "@/components/header/navbar/dropdown/nav-academic-dropdown";
-import NavPagesDropdown from "@/components/header/navbar/dropdown/nav-pages-dropdown";
-import NavCourseDropdown from "@/components/header/navbar/dropdown/nav-course-dropdown";
-import NavHomeDropdown from "@/components/header/navbar/dropdown/nav-home-dropdown";
+import { createClient } from "@/utils/supabase/client";
 
+// Tip tanımlamaları
+type MenuLink = { id: string | number; title: string; link: string };
+type SubMenu = { id: string | number; title: string; dropdown_menus: MenuLink[] };
 
 export default function OffcanvasMenuTwo() {
-   const [subMenu, setSubMenu] = useState("");
    const [navTitle, setNavTitle] = useState("");
-   //openMobileMenu
-   const openMobileMenu = (menu: string) => {
-      if (navTitle === menu) {
-         setNavTitle("");
-      } else {
-         setNavTitle(menu);
+   const [subMenu, setSubMenu] = useState("");
+   const [dynamicCourses, setDynamicCourses] = useState<MenuLink[]>([]);
+   const [dynamicBlogs, setDynamicBlogs] = useState<MenuLink[]>([]);
+
+   const supabase = createClient();
+
+   useEffect(() => {
+      async function fetchMenuData() {
+         // 1. Kursları slug ile çek
+         const { data: courses } = await supabase
+            .from("courses")
+            .select("id, title, slug")
+            .limit(5);
+
+         // 2. Son analizleri uuid ile çek
+         const { data: blogs } = await supabase
+            .from("blogs")
+            .select("id, title")
+            .order("created_at", { ascending: false })
+            .limit(5);
+
+         if (courses) {
+            setDynamicCourses(courses.map(c => ({ id: c.id, title: c.title, link: `/course-details/${c.slug}` })));
+         }
+         if (blogs) {
+            setDynamicBlogs(blogs.map(b => ({ id: b.id, title: b.title, link: `/blog-details/${b.id}` })));
+         }
       }
+      fetchMenuData();
+   }, []);
+
+   const openMobileMenu = (menu: string) => {
+      setNavTitle(navTitle === menu ? "" : menu);
       setSubMenu("");
    };
-   // openSubMobileMenu
+
    const openSubMobileMenu = (s_menu: string) => {
-      if (subMenu === s_menu) {
-         setSubMenu("");
-      } else {
-         setSubMenu(s_menu);
-      }
+      setSubMenu(subMenu === s_menu ? "" : s_menu);
    };
+
+   // Aktüel Analiz Menü Yapısı
+   const main_menu = [
+      { id: 1, title: "Anasayfa", link: "/" },
+      { id: 2, title: "Analizler", link: "/blog", dropdown: dynamicBlogs },
+      { id: 3, title: "Eğitimler", link: "/courses", dropdown: dynamicCourses },
+      {
+         id: 4, title: "Piyasalar", link: "/markets", sub_dropdown: [
+            { id: 41, title: "Döviz & Altın", dropdown_menus: [{ id: 1, title: "XAUUSD", link: "/markets/gold" }] },
+            { id: 42, title: "Borsa İstanbul", dropdown_menus: [{ id: 1, title: "BIST100", link: "/markets/bist" }] }
+         ]
+      },
+   ];
+
    return (
-      <>
-         <div className="tp-main-menu-mobile d-xl-none">
-            <nav className="tp-main-menu-content">
-               <ul className="dropdown-opened">
-                  {menu_data_2.map((menu) => (
-                     <li key={menu.id} className={`has-dropdown ${menu.home_dropdown || menu.academic_dropdown || menu.course_dropdown || menu.pages_dropdown ? "tp-static" : ""} ${navTitle === menu.title ? "dropdown-opened expanded" : ""}`}>
-                        <Link href={menu.link} className={`${menu.home_dropdown || menu.pages_dropdown ? "tp-static" : ""}`}>
-                           {menu.title} <button onClick={() => openMobileMenu(menu.title)} className={`dropdown-toggle-btn ${navTitle === menu.title ? "dropdown-opened" : ""}`}></button>
-                        </Link>
-
-                        {menu.home_dropdown && (
-                           <div className="tp-megamenu-main" style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                              <NavHomeDropdown home_dropdown={menu.home_dropdown} />
-                           </div>
+      <div className="tp-main-menu-mobile d-xl-none">
+         <nav className="tp-main-menu-content">
+            <ul className="dropdown-opened">
+               {main_menu.map((menu) => (
+                  <li key={menu.id} className={`has-dropdown ${navTitle === menu.title ? "dropdown-opened expanded" : ""}`}>
+                     <div className="d-flex align-items-center justify-content-between">
+                        <Link href={menu.link}>{menu.title}</Link>
+                        {(menu.dropdown || menu.sub_dropdown) && (
+                           <button
+                              onClick={() => openMobileMenu(menu.title)}
+                              className={`dropdown-toggle-btn ${navTitle === menu.title ? "dropdown-opened" : ""}`}
+                           ></button>
                         )}
+                     </div>
 
-                        {menu.academic_dropdown && (
-                           <div className="tp-megamenu-main" style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                              <NavAcademicDropdown academic_dropdown={menu.academic_dropdown} />
-                           </div>
-                        )}
+                     {/* Blog & Kurs Dropdown (Dinamik) */}
+                     {menu.dropdown && (
+                        <ul className="tp-submenu" style={{ display: navTitle === menu.title ? "block" : "none" }}>
+                           {menu.dropdown.map((dm) => (
+                              <li key={dm.id}>
+                                 <Link href={dm.link}>{dm.title}</Link>
+                              </li>
+                           ))}
+                        </ul>
+                     )}
 
-                        {menu.course_dropdown && (
-                           <div className="tp-megamenu-main tp-megamenu-courses" style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                              <NavCourseDropdown course_dropdown={menu.course_dropdown} />
-                           </div>
-                        )}
-
-                        {menu.dashboard_dropdown && (
-                           <ul className={`tp-submenu ${navTitle === menu.title ? "dropdown-opened" : ""}`} style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                              {menu.dashboard_dropdown.map((dpm) => (
-                                 <li key={dpm.id} className={`has-dropdown ${dpm.title === subMenu ? "dropdown-opened expanded" : ""}`}>
-                                    <Link href={dpm.link}>
-                                      {dpm.title} <button onClick={() => openSubMobileMenu(dpm.title)} className={`dropdown-toggle-btn ${subMenu === dpm.title ? "dropdown-opened" : ""}`}></button>
-                                    </Link>
-                                    <ul className="tp-submenu" style={{ display: subMenu === dpm.title ? "block" : "none" }}>
-                                       {dpm.dropdown_menus.map((dm) => (
-                                          <li key={dm.id}>
-                                             <Link href={dm.link}>{dm.title}</Link>
-                                          </li>
-                                       ))}
-                                    </ul>
-                                 </li>
-                              ))}
-                           </ul>
-                        )}
-
-                        {menu.pages_dropdown && (
-                           <div className="tp-megamenu-main" style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                              <NavPagesDropdown pages_dropdown={menu.pages_dropdown} />
-                           </div>
-                        )}
-
-                        {menu.dropdown_menus && (
-                           <ul className="tp-submenu" style={{ display: navTitle === menu.title ? "block" : "none" }}>
-                              {menu.dropdown_menus.map((dm) => (
-                                 <li key={dm.id}>
-                                    <Link href={dm.link}>{dm.title}</Link>
-                                 </li>
-                              ))}
-                           </ul>
-                        )}
-                     </li>
-                  ))}
-               </ul>
-            </nav>
-         </div>
-      </>
-   )
+                     {/* Çoklu Kategori (Piyasalar vb.) */}
+                     {menu.sub_dropdown && (
+                        <ul className="tp-submenu" style={{ display: navTitle === menu.title ? "block" : "none" }}>
+                           {menu.sub_dropdown.map((sub) => (
+                              <li key={sub.id} className={`has-dropdown ${subMenu === sub.title ? "dropdown-opened expanded" : ""}`}>
+                                 <div className="d-flex align-items-center justify-content-between">
+                                    <Link href="#">{sub.title}</Link>
+                                    <button
+                                       onClick={() => openSubMobileMenu(sub.title)}
+                                       className={`dropdown-toggle-btn ${subMenu === sub.title ? "dropdown-opened" : ""}`}
+                                    ></button>
+                                 </div>
+                                 <ul className="tp-submenu" style={{ display: subMenu === sub.title ? "block" : "none" }}>
+                                    {sub.dropdown_menus.map((dm) => (
+                                       <li key={dm.id}><Link href={dm.link}>{dm.title}</Link></li>
+                                    ))}
+                                 </ul>
+                              </li>
+                           ))}
+                        </ul>
+                     )}
+                  </li>
+               ))}
+            </ul>
+         </nav>
+      </div>
+   );
 }

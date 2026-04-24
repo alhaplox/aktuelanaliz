@@ -5,18 +5,24 @@ import CartMiniSidebar from "@/components/sidebar/cart-sidebar";
 import { createPortal } from "react-dom";
 
 type IProps = {
-   icon?:React.ReactNode;
+   icon?: React.ReactNode;
 }
-export default function CartButton({icon=<Cart />}: IProps) {
+
+export default function CartButton({ icon = <Cart /> }: IProps) {
    const [isCartOpen, setIsCartOpen] = useState(false);
-   const [mounted, setMounted] = useState(false); // Add state to track mounting
+   const [mounted, setMounted] = useState(false);
+   const [cartCount, setCartCount] = useState(0); // Dinamik sayı takibi
    const modalRef = useRef<HTMLElement | null>(null);
 
    useEffect(() => {
+      setMounted(true);
       if (typeof window !== "undefined") {
          modalRef.current = document.getElementById("cart-mini-sidebar");
-         setMounted(true); // Set mounted to true when the modal ref is assigned
       }
+
+      // Örnek: Sepetteki ürün sayısını localstorage veya context'ten çekebilirsin
+      // Şimdilik Aktüel Analiz için 1 adet analiz paketi varsayalım
+      setCartCount(1);
    }, []);
 
    const handleCartMiniToggle = () => {
@@ -25,18 +31,25 @@ export default function CartButton({icon=<Cart />}: IProps) {
 
    return (
       <>
-         <button onClick={handleCartMiniToggle} className="cartmini-open-btn">
+         <button
+            onClick={handleCartMiniToggle}
+            className="cartmini-open-btn p-relative"
+            title="Analiz Paketlerim"
+         >
             <span>
                {icon}
             </span>
-            <i>1</i>
+            {cartCount > 0 && (
+               <i className="cart-count-badge">{cartCount}</i>
+            )}
          </button>
 
-         {/* Only create the portal if modalRef.current is available and mounted is true */}
+         {/* Portal Hatası Önleyici Yapı */}
          {mounted && modalRef.current && createPortal(
-            <React.Fragment>
-               <CartMiniSidebar openSidebar={isCartOpen} onShowSidebar={handleCartMiniToggle} />
-            </React.Fragment>,
+            <CartMiniSidebar
+               openSidebar={isCartOpen}
+               onShowSidebar={handleCartMiniToggle}
+            />,
             modalRef.current
          )}
       </>
