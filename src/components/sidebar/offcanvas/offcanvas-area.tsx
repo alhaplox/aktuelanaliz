@@ -20,6 +20,7 @@ type IProps = {
    openOffCanvas: boolean;
    onHandleOffCanvas: () => void;
    offcanvas_cls?: string;
+   offcanvas_menu_2?: boolean;
 }
 
 export default function OffcanvasArea({ openOffCanvas, onHandleOffCanvas, offcanvas_cls }: IProps) {

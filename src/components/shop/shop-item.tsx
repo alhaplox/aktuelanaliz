@@ -8,10 +8,11 @@ type IShopItem = {
   id: string | number;
   title: string;
   price: number;
-  thumbnail: string;
+  thumbnail?: string;
   category: string;
   slug?: string;
   tag?: string;
+
   type?: 'blog' | 'course' | 'membership'; // Hangi tabloya gideceğimizi belirler
 };
 

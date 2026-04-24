@@ -48,7 +48,7 @@ export default function BlogStoriesBanner() {
             <div className="tp-blog-stories-banner-wrap p-relative">
               <div className="tp-blog-stories-banner-thumb p-relative">
                 <Image
-                  src={featuredBanner}
+                  src={featured_banner}
                   alt="Öne Çıkan Piyasa Analizi"
                   width={1200}
                   height={600}

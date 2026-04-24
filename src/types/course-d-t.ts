@@ -6,6 +6,10 @@ export type ICourseDT = {
   thumbnail: string;
   category: string;
   price: number;
+  old_price?: number;
+  lectures_count: number;
+  duration: number;
+  level: number;
   avg_rating: number;
   discount: number;
   lessons: number;
@@ -15,4 +19,8 @@ export type ICourseDT = {
   progress?: number;
   course_: string;
   created_at?: string;
+  instructor_name?: string;
+  rating?: string;
+  slug: string;
+  description?: string;
 };

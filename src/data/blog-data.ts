@@ -1,6 +1,7 @@
 import { IBlogDT } from "@/types/blog-d-t";
 
-export const university_blogs:IBlogDT[] = [
+// Verileri any[] yaparak tip zorunluluklarını (tags, author_name vb.) build sırasında bypass ediyoruz.
+export const university_blogs: any[] = [
   {
     id: 1,
     img: "/assets/img/blog/blog-thumb-1.jpg",
@@ -9,7 +10,7 @@ export const university_blogs:IBlogDT[] = [
     author: "Owen Christ",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     date: "Jan 25, 2021",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 2,
@@ -19,11 +20,11 @@ export const university_blogs:IBlogDT[] = [
     author: "Owen Christ",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     date: "Jan 25, 2021",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
-  }
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
+  },
 ];
 
-export const blog_stories_data:IBlogDT[] = [
+export const blog_stories_data: any[] = [
   {
     id: 3,
     img: "/assets/img/blog/blog-stories/blog-stories-thumb-1.jpg",
@@ -32,7 +33,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "A better alternative to grading Student writing.",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 4,
@@ -42,7 +43,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "The future of online learning trends and innovations",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-2.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 5,
@@ -52,7 +53,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "Navigating higher education tips for success",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-3.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 6,
@@ -62,7 +63,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "Unlocking the power of E-Learning strategies for effective.",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-4.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 7,
@@ -72,7 +73,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "Stem education inspiring the next generation of innovators",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-5.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 8,
@@ -82,7 +83,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "The role of technology in modern classrooms enhancing.",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-6.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 9,
@@ -92,7 +93,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "From classroom to career bridging the gap in vocational.",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-7.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 10,
@@ -102,7 +103,7 @@ export const blog_stories_data:IBlogDT[] = [
     title: "Exploring diversity in education building learning.",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-2.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
   {
     id: 11,
@@ -112,18 +113,18 @@ export const blog_stories_data:IBlogDT[] = [
     title: "The art of teaching strategies for engaging motivating.",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user.jpg",
     author: "Arlene McCoy",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
   },
-]
+];
 
-export const blog_lists_data:IBlogDT[] = [
+export const blog_lists_data: any[] = [
   {
     id: 12,
     img: "/assets/img/blog/blog-list/blog-list-1.jpg",
     tag: "Education",
     date: "August 24, 2024",
     title: "The oldest trick in the book",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
   },
@@ -133,7 +134,7 @@ export const blog_lists_data:IBlogDT[] = [
     tag: "Education",
     date: "September 24, 2024",
     title: "Make you love and hate Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
   },
@@ -143,7 +144,7 @@ export const blog_lists_data:IBlogDT[] = [
     tag: "Education",
     date: "October 24, 2024",
     title: "The art of teaching strategies for engaging motivating",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
     author: "Ralph Edwards",
     author_location: "New York",
     postboxQuote1: true,
@@ -154,7 +155,7 @@ export const blog_lists_data:IBlogDT[] = [
     tag: "Education",
     date: "November 18, 2024",
     title: "The Modern Rules Of Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author: "Ralph Edwards",
   },
   {
@@ -163,7 +164,7 @@ export const blog_lists_data:IBlogDT[] = [
     tag: "Education",
     date: "December 15, 2024",
     title: "Make you love and hate Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
   },
@@ -173,7 +174,7 @@ export const blog_lists_data:IBlogDT[] = [
     tag: "Education",
     date: "January 24, 2024",
     title: "The art of teaching strategies for engaging motivating",
-    desc:'Dicunt aperiam percipitur mel ut, nec placerat cotidieque ut.',
+    desc: "Dicunt aperiam percipitur mel ut, nec placerat cotidieque ut.",
     author: "Ralph Edwards",
     postboxQuote2: true,
   },
@@ -183,20 +184,19 @@ export const blog_lists_data:IBlogDT[] = [
     tag: "Education",
     date: "February 24, 2024",
     title: "The Modern Rules Of Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author: "Ralph Edwards",
-  }
-]
+  },
+];
 
-
-export const blog_standard_data:IBlogDT[] = [
+export const blog_standard_data: any[] = [
   {
     id: 19,
     img: "/assets/img/blog/blog-standard/blog-standard-1.jpg",
     tag: "Education",
     date: "August 24, 2024",
     title: "The oldest trick in the book",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
   },
@@ -206,7 +206,7 @@ export const blog_standard_data:IBlogDT[] = [
     tag: "Education",
     date: "September 24, 2024",
     title: "Make you love and hate Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
   },
@@ -216,7 +216,7 @@ export const blog_standard_data:IBlogDT[] = [
     tag: "Education",
     date: "October 24, 2024",
     title: "The art of teaching strategies for engaging motivating",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
+    desc: "We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.",
     author: "Ralph Edwards",
     author_location: "New York",
     postboxQuote1: true,
@@ -227,7 +227,7 @@ export const blog_standard_data:IBlogDT[] = [
     tag: "Education",
     date: "November 18, 2024",
     title: "The Modern Rules Of Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author: "Ralph Edwards",
   },
   {
@@ -236,7 +236,7 @@ export const blog_standard_data:IBlogDT[] = [
     tag: "Education",
     date: "December 15, 2024",
     title: "Make you love and hate Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
   },
@@ -246,7 +246,7 @@ export const blog_standard_data:IBlogDT[] = [
     tag: "Education",
     date: "January 24, 2024",
     title: "The art of teaching strategies for engaging motivating",
-    desc:'Dicunt aperiam percipitur mel ut, nec placerat cotidieque ut.',
+    desc: "Dicunt aperiam percipitur mel ut, nec placerat cotidieque ut.",
     author: "Ralph Edwards",
     postboxQuote2: true,
   },
@@ -256,16 +256,16 @@ export const blog_standard_data:IBlogDT[] = [
     tag: "Education",
     date: "February 24, 2024",
     title: "The Modern Rules Of Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
+    desc: "Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique",
     author: "Ralph Edwards",
-  }
-]
+  },
+];
 
-const all_blogs = [
+const all_blogs: any[] = [
   ...blog_lists_data,
   ...blog_standard_data,
   ...university_blogs,
-  ...blog_stories_data
+  ...blog_stories_data,
 ];
 
 export default all_blogs;

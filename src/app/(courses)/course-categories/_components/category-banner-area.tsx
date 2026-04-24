@@ -1,3 +1,4 @@
+'use client'; //
 import Image from 'next/image';
 import shape_1 from '@/assets/img/course/course-categories/shape-1.png';
 import shape_2 from '@/assets/img/course/course-categories/shape-2.png';

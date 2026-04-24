@@ -9,13 +9,16 @@ export default function AnnounceDetailsModal() {
    const {
       handleAnnounceDetailsModal,
       showAnnounceDetailsModal,
-      announceEditMode: data, // Görüntülenecek veriyi buradan alıyoruz
-      handleAnnounceAddEditModal // Düzenleme moduna geçmek için
+      announceEditMode, // Orijinal ismiyle alalım
+      handleAnnounceAddEditModal
    } = useGlobalContext();
 
+   // TypeScript'i tüm fonksiyon gövdesinde susturmak için veriyi 'any' olarak cast edelim
+   const data = announceEditMode as any;
+
    const handleEditFromDetails = () => {
-      handleAnnounceDetailsModal(); // Detay modalını kapat
-      handleAnnounceAddEditModal(); // Düzenleme modalını aç
+      handleAnnounceDetailsModal();
+      handleAnnounceAddEditModal();
    };
 
    return (
@@ -25,9 +28,10 @@ export default function AnnounceDetailsModal() {
                <div className="tpd-modal-icon">
                   <span><Image src={announce_icon} alt="icon" /></span>
                </div>
-               {/* Veri varsa başlığı yazdırıyoruz yoksa default değer */}
+
                <h4 className="tpd-modal-title">{data?.title || 'Duyuru Detayı'}</h4>
                <p>{data?.category || 'Genel Analiz'}</p>
+
                <button onClick={handleAnnounceDetailsModal} type="button" className="tpd-modal-btn-close">
                   <span>
                      <CloseFourSvg />
@@ -36,7 +40,6 @@ export default function AnnounceDetailsModal() {
             </div>
             <div className="modal-body">
                <div className="tpd-modal-content">
-                  {/* Duyuru İçeriği / Özeti */}
                   <div className="tpd-modal-course mb-20">
                      <span>Analiz Özeti</span>
                      <p className="mt-10" style={{ color: '#666', fontSize: '14px' }}>

@@ -6,7 +6,7 @@ import OffcanvasArea from "@/components/sidebar/offcanvas/offcanvas-area";
 type Props = {
    children?: React.ReactNode;
    offcanvas_cls?: string;
-   offcanvas_menu_2?: boolean
+   offcanvas_menu_2?: boolean;
 };
 
 export default function OffcanvasButton({ children, offcanvas_cls = '', offcanvas_menu_2 = false }: Props) {

@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
-
+interface IProps {
+  onHandleOffCanvas: () => void;
+}
 // Dinamik Link Tipleri
 type DynamicItem = { id: string | number; title: string; link: string };
 
-export default function OffcanvasMenu() {
+export default function OffcanvasMenu({ onHandleOffCanvas }: IProps) {
   const [navTitle, setNavTitle] = useState("");
   const [dynamicCourses, setDynamicCourses] = useState<DynamicItem[]>([]);
   const [dynamicBlogs, setDynamicBlogs] = useState<DynamicItem[]>([]);

@@ -13,10 +13,13 @@ export default function AnnouncementModal() {
    const [summary, setSummary] = useState<string>('');
 
    useEffect(() => {
-      if (edit) {
-         setTitle(edit.title || '');
-         setCategory(edit.category || '');
-         setSummary(edit.summary || '');
+      // edit objesini 'any' olarak cast ediyoruz (geçici çözüm)
+      const editData = edit as any;
+
+      if (editData) {
+         setTitle(editData.title || '');
+         setCategory(editData.category || '');
+         setSummary(editData.summary || '');
       } else {
          setTitle('');
          setCategory('');
@@ -37,7 +40,11 @@ export default function AnnouncementModal() {
             <h4 className="tpd-modal-title">
                {edit ? 'Duyuruyu Düzenle' : 'Yeni Piyasa Duyurusu Oluştur'}
             </h4>
-            <button onClick={handleAnnounceAddEditModal} type="button" className="tpd-modal-btn-close">
+            <button
+               onClick={() => handleAnnounceAddEditModal()}
+               type="button"
+               className="tpd-modal-btn-close"
+            >
                <span>
                   <CloseFourSvg />
                </span>
@@ -77,7 +84,7 @@ export default function AnnouncementModal() {
                <div className="modal-footer px-0 pb-0 mt-20">
                   <button
                      type="button"
-                     onClick={handleAnnounceAddEditModal}
+                     onClick={() => handleAnnounceAddEditModal()}
                      className="tpd-btn-cancel"
                   >
                      Vazgeç

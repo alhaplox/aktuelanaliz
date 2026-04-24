@@ -11,7 +11,7 @@ type IProps = {
 };
 
 export default function DashboardCourseItemThree({ course }: IProps) {
-    const { id, title, discount, thumbnail, total_rating, lessons, students, price } = course || {};
+    const { id, title, old_price, thumbnail, total_rating, lessons, students, price } = course || {};
 
     return (
         <div className="tp-dashboard-course tp-dashboard-course-2 mb-25">
@@ -57,7 +57,7 @@ export default function DashboardCourseItemThree({ course }: IProps) {
                 {/* Fiyat ve Yönetim Araçları */}
                 <div className="tp-dashboard-btn d-flex align-items-center justify-content-between">
                     <div className="tp-course-pricing text-start">
-                        <CoursePrice discount={discount} price={price} />
+                        <CoursePrice price={price} oldPrice={old_price} />
                     </div>
 
                     <div className="tp-course-action d-flex align-items-center">

@@ -15,7 +15,7 @@ export default function BlogStoriesItem({ blog }: IProps) {
       </div>
       <div className="tp-blog-stories-content">
         <div className="tp-blog-stories-tag-wrap d-flex">
-          <a href="#">{blog.tag}</a>
+          <a href="#">{blog.tags}</a>
           <span>{blog.date}</span>
         </div>
         <h4 className="tp-blog-stories-title">

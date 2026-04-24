@@ -13,7 +13,7 @@ export default function ShopGridArea() {
    const { currentItems, handlePageClick, pageCount } = usePagination([...bookData], 9);
    function handleSortBy(item: { value: string; label: string }) {
       console.log(item);
-    }
+   }
    return (
       <section className="tp-shop-grid-area pt-100">
          <div className="container">
@@ -78,17 +78,7 @@ export default function ShopGridArea() {
 
                         </div>
                      </div>
-                     <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div className="row">
-                           <div className="col-lg-12">
 
-                              {currentItems.map((book) => (
-                                 <ShopListItem key={book.id} item={book} />
-                              ))}
-
-                           </div>
-                        </div>
-                     </div>
                   </div>
 
                </div>

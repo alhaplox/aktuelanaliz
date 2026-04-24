@@ -2,6 +2,7 @@ export type IBlogDT = {
   id: number;
   img: string;
   tags: string[];
+  tag: string;
   title: string;
   author: string;
   author_name: string;
