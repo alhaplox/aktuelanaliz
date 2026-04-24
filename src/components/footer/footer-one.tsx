@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Email } from "../svg";
 import FooterSocial from "./footer-social";
 import logo from "@/assets/img/logo/logo-red.png";
-import logo_black from "@/assets/img/logo/logo-black-2.png";
+import logo_black from "@/assets/img/logo/logo-black.png";
 import { footerLinks } from "@/data/footer-links";
 
 // prop type 
