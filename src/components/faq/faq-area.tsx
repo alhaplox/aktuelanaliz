@@ -1,208 +1,114 @@
+'use client';
+import React, { useState } from "react";
 import Link from "next/link";
 import { SearchSvgTwo } from "../svg";
 import FaqItem from "./faq-item";
 
-// navData.js
-export const navItems = [
-  { id: "home", label: "Student", active: true },
-  { id: "profile", label: "Instructor", active: false },
-];
-
-const tabContentData = [
-  {
-    id: "home",
-    label: "home-tab",
-    title: "Home",
+// Veri yapısını tek bir yerde toplamak yönetimi kolaylaştırır
+const FAQ_DATA = {
+  student: {
+    label: "Öğrenci",
     topics: [
-      { id: 1, text: "Account/Profile (1)", href: "/my-profile" },
-      { id: 2, text: "Course Taking (2)", href: "/course-with-filter" },
-      { id: 3, text: "Getting Started (1)", href: "#" },
-      { id: 4, text: "Mobile (1)", href: "#" },
-      { id: 5, text: "Purchase/Refunds (3)", href: "#" },
-      { id: 6, text: "Troubleshooting (2)", href: "#" },
+      { id: 1, text: "Hesap ve Profil", href: "/my-profile" },
+      { id: 2, text: "Eğitim Süreci", href: "/course-with-filter" },
+      { id: 3, text: "Ödeme ve İadeler", href: "#" },
+      { id: 4, text: "Teknik Sorunlar", href: "#" },
     ],
     faqs: [
-      {
-        id: 1,
-        question: "What is Emeritus Education System?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 2,
-        active: true,
-        question: "Can I get a refund for my Premium Membership payment?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 3,
-        question: "How does the Affiliate Program work?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 4,
-        question: "What is included in Standard membership plan?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 5,
-        question: "How to choose the right class for me?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-    ],
+      { id: 1, question: "Aktüel Analiz eğitimlerine nasıl katılabilirim?", answer: "Eğitimlerimize katılmak için üye girişi yaptıktan sonra dilediğiniz eğitimi seçip kayıt olabilirsiniz." },
+      { id: 2, question: "İade politikası nasıl çalışıyor?", answer: "Eğitim içeriklerine erişim sağlanmadığı sürece 14 gün içinde iade talebinde bulunabilirsiniz." },
+    ]
   },
-  {
-    id: "profile",
-    label: "profile-tab",
-    title: "Profile",
+  instructor: {
+    label: "Eğitmen",
     topics: [
-      { id: 1, text: "Account/Profile (1)", href: "#" },
-      { id: 2, text: "Course Taking (2)", href: "#" },
-      { id: 3, text: "Getting Started (1)", href: "#" },
-      { id: 4, text: "Mobile (1)", href: "#" },
-      { id: 5, text: "Purchase/Refunds (3)", href: "#" },
-      { id: 6, text: "Troubleshooting (2)", href: "#" },
+      { id: 1, text: "Eğitmen Paneli", href: "#" },
+      { id: 2, text: "İçerik Yükleme", href: "#" },
+      { id: 3, text: "Kazanç Raporları", href: "#" },
     ],
     faqs: [
-      {
-        id: 6,
-        question: "What is Emeritus Education System?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 7,
-        active: true,
-        question: "Can I get a refund for my Premium Membership payment?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 8,
-        question: "How does the Affiliate Program work?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 9,
-        question: "What is included in Standard membership plan?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 10,
-        question: "How to choose the right class for me?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-    ],
-  },
-];
+      { id: 3, question: "Nasıl eğitmen olabilirim?", answer: "Eğitmen başvuru formunu doldurarak uzmanlık alanlarınızı bize iletebilirsiniz." },
+      { id: 4, question: "Ödemeler ne zaman yapılıyor?", answer: "Eğitmen kazançları her ayın ilk haftası tanımlanan hesaplara yatırılmaktadır." },
+    ]
+  }
+};
 
 export default function FaqArea() {
+  // Aktif tabı state ile yönetiyoruz (Bootstrap bağımlılığını azaltır)
+  const [activeTab, setActiveTab] = useState<"student" | "instructor">("student");
+
   return (
     <section className="tp-faq-area tp-faq-p pt-50 pb-120">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
             <div className="tp-instructor-become-tab">
-              <ul
-                className="nav nav-tabs justify-content-center"
-                id="myTab"
-                role="tablist"
-              >
-                {navItems.map((item) => (
-                  <li key={item.id} className="nav-item" role="presentation">
+              {/* Tab Navigasyon */}
+              <ul className="nav nav-tabs justify-content-center" role="tablist">
+                {(Object.keys(FAQ_DATA) as Array<keyof typeof FAQ_DATA>).map((key) => (
+                  <li key={key} className="nav-item">
                     <button
-                      className={`nav-link ${item.active ? "active" : ""}`}
-                      id={`${item.id}-tab`}
-                      data-bs-toggle="tab"
-                      data-bs-target={`#${item.id}`}
+                      className={`nav-link ${activeTab === key ? "active" : ""}`}
+                      onClick={() => setActiveTab(key)}
                       type="button"
-                      role="tab"
-                      aria-controls={item.id}
-                      aria-selected={item.active}
-                      tabIndex={item.active ? 0 : -1}
                     >
-                      {item.label}
+                      {FAQ_DATA[key].label}
                     </button>
                   </li>
                 ))}
               </ul>
 
-              <div className="tab-content" id="myTabContent">
-                {tabContentData.map((tab) => (
-                  <div
-                    key={tab.id}
-                    className={`tab-pane fade ${
-                      tab.id === "home" ? "show active" : ""
-                    }`}
-                    id={tab.id}
-                    role="tabpanel"
-                    aria-labelledby={tab.label}
-                  >
-                    <div className="row">
-                      <div className="col-lg-4">
-                        <div className="tp-faq-wrap">
-                          <div className="tp-faq-search">
-                            <div className="tp-header-2-search">
-                              <form action="#">
-                                <input type="text" placeholder="Search..." />
-                                <button
-                                  className="tp-header-2-search-btn"
-                                  type="submit"
-                                >
-                                  <span>
-                                    <SearchSvgTwo />
-                                  </span>
-                                </button>
-                              </form>
-                            </div>
+              {/* Tab İçeriği */}
+              <div className="tab-content mt-40">
+                <div className="tab-pane show active">
+                  <div className="row">
+                    {/* Sol Kenar Çubuğu */}
+                    <div className="col-lg-4">
+                      <div className="tp-faq-wrap">
+                        <div className="tp-faq-search mb-30">
+                          <div className="tp-header-2-search">
+                            <form action="#" onSubmit={(e) => e.preventDefault()}>
+                              <input type="text" placeholder="Soru ara..." />
+                              <button className="tp-header-2-search-btn" type="submit">
+                                <span><SearchSvgTwo /></span>
+                              </button>
+                            </form>
                           </div>
-                          <div className="tp-faq-sidebar">
-                            <h4 className="tp-faq-sidebar-title">
-                              Related Topics
-                            </h4>
-                            <ul>
-                              {tab.topics.map((topic) => (
-                                <li key={topic.id}>
-                                  <Link href={topic.href}>{topic.text}</Link>
-                                </li>
-                              ))}
-                            </ul>
-                            <div className="tp-faq-sidebar-btn">
-                              <Link
-                                className="tp-btn-inner w-100 text-center"
-                                href="/contact"
-                              >
-                                Contact Us
-                              </Link>
-                            </div>
+                        </div>
+                        <div className="tp-faq-sidebar">
+                          <h4 className="tp-faq-sidebar-title">İlgili Konular</h4>
+                          <ul>
+                            {FAQ_DATA[activeTab].topics.map((topic) => (
+                              <li key={topic.id}>
+                                <Link href={topic.href}>{topic.text}</Link>
+                              </li>
+                            ))}
+                          </ul>
+                          <div className="tp-faq-sidebar-btn mt-30">
+                            <Link className="tp-btn-inner w-100 text-center" href="/contact">
+                              Bize Ulaşın
+                            </Link>
                           </div>
                         </div>
                       </div>
-                      <div className="col-lg-8">
-                        <div className="tp-faq-box">
-                          <div className="tpd-accordion">
-                            <div
-                              className="accordion accordion-flush"
-                              id={tab.id}
-                            >
-                              {tab.faqs.map((faq) => (
-                                <FaqItem key={faq.id} faq={faq} parentId={tab.id} />
-                              ))}
-                            </div>
+                    </div>
+
+                    {/* Sağ Akordeon Alanı */}
+                    <div className="col-lg-8">
+                      <div className="tp-faq-box">
+                        <div className="tpd-accordion">
+                          <div className="accordion accordion-flush" id="faqAccordion">
+                            {FAQ_DATA[activeTab].faqs.map((faq) => (
+                              <FaqItem key={faq.id} faq={faq} parentId="faqAccordion" />
+                            ))}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
+              {/* Tab İçeriği Bitiş */}
             </div>
           </div>
         </div>

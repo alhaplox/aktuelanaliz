@@ -1,3 +1,4 @@
+'use client'; // Form etkileşimi olduğu için eklendi
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,12 +8,17 @@ import logo from "@/assets/img/logo/logo-red.png";
 import logo_black from "@/assets/img/logo/logo-black.png";
 import { footerLinks } from "@/data/footer-links";
 
-// prop type 
 type IProps = {
   style_2?: boolean
 }
 
 export default function FooterOne({ style_2 = false }: IProps) {
+  // Newsletter gönderimi için basit bir handler (Build hatasını önler)
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Buraya abonelik mantığı eklenebilir
+  };
+
   return (
     <footer>
       <div className={`tp-footer-main ${style_2 ? '' : 'grey-bg'} pt-80 pb-55`}>
@@ -24,33 +30,37 @@ export default function FooterOne({ style_2 = false }: IProps) {
                   <Link href="/">
                     <Image
                       src={style_2 ? logo_black : logo}
-                      alt="logo" priority
-                      style={{ height: "auto" }} />
+                      alt="Aktüel Analiz Logo"
+                      priority
+                      style={{ height: "auto", width: "160px" }} />
                   </Link>
                 </div>
                 <div className="tp-footer-widget-content">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur <br /> adipisc ing
-                    elit.
+                    Finansal piyasalarda derinlemesine analiz, <br />
+                    doğru veri ve uzman görüşleriyle <br />
+                    geleceğinizi şekillendirin.
                   </p>
                 </div>
                 <div className="tp-footer-contact">
-                  <span>Got Questions? Call us</span>
-                  <a href="tel:012345678">+670 413 90 762</a>
+                  <span>Sorularınız mı var? Bize ulaşın:</span>
+                  <a href="tel:08500000000">0850 000 00 00</a>
                 </div>
                 <div className="tp-footer-contact-mail">
-                  <a href="mailto:Aktüel Analiz@gmail.com">
+                  {/* Mail adresindeki boşluk kaldırıldı */}
+                  <a href="mailto:info@aktuelanaliz.com">
                     <span>
                       <Email />
                     </span>
-                    Aktüel Analiz@gmail.com
+                    info@aktuelanaliz.com
                   </a>
                 </div>
               </div>
             </div>
+
             <div className="col-xl-2 col-lg-3 col-sm-6">
               <div className={`tp-footer-widget ${style_2 ? 'tp-footer-5-col-2' : 'tp-footer-col-2'} mb-30`}>
-                <h4 className="tp-footer-widget-title mb-20">About</h4>
+                <h4 className="tp-footer-widget-title mb-20">Kurumsal</h4>
                 <div className="tp-footer-widget-link">
                   <ul>
                     {footerLinks.link_one.map((link) => (
@@ -62,9 +72,10 @@ export default function FooterOne({ style_2 = false }: IProps) {
                 </div>
               </div>
             </div>
+
             <div className="col-xl-2 col-lg-2 col-sm-4">
               <div className={`tp-footer-widget ${style_2 ? 'tp-footer-5-col-3' : 'tp-footer-col-3'} mb-30`}>
-                <h4 className="tp-footer-widget-title mb-20">Quick links</h4>
+                <h4 className="tp-footer-widget-title mb-20">Hızlı Linkler</h4>
                 <div className="tp-footer-widget-link">
                   <ul>
                     {footerLinks.link_two.map((link) => (
@@ -76,43 +87,42 @@ export default function FooterOne({ style_2 = false }: IProps) {
                 </div>
               </div>
             </div>
+
             <div className="col-xl-4 col-lg-4 col-sm-8">
-              <div className={`p-footer-widget ${style_2 ? 'tp-footer-5-col-4' : 'tp-footer-col-4'} mb-30`}>
-                <h4 className="tp-footer-widget-title mb-20">Our Newsletter</h4>
+              <div className={`tp-footer-widget ${style_2 ? 'tp-footer-5-col-4' : 'tp-footer-col-4'} mb-30`}>
+                <h4 className="tp-footer-widget-title mb-20">Bültene Abone Olun</h4>
                 <div className="tp-footer-newsletter-wrap">
                   <p>
-                    Enter your email and we will send you <br /> more
-                    information
+                    Analizler ve önemli piyasa haberleri <br />
+                    anında e-postanıza gelsin.
                   </p>
-                  <form action="#">
+                  <form onSubmit={handleSubscribe}>
                     <div className="tp-footer-newsletter-wrapper mb-30">
                       <div className={`tp-footer-newsletter-input ${style_2 ? 'tp-footer-5-newsletter-input' : ''}`}>
-                        <input type="email" placeholder="Your email" />
+                        <input type="email" placeholder="E-posta adresiniz" required />
                       </div>
                       <div className={`${style_2 ? 'tp-footer-5-newsletter-submit' : 'tp-footer-newsletter-submit'}`}>
-                        <button className={`${style_2 ? 'tp-btn-4' : 'tp-btn'}`}>Subscribe</button>
+                        <button type="submit" className={`${style_2 ? 'tp-btn-4' : 'tp-btn'}`}>Kayıt Ol</button>
                       </div>
                     </div>
                   </form>
-                  {/* footer social */}
                   <div className="tp-footer-newsletter-social">
                     <FooterSocial />
                   </div>
-                  {/* footer social */}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div className={`${style_2 ? 'tp-footer-5-bottom' : 'tp-footer-bottom'}`}>
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="tp-footer-copyright text-center">
                 <span>
-                  © {new Date().getFullYear()} <a href="#">Aktüel Analiz</a>. All
-                  rights reserved.
+                  © {new Date().getFullYear()} <Link href="/">Aktüel Analiz</Link>. Tüm hakları saklıdır.
                 </span>
               </div>
             </div>
