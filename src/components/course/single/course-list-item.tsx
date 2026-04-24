@@ -71,7 +71,13 @@ export default function CourseListItem({ course }: IProps) {
                <div className="tp-course-4-avatar-info d-flex align-items-center">
                   {author_img && (
                      <div className="tp-course-4-avatar-thumb">
-                        <Image src={author_img} alt={instructor_name} width={30} height={30} style={{ borderRadius: '50%' }} />
+                        <Image
+                           src={author_img}
+                           alt={instructor_name || "Eğitmen"} // Eğer isim yoksa "Eğitmen" yaz
+                           width={30}
+                           height={30}
+                           style={{ borderRadius: '50%' }}
+                        />
                      </div>
                   )}
                   <div className="tp-course-4-avatar-text">
