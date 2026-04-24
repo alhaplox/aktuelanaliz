@@ -24,7 +24,9 @@ export async function generateMetadata(props: PageParamsProps): Promise<Metadata
     description: blog?.description || "Aktüel Analiz derinlemesine piyasa incelemesi.",
   };
 }
-
+interface IProps {
+  categoryId: number | string; // Buraya hangi tipi bekliyorsa onu ekle
+}
 export default async function BlogDetailsFullWidthPage(props: PageParamsProps) {
   const resolvedParams = await props.params;
   const { id } = resolvedParams;
