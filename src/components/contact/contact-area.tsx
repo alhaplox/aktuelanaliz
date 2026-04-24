@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
-// Supabase istemcisini başlat
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -39,21 +38,20 @@ export default function ContactArea() {
 
   return (
     <section className="tp-contact-area tp-contact-p fix p-relative pt-150 pb-125">
-      {/* Arka Plan Görseli */}
+      {/* 1. Arka plan ve şablon görselleri (Header altında boşluk bırakır) */}
       <div className="tp-contact-bg" style={{ backgroundImage: "url(/assets/img/live/contact-bg.png)" }}></div>
 
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-10">
+            {/* 2. Beyaz kutu (Formun etrafındaki gölgeli alan) */}
             <div className="tp-contact-wrap p-relative">
               <div className="tp-contact-heading text-center">
                 <h3 className="tp-contact-title">Bize Ulaşın</h3>
-                <p>Her türlü sorunuz için yanınızdayız.</p>
+                <p>Sorularınız için bizimle iletişime geçebilirsiniz.</p>
               </div>
 
               <div className="tp-contact-from-box">
-                <h3 className="tp-contact-from-title">Bir Mesaj Gönder 👍🏻</h3>
-
                 <form onSubmit={handleSubmit} className="tp-contact-form">
                   <div className="row custom-mar-20">
                     <div className="col-md-6">
