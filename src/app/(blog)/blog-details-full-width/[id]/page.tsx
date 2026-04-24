@@ -12,7 +12,7 @@ export async function generateMetadata(props: PageParamsProps): Promise<Metadata
   const resolvedParams = await props.params;
   const { id } = resolvedParams;
 
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: blog } = await supabase
     .from("blogs")
     .select("title, description")
