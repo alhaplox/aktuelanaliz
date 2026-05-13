@@ -68,7 +68,7 @@ export default function FooterTwo() {
                            <h4 className="tp-footer-widget-title mb-20">Analiz Bülteni</h4>
                            <div className="tp-footer-contact">
                               <span>Sorunuz mu var?</span>
-                              <a href="tel:08500000000">0850 000 00 00</a>
+
                            </div>
                            <div className="tp-footer-contact-mail mb-20">
                               <a href="mailto:info@aktuelanaliz.com">

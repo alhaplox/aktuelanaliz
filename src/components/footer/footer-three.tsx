@@ -25,18 +25,15 @@ export default function FooterThree() {
                     </a>
                   </div>
                   <div className="tp-footer-widget-content">
-                    <p>Lorem ipsum dolor sit amet, mea <br /> ei viderer probatus</p>
+                    <p>Aktüel Analiz; finansal piyasalarda bilinçli adımlar atmanız için profesyonel analiz, güncel veri ve kapsamlı eğitimler sunan dijital bir platformdur.</p>
                   </div>
-                  <div className="tp-footer-contact">
-                    <span>Got Questions? Call us</span>
-                    <a href="tel:012345678">+670 413 90 762</a>
-                  </div>
+
                   <div className="tp-footer-contact-mail">
-                    <a href="mailto:Aktüel Analiz@gmail.com">
+                    <a href="mailto:support@aktuelanaliz.com">
                       <span>
                         <Email />
                       </span>
-                      Aktüel Analiz@gmail.com</a>
+                      support@aktuelanaliz.com</a>
                   </div>
                 </div>
               </div>
