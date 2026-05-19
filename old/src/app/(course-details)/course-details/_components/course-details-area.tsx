@@ -1,5 +1,5 @@
 import { ICourseDT } from "@/types/course-d-t";
-import CourseDetailsRightSide from "../_components/course-details-right-side";
+import CourseDetailsRightSide from "./course-details-right-side";
 import CourseDetailsInfo from "@/components/course/details/course-details-info";
 import CourseDetailsCurriculum from "@/components/course/details/course-details-curriculum";
 import CourseDetailsInstructor from "@/components/course/details/course-details-instructor";

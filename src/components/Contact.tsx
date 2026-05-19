@@ -1,7 +1,50 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import IconifyIcon from './wrappers/IconifyIcon'
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
+    type: null,
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus({ type: null, message: '' });
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus({
+          type: 'success',
+          message: 'Başvurunuz başarıyla alındı! En kısa sürede sizinle iletişime geçeceğiz.'
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error('Bir hata oluştu.');
+      }
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Form gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container">
@@ -36,13 +79,11 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-
-
           </div>
 
           <div className="lg:col-span-2 lg:ms-24">
             <div className="p-6 md:p-12 rounded-md shadow-lg bg-white">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -109,7 +150,7 @@ const Contact = () => {
                     />
                   </div>
 
-                  {/* Yeni Alan: Eğitim Modeli Seçimi */}
+                  {/* Eğitim Modeli Seçimi */}
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="formEducationModel"
@@ -147,21 +188,32 @@ const Contact = () => {
                         rows={4}
                         placeholder="Eklemek istediğiniz notlar veya sorularınız..."
                         required
-                        defaultValue={""}
                       />
                     </div>
                   </div>
                 </div>
+
+                {/* Durum Bildirimleri (Success/Error) */}
+                {status.type && (
+                  <div className={`mb-6 p-4 rounded-md text-sm font-medium ${status.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'
+                    }`}>
+                    {status.message}
+                  </div>
+                )}
+
                 <div className="mt-4">
                   <button
                     type="submit"
-                    className="py-2 px-6 rounded-md inline-flex items-center justify-center border border-primary text-white bg-primary hover:bg-primaryDark transition-all duration-500 font-medium gap-2"
+                    disabled={loading}
+                    className="py-2 px-6 rounded-md inline-flex items-center justify-center border border-primary text-white bg-primary hover:bg-primaryDark transition-all duration-500 font-medium gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Başvuruyu Gönder
-                    <IconifyIcon
-                      icon="lucide:send"
-                      className="h-4 w-4"
-                    />
+                    {loading ? 'Gönderiliyor...' : 'Başvuruyu Gönder'}
+                    {!loading && (
+                      <IconifyIcon
+                        icon="lucide:send"
+                        className="h-4 w-4"
+                      />
+                    )}
                   </button>
                 </div>
               </form>

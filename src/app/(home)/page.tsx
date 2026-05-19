@@ -1,53 +1,33 @@
-import { Metadata } from "next";
-import BannerArea from "@/components/banner/banner-area";
-import BrandArea from "@/components/brand/brand-area";
-import CategoryArea from "@/components/category/category-area";
-import CourseArea from "@/components/course/course-area";
-import CourseLiveArea from "@/components/course/course-live-area";
-import CtaTwo from "@/components/cta/cta-two";
-import FunFactArea from "@/components/fun-fact/fun-fact-area";
-import HeroAreaTwo from "@/components/hero-area/hero-area-two";
-import TeamArea from "@/components/team/team-area";
-import TestimonialTwo from "@/components/testimonial/testimonial-two";
+'use client'
+import React from "react";
+import Footer from "@/components/Footer";
+import Swiperslider from "@/components/Swiperslider";
+import "swiper/css";
+import { Hero } from "./components/Hero";
+import Services from "@/components/Services";
+import Features from "@/components/Features";
+import Newsletter from "@/components/Newsletter";
+import About from "@/components/About";
+import Faqs from "@/components/Faqs";
+import Pricing from "@/components/Pricing";
+import Testimonials from "@/components/Testimonials";
+import Blog from "@/components/Blog";
+import Contact from "@/components/Contact";
+import BlackNav from "@/components/BlackNav";
 
-export const metadata: Metadata = {
-  title: "Home Online Course - Aktüel Analiz",
+const page = () => {
+  return (
+    <>
+      <BlackNav />
+      <Hero />
+      <Services />
+      <About />
+      <Pricing />
+      <Faqs />
+      <Contact />
+      <Footer />
+    </>
+  );
 };
 
-export default function HomeOnlineCoursePage() {
-  return (
-    <main>
-      {/* hero area start */}
-      <HeroAreaTwo />
-      {/* hero area end */}
-
-      {/* category area */}
-      <CategoryArea />
-      {/* category area */}
-
-      {/* fun fact area start */}
-      <FunFactArea />
-      {/* fun fact area end */}
-
-      {/* course area start */}
-      <CourseArea />
-      {/* course area end */}
-
-      {/* course live area start */}
-      <CourseLiveArea />
-      {/* course live area end */}
-
-      {/* testimonial area start */}
-      <TestimonialTwo />
-      {/* testimonial area end */}
-
-      {/* banner area start */}
-      <BannerArea />
-      {/* banner area end */}
-
-      {/* cta area start */}
-      <CtaTwo />
-      {/* cta area end */}
-    </main>
-  );
-}
+export default page;

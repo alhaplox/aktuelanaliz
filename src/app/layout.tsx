@@ -1,53 +1,85 @@
-import { Outfit, Jost, Crimson_Pro } from 'next/font/google';
-import type { Metadata } from "next";
-import "swiper/css/bundle";
-import "./globals.scss";
-import { VideoProvider } from '@/provider/VideoProvider';
-
-const outfit_bold = Outfit({
-  subsets: ['latin'],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: '--tp-ff-body'
-});
-const outfit_heading = Outfit({
-  subsets: ['latin'],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: '--tp-ff-heading'
-});
-const outfit_p = Outfit({
-  subsets: ['latin'],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: '--tp-ff-p'
-});
-const jost_primary = Jost({
-  subsets: ['latin'],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: '--tp-ff-primary'
-});
-const crismon_secondary = Crimson_Pro({
-  subsets: ['latin'],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: '--tp-ff-secondary'
-});
-
+import Image from 'next/image'
+import logo from '@/assets/images/logo.png'
+import '@/assets/scss/style.scss'
+import AppProviders from '../components/wrappers/AppProviders'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Aktüel Analiz - University & Online Course Next js Template",
-  description: "Aktüel Analiz – template is perfect for a variety of educational needs, including e-Learning, Course Schools, Online Schools, Kindergartens, Classic LMS setups, University Status pages, Instructor Portfolios, Language Academies, Gym Coaching, Online Courses, Single Courses, marketplaces, University Classics, Elegant Homepages, Technology-focused Homepages, and more",
-};
+  title: {
+    default: 'Aktüel Analiz | Finans ve Yatırım Akademisi',
+    template: '%s | Aktüel Analiz',
+  },
+  description:
+    'BIST, Nasdaq, Kripto Para, Emtia ve Parite piyasalarında profesyonel analiz ve yatırım eğitimi. Aktüel Analiz online eğitim platformu ile finansal özgürlüğünüzü adım adım inşa edin.',
+  keywords: [
+    'online finans eğitimi',
+    'borsa eğitimi',
+    'bist 100 analiz',
+    'nasdaq yatırım',
+    'kripto para eğitimi',
+    'emtia ticareti',
+    'forex parite eğitimi',
+    'teknik analiz kursu',
+    'aktüel analiz',
+  ],
+}
+
+const splashScreenStyles = `
+#splash-screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: white;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: all 15s linear;
+  overflow: hidden;
+}
+
+#splash-screen.remove {
+  animation: fadeout 0.7s forwards;
+  z-index: 0;
+}
+
+@keyframes fadeout {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+`
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit_bold.variable} ${outfit_heading.variable} ${outfit_p.variable} ${jost_primary.variable} ${crismon_secondary.variable}`}>
-        <VideoProvider>
-          {children}
-        </VideoProvider>
+    <html lang="tr">
+      <head>
+        <style suppressHydrationWarning>{splashScreenStyles}</style>
+      </head>
+      <body className={`antialiased`}>
+        <div id="splash-screen">
+          <Image
+            alt="Aktüel Analiz Logo"
+            width={112}
+            height={24}
+            src={logo}
+            style={{ height: '6%', width: 'auto' }}
+            priority
+          />
+        </div>
+        <div id="__next_splash">
+          <AppProviders>{children}</AppProviders>
+        </div>
       </body>
     </html>
-  );
+  )
 }
