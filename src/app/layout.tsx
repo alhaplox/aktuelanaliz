@@ -3,6 +3,7 @@ import logo from '@/assets/images/logo.png'
 import '@/assets/scss/style.scss'
 import AppProviders from '../components/wrappers/AppProviders'
 import { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
   title: {
@@ -79,6 +80,7 @@ export default function RootLayout({
         <div id="__next_splash">
           <AppProviders>{children}</AppProviders>
         </div>
+        <Analytics />
       </body>
     </html>
   )
