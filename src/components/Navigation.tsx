@@ -1,5 +1,5 @@
 'use client'
-import logo from "@/assets/images/logo.png";
+import logo from "@/assets/images/logo-dark.png";
 import IconifyIcon from "@/components/wrappers/IconifyIcon";
 import useScrollEvent from "@/hooks/useScrollEvent";
 import Gumshoe from 'gumshoejs'
@@ -10,7 +10,7 @@ const Navigation = () => {
   const navRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (navRef.current) new Gumshoe('.navbar-nav a',{offset:80})
+    if (navRef.current) new Gumshoe('.navbar-nav a', { offset: 80 })
   }, []);
 
   const { scrollY } = useScrollEvent()
@@ -23,11 +23,10 @@ const Navigation = () => {
 
   return (
     <>
-       <nav
+      <nav
         ref={navRef}
-        className={`navbar ${
-          scrollY >= 50 && " is-sticky"
-        } fixed top-0 start-0 end-0 z-999 transition-all duration-500 py-5 items-center shadow-md lg:shadow-none [&.is-sticky]:bg-white group [&.is-sticky]:shadow-md bg-white lg:bg-transparent`}
+        className={`navbar ${scrollY >= 50 && " is-sticky"
+          } fixed top-0 start-0 end-0 z-999 transition-all duration-500 py-5 items-center shadow-md lg:shadow-none [&.is-sticky]:bg-white group [&.is-sticky]:shadow-md bg-white lg:bg-transparent`}
         id="navbar"
       >
         <div className="container">

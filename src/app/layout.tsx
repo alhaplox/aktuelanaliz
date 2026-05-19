@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/logo-dark.png'
 import '@/assets/scss/style.scss'
 import AppProviders from '../components/wrappers/AppProviders'
 import { Metadata } from 'next'
