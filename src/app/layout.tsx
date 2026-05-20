@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Script from 'next/script'
 import logo from '@/assets/images/logo-dark.png'
 import '@/assets/scss/style.scss'
 import AppProviders from '../components/wrappers/AppProviders'
@@ -55,7 +56,6 @@ const splashScreenStyles = `
   }
 }
 `
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,6 +67,32 @@ export default function RootLayout({
         <style suppressHydrationWarning>{splashScreenStyles}</style>
       </head>
       <body className={`antialiased`}>
+        {/* 2. Adım: Pixel Kodunu Buraya Ekleyin */}
+        <Script id="fb-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1037000398898875');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+
+        {/* Noscript kısmı (Opsiyonel: JS kapalı tarayıcılar için) */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1037000398898875&ev=PageView&noscript=1"
+          />
+        </noscript>
+
         <div id="splash-screen">
           <Image
             alt="Aktüel Analiz Logo"
